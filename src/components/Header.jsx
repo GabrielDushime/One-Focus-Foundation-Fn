@@ -173,9 +173,8 @@ export default function HeaderComponent() {
           
             <div 
               style={{
-                backgroundColor: '#1F99ED',
-                 marginLeft:'170px',
-                height: '64px',
+                
+              
                 flex: 1,
                 position: 'relative'
               }}
@@ -185,8 +184,9 @@ export default function HeaderComponent() {
                 icon={<MenuOutlined style={{ fontSize: '18px' }} />}
                 onClick={showDrawer}
                 style={{
-                  color: 'white',
+                  color: 'black',
                   border: 'none',
+                 
                   boxShadow: 'none',
                   background: 'transparent',
                   float: 'right',
