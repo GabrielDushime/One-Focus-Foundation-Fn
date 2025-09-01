@@ -1,26 +1,213 @@
-@import "tailwindcss";
+/* ---------------- Google Fonts ---------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* ---------------- Tailwind Imports ---------------- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------- CSS Variables ---------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ONEFOCUS Brand Colors */
+  --onefocus-primary: #1F99ED;
+  --onefocus-primary-dark: #2E3192;
+  --onefocus-black: #000000;
+  --onefocus-white: #ffffff;
+  --onefocus-gray-light: #f5f5f5;
+  --onefocus-gray-medium: #666666;
+  --onefocus-gray-dark: #333333;
+
+  /* RGB Values for Tailwind */
+  --color-primary: 31, 153, 237;
+  --color-primary-dark: 46, 49, 146;
+  --color-black: 0, 0, 0;
+  --color-white: 255, 255, 255;
+
+  /* Foreground/Background */
+  --foreground: var(--onefocus-black);
+  --background: var(--onefocus-white);
+
+  /* Font */
+  --font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Shadows */
+  --shadow-primary: 0 4px 10px rgba(31, 153, 237, 0.2);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: var(--onefocus-white);
+    --background: var(--onefocus-gray-dark);
   }
 }
 
+/* ---------------- Global Resets ---------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  transition: all 0.2s ease-in-out;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
-  background: var(--background);
+  font-family: var(--font-family);
+  line-height: 1.6;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ---------------- Typography ---------------- */
+h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select, .ant-typography, .ant-title, .ant-text {
+  font-family: var(--font-family) !important;
+}
+
+/* Ant Design Typography Override */
+.ant-typography h1, .ant-typography h2, .ant-typography h3, .ant-typography h4, .ant-typography h5, .ant-typography h6, .ant-typography p, .ant-typography span {
+  font-family: var(--font-family) !important;
+}
+
+/* ---------------- Ant Design Overrides ---------------- */
+.ant-layout-header {
+  background: var(--onefocus-white) !important;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0 !important;
+}
+
+.ant-layout-footer {
+  background: var(--onefocus-black) !important;
+  color: var(--onefocus-white) !important;
+  text-align: center;
+}
+
+/* Header Menu Specific Overrides - Remove Overflow Behavior */
+.ant-menu-horizontal {
+  border-bottom: none !important;
+  overflow: visible !important;
+  flex: 1 !important;
+}
+
+.ant-menu-horizontal > .ant-menu-item,
+.ant-menu-horizontal > .ant-menu-submenu {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+}
+
+/* Remove overflow dots completely */
+.ant-menu-horizontal .ant-menu-overflow {
+  display: none !important;
+}
+
+.ant-menu-horizontal .ant-menu-overflow-item {
+  display: flex !important;
+}
+
+/* Ensure all menu items are visible */
+.ant-menu-horizontal .ant-menu-item {
+  display: flex !important;
+  align-items: center !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.ant-menu-item:hover {
+  font-size: inherit !important;
+}
+
+/* Complete removal of all lines and borders from menu items */
+.ant-menu-horizontal .ant-menu-item::before,
+.ant-menu-horizontal .ant-menu-item::after,
+.ant-menu-horizontal .ant-menu-item-selected::before,
+.ant-menu-horizontal .ant-menu-item-selected::after {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  background: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+.ant-menu-horizontal .ant-menu-item-selected {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Force remove any possible border or line styling */
+.ant-menu-horizontal .ant-menu-item,
+.ant-menu-horizontal .ant-menu-item-selected,
+.ant-menu-horizontal .ant-menu-item:hover,
+.ant-menu-horizontal .ant-menu-item:focus,
+.ant-menu-horizontal .ant-menu-item:active {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ant-menu-item-selected {
+  color: var(--onefocus-primary) !important;
+}
+
+/* ---------------- Button Styles ---------------- */
+button {
+  font-family: var(--font-family) !important;
+  cursor: pointer;
+  border: none !important;
+  outline: none !important;
+  transition: all 0.2s ease-in-out;
+}
+
+button:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+button:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove focus outline from all elements if needed */
+*:focus {
+  outline: none !important;
+}
+
+/* ---------------- Utility Classes ---------------- */
+.bg-onefocus-primary { background-color: var(--onefocus-primary); }
+.bg-onefocus-primary-dark { background-color: var(--onefocus-primary-dark); }
+.text-onefocus-primary { color: var(--onefocus-primary); }
+.text-onefocus-primary-dark { color: var(--onefocus-primary-dark); }
+.border-onefocus-primary { border-color: var(--onefocus-primary); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeIn 0.6s ease-in; }
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+  h1, h2, h3 { word-break: break-word; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 14px; }
 }
