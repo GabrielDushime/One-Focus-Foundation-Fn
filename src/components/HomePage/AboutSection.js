@@ -130,17 +130,17 @@ const AboutSection = () => {
       `}</style>
 
       <div className="container mx-auto px-6 max-w-6xl">
-        <Row gutter={[48, 32]} align="middle">
+        <Row gutter={[32, 32]} align="middle">
           <Col xs={24} lg={12}>
             <div 
               className="about-left-card text-white p-8 lg:p-12 rounded-2xl shadow-xl"
               style={{ background: 'linear-gradient(135deg, #2E3192 10%,#1F99ED 40% )',paddingBottom:'20px' }}
             >
-              <Title level={2} className="about-title !text-white !mb-6 !text-2xl lg:!text-3xl font-bold"
+              <Title level={3} className="about-title !text-white !mb-6 !text-2xl lg:!text-3xl font-bold"
                 style={{
-                  paddingTop:'30px',
-                  paddingLeft:'30px',
-                  paddingRight:'30px',
+                  paddingTop:'20px',
+                  paddingLeft:'20px',
+                  paddingRight:'20px',
                   textAlign:'center',
                   color:'white'
                 }}
@@ -175,8 +175,8 @@ const AboutSection = () => {
             <div className="about-right-card bg-white p-8 lg:p-12 rounded-2xl shadow-lg">
               <Paragraph className="about-content text-gray-700 !text-lg leading-relaxed !mb-0"
                 style={{
-                  fontSize:'15px',
-                  paddingRight:'20px'
+                  fontSize:'13px',
+                  paddingRight:'0px'
                 }}
               >
                 ONEFOCUS is dedicated to discovering and nurturing young talents across 
