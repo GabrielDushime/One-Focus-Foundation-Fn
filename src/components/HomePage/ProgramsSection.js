@@ -502,7 +502,7 @@ const ProgramsSection = () => {
       >
         <Select placeholder="Do you have previous experience?" size="large">
           <Option value={true}>Yes, I have experience</Option>
-          <Option value={false}>No, I'm new to this</Option>
+          <Option value={false}>No, I&apos;m new to this</Option>
         </Select>
       </Form.Item>
 
@@ -978,7 +978,7 @@ const ProgramsSection = () => {
                   size="large"
                   loading={loading}
                   onClick={() => {
-                    // Submit the correct form based on modalKey
+                  
                     switch (modalKey) {
                       case 'joinUs':
                         joinUsForm.submit();
