@@ -685,30 +685,30 @@ button:active {
   .onefocus-modal .ant-modal {
     margin: 16px;
     max-width: calc(100vw - 32px);
-    top: 0; /* Ensure modal starts from top */
+    top: 0; 
   }
   
   .onefocus-modal .ant-modal-content {
     margin: 0;
-    max-height: calc(100vh - 32px); /* Account for margins */
-    min-height: 300px; /* Minimum height to ensure footer visibility */
+    max-height: calc(100vh - 32px); 
+    min-height: 300px; 
   }
   
   .onefocus-modal .ant-modal-body {
     padding: 16px;
     /* Calculate available height: full modal minus header and footer */
-    max-height: calc(100vh - 32px - 80px - 70px); /* viewport - margins - header - footer */
+    max-height: calc(100vh - 32px - 80px - 70px); 
     overflow-y: auto;
   }
   
   .onefocus-modal .ant-modal-header {
     padding: 16px 16px 12px;
-    min-height: 60px; /* Ensure consistent header height */
+    min-height: 60px; 
   }
   
   .onefocus-modal .ant-modal-footer {
     padding: 12px 16px 16px;
-    min-height: 60px; /* Ensure consistent footer height */
+    min-height: 60px; 
     position: sticky;
     bottom: 0;
     background: white;
@@ -742,12 +742,12 @@ button:active {
   
   .onefocus-modal .ant-modal-footer {
     padding: 8px 12px 12px;
-    flex-direction: column; /* Stack buttons vertically on very small screens */
+    flex-direction: column;
     gap: 8px;
   }
   
   .onefocus-modal .ant-modal-footer .ant-btn {
-    width: 100%; /* Full width buttons on small screens */
+    width: 100%; 
   }
   
   /* Ensure columns stack on small screens */

@@ -181,7 +181,8 @@ const EventsSection = ({ onRegister, onPartner, onViewSchedule }) => {
       dataIndex: 'day',
       key: 'day',
       render: (day) => <Tag color="blue">{day}</Tag>,
-      responsive: ['md']
+      width: 100,
+      fixed: 'left'
     },
     {
       title: 'Time',
@@ -190,29 +191,40 @@ const EventsSection = ({ onRegister, onPartner, onViewSchedule }) => {
       render: (time) => (
         <div className="flex items-center gap-2">
           <ClockCircleOutlined className="text-gray-500" />
-          <span className="text-sm">{time}</span>
+          <span className="text-sm whitespace-nowrap">{time}</span>
         </div>
-      )
+      ),
+      width: 160
     },
     {
       title: 'Workshop Topic',
       dataIndex: 'topic',
       key: 'topic',
-      render: (topic) => <strong className="text-blue-600">{topic}</strong>
+      render: (topic) => <strong className="text-blue-600">{topic}</strong>,
+      width: 200,
+      ellipsis: {
+        showTitle: false,
+      }
     },
     {
       title: 'Focus Area',
       dataIndex: 'focus',
       key: 'focus',
       render: (focus) => <Text className="text-gray-600">{focus}</Text>,
-      responsive: ['lg']
+      width: 200,
+      ellipsis: {
+        showTitle: false,
+      }
     },
     {
       title: 'Facilitator',
       dataIndex: 'facilitator',
       key: 'facilitator',
       render: (facilitator) => <Text className="text-green-600">{facilitator}</Text>,
-      responsive: ['lg']
+      width: 180,
+      ellipsis: {
+        showTitle: false,
+      }
     }
   ];
 
@@ -707,8 +719,8 @@ const EventsSection = ({ onRegister, onPartner, onViewSchedule }) => {
         title: "Weekly Workshops Schedule",
         subtitle: "Kigali, Rwanda - Weekly | Saturday",
         content: (
-          <div className="space-y-4">
-            <div className="bg-blue-50 p-4 rounded-lg mb-4">
+          <div className="space-y-6">
+            <div className="bg-blue-50 p-4 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <EnvironmentOutlined className="text-blue-600" />
                 <Text strong>Location: National Training Center, Kigali-Rwanda</Text>
@@ -718,17 +730,52 @@ const EventsSection = ({ onRegister, onPartner, onViewSchedule }) => {
                 <Text>Weekly Sessions | Every Saturday</Text>
               </div>
             </div>
-            <Table 
-              dataSource={scheduleData}
-              columns={scheduleColumns}
-              pagination={false}
-              scroll={{ x: 800 }}
-              size="middle"
-              className="border rounded-lg"
-            />
+            
+            {/* Desktop Table */}
+            <div className="hidden lg:block">
+              <Table 
+                dataSource={scheduleData}
+                columns={scheduleColumns}
+                pagination={false}
+                scroll={{ x: 'max-content', y: 400 }}
+                size="middle"
+                className="border rounded-lg"
+                bordered
+              />
+            </div>
+
+            {/* Mobile and Tablet Scrollable Table */}
+            <div className="block lg:hidden">
+              <div className="overflow-x-auto border rounded-lg bg-white">
+                <Table 
+                  dataSource={scheduleData}
+                  columns={scheduleColumns.map(col => ({
+                    ...col,
+                    width: col.key === 'day' ? 80 : 
+                           col.key === 'time' ? 140 :
+                           col.key === 'topic' ? 180 :
+                           col.key === 'focus' ? 160 : 140,
+                    ellipsis: false,
+                    responsive: undefined
+                  }))}
+                  pagination={false}
+                  scroll={{ x: 700, y: 400 }}
+                  size="small"
+                  className="min-w-full"
+                  bordered
+                />
+              </div>
+              
+              {/* Instructions for mobile users */}
+              <div className="mt-2 text-center">
+                <Text className="text-xs text-gray-500">
+                  ← Scroll horizontally to view all columns →
+                </Text>
+              </div>
+            </div>
           </div>
         ),
-        width: 1000
+        width: 1200
       }
     };
     return configs[modalKey];
@@ -961,10 +1008,13 @@ const EventsSection = ({ onRegister, onPartner, onViewSchedule }) => {
                   padding: '24px',
                 },
                 body: {
-                  maxHeight: '70vh',
+                  maxHeight: isSchedule ? '80vh' : '70vh',
                   overflowY: 'auto',
+                  padding: isSchedule ? '20px 0' : undefined,
                 }
               }}
+              destroyOnClose={true}
+              centered={!isSchedule}
             >
               <Spin spinning={loading}>
                 {isSchedule ? config.content : config.form}
