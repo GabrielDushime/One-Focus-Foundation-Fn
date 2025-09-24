@@ -1,5 +1,3 @@
-'use client'
-
 import { Typography, Button, Card, Row, Col, Input } from 'antd'
 import { CommentOutlined } from '@ant-design/icons'
 import { useState } from 'react'
@@ -10,7 +8,6 @@ const { Title, Text, Paragraph } = Typography
 const BottomSections = () => {
   const [chatVisible, setChatVisible] = useState(false)
 
- 
   const testimonials = [
     { 
       name: "Alphonse", 
@@ -29,71 +26,133 @@ const BottomSections = () => {
     }
   ]
 
+  const handleImageError = (e) => {
+    e.target.style.display = 'none';
+    if (e.target.nextSibling) {
+      e.target.nextSibling.style.display = 'flex';
+    }
+  }
+
   return (
     <>
       {/* Testimonials */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-6 max-w-6xl"
-          style={{
-            textAlign:'center',
-            paddingTop:'20px',
-          }}
-        >
-          <Row gutter={[32, 32]} justify="center">
+        <div className="container mx-auto max-w-7xl" >
+          
+          {/* Testimonials Grid - Same responsive layout as ProgramsSection */}
+          <Row 
+            gutter={[
+              { xs: 8, sm: 16, md: 20, lg: 24, xl: 20 }, 
+              { xs: 20, sm: 24, md: 28, lg: 20 }
+            ]} 
+            justify="center" 
+            align="stretch"
+            className="w-full"
+          >
             {testimonials.map((testimonial, index) => (
-              <Col xs={24} md={12} lg={7} key={index}>
+              <Col 
+                xs={24} 
+                sm={12} 
+                md={12} 
+                lg={8} 
+                xl={8}
+                key={index}
+                className="flex"
+                style={{ display: 'flex' }}
+              >
                 <Card 
-                  className="text-center h-full rounded-2xl shadow-lg border-0 hover:shadow-xl transition-all duration-300"
-                  styles={{ body: { padding: '8px 32px', backgroundColor: 'white' } }}
-                  style={{ backgroundColor: 'white' }}
-                  hoverable
+                  className="w-full rounded-2xl border-0 shadow-lg hover:shadow-2xl hover:-translate-y-2 lg:hover:-translate-y-3 transition-all duration-300 overflow-hidden group"
+                  styles={{
+                    body: { 
+                      marginTop: '20px',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column'
+                    }
+                  }}
+                  bodyStyle={{
+                    padding: 0,
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                  style={{
+                    height: 'auto',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    minHeight: '320px',
+                    backgroundColor: 'white'
+                  }}
                 >
-                  <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-6 overflow-hidden">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      width={80}
-                      height={80}
+                  {/* Card Content */}
+                  <div className="flex-1 flex flex-col p-4 sm:p-5 lg:p-6 text-center" style={{ flexGrow: 1 }}>
+                    {/* Profile Image */}
+                    <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-6 overflow-hidden">
+                      <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        width={80}
+                        height={80}
+                        style={{
+                          width: '80px',
+                          height: '80px',
+                          objectFit: 'cover',
+                          borderRadius: '50%'
+                        }}
+                        className="object-cover w-full h-full"
+                        onError={handleImageError}
+                      />
+                      <div className="w-full h-full bg-gray-400 flex items-center justify-center" style={{ display: 'none' }}>
+                        <Text className="text-white text-xs">Photo</Text>
+                      </div>
+                    </div>
+                    
+                    {/* Name */}
+                    <Title 
+                      level={3} 
+                      className="mb-3 sm:mb-4 text-lg sm:text-xl lg:text-2xl leading-tight text-center font-semibold"
                       style={{
-                        width: '80px',
-                        height: '80px',
-                        objectFit: 'cover',
-                        borderRadius: '50%'
+                        color: '#2E3192',
+                        fontWeight: 'bold',
+                        fontSize: '16px',
+                        marginTop: 0,
+                        marginBottom: '12px'
                       }}
-                      className="object-cover w-full h-full"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div className="w-full h-full bg-gray-400 flex items-center justify-center" style={{ display: 'none' }}>
-                      <Text className="text-white text-xs">Photo</Text>
+                    >
+                      {testimonial.name}
+                    </Title>
+                    
+                    {/* Testimonial Text - Flex grow to take available space */}
+                    <div className="flex-1 mb-4 sm:mb-6" style={{ flexGrow: 1 }}>
+                      <Paragraph 
+                        className="text-gray-600 mb-0 text-xs sm:text-sm lg:text-base leading-relaxed text-center"
+                        style={{
+                          fontWeight: '600',
+                          fontSize: '12px',
+                          textAlign: 'center',
+                          marginBottom: '0px'
+                        }}
+                      >
+                        {testimonial.text}
+                      </Paragraph>
+                    </div>
+                    
+                    {/* Quote Symbol - Always at bottom */}
+                    <div className="text-center ">
+                      <div 
+                        className="text-6xl opacity-90 leading-none transform scale-x-[-1]"
+                        style={{
+                          fontSize: '40px',
+                          color: '#2E3192',
+                          WebkitTextFillColor: '#2E3192',
+                          textShadow: 'none',
+                          marginBottom:'60px'
+                        }}
+                      >
+                        ❝
+                      </div>
                     </div>
                   </div>
-                  <Title level={4} className="!text-onefocus-primary-dark !mb-6 !text-xl font-bold"
-                    style={{
-                      color:'#2E3192',
-                      fontWeight:'bold'
-                    }}
-                  >
-                    {testimonial.name}
-                  </Title>
-                  <Paragraph className="text-gray-600  !text-base leading-relaxed !mb-4"
-                    style={{
-                      fontWeight:'600',
-                      fontSize:'12px'
-                    }}
-                  >
-                    {testimonial.text}
-                  </Paragraph>
-                  <div className="text-6xl opacity-20 leading-none transform scale-x-[-1]"
-                    style={{
-                      fontSize:'40px',
-                      color: '#2E3192',
-                      WebkitTextFillColor: '#2E3192',
-                      textShadow: 'none'
-                    }}
-                  >❝</div>
                 </Card>
               </Col>
             ))}
@@ -106,7 +165,7 @@ const BottomSections = () => {
         <div className="container mx-auto px-6 max-w-4xl text-center"
           style={{
             textAlign:'center',
-            marginTop:'20px',
+            marginTop:'0px',
           }}
         >
           <Title level={2} className="!text-white !mb-6 !text-3xl lg:!text-4xl font-bold"
@@ -134,7 +193,6 @@ const BottomSections = () => {
                 margin: '0 auto',
                 marginTop:'15px'
               }}
-            
             >
               <Input
                 placeholder="Your email address"
@@ -147,7 +205,6 @@ const BottomSections = () => {
                   border: 'none',
                   backgroundColor: 'white',
                   fontSize: 'clamp(12px, 3vw, 16px)',
-                 
                   marginTop:"10px" ,
                   marginBottom:'10px'
                 }}

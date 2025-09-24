@@ -1,5 +1,3 @@
-'use client'
-
 import { Typography, Button } from 'antd'
 
 const { Text } = Typography
@@ -7,7 +5,7 @@ const { Text } = Typography
 const AnnualReportSection = () => {
   return (
     <section className="py-12">
-      <div className="container mx-auto px-6 max-w-6xl text-center"
+      <div className="container mx-auto max-w-7xl text-center"
         style={{
           textAlign:'center'
         }}
@@ -20,14 +18,13 @@ const AnnualReportSection = () => {
             border-radius: 5px;
             font-weight: bold;
             white-space: normal;
-            line-height: 1.2;
+            line-height: 2.2;
             
             /* Desktop styles */
-            height: 40px;
+            height: 20px;
             width: 25%;
             font-size: 12px;
-            padding: 8px 12px;
-            
+            padding: 4px 12px;
           }
           
           @media (max-width: 768px) {
@@ -53,15 +50,15 @@ const AnnualReportSection = () => {
         <Button 
           type="primary"
           size="large"
-          className="annual-report-button !h-14 !px-12 !text-lg font-semibold rounded-lg"
+          className="annual-report-button !h-12 !px-12 !text-lg font-semibold rounded-lg"
           style={{ 
             background: '#2E3192',
             borderColor: '#2E3192',
             marginTop:'20px',
-          
             borderRadius:'5px',
-            fontWeight:'bold',
-            fontSize:'12px'
+            fontWeight:'500',
+            fontSize:'14px',
+            width:'300px'
           }}
         >
           Review Our Annual Impact Report

@@ -1,6 +1,3 @@
-// app.js
-'use client';
-
 import '../styles/globals.css';
 import { ConfigProvider, Layout } from 'antd';
 import { useEffect } from 'react';
@@ -52,11 +49,11 @@ export default function App() {
     <ConfigProvider theme={theme}>
       <Layout className="min-h-screen">
         <HeaderComponent />
-
+        
         <Content>
           <Home/>
         </Content>
-
+        
         <FooterComponent />
       </Layout>
     </ConfigProvider>

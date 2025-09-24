@@ -32,6 +32,22 @@
 
   /* Shadows */
   --shadow-primary: 0 4px 10px rgba(31, 153, 237, 0.2);
+
+  /* Responsive Container Padding */
+  --container-padding-mobile: 1rem;
+  --container-padding-tablet: 1.5rem;
+  --container-padding-desktop: 2rem;
+  --container-padding-large: 3rem;
+
+  /* Responsive Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
 }
 
 /* Dark Mode */
@@ -48,6 +64,10 @@
   margin: 0;
   padding: 0;
   font-family: var(--font-family);
+}
+
+/* Add transitions only to specific elements that need them */
+a, button, .card, .hover\:shadow-xl {
   transition: all 0.2s ease-in-out;
 }
 
@@ -66,9 +86,122 @@ body {
   overflow-x: hidden;
 }
 
-/* ---------------- Typography ---------------- */
+/* ---------------- Responsive Container System ---------------- */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-mobile);
+  padding-right: var(--container-padding-mobile);
+}
+
+/* Container max-widths and padding for different breakpoints */
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+    padding-left: var(--container-padding-tablet);
+    padding-right: var(--container-padding-tablet);
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    padding-left: var(--container-padding-desktop);
+    padding-right: var(--container-padding-desktop);
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+    padding-left: var(--container-padding-large);
+    padding-right: var(--container-padding-large);
+  }
+}
+
+/* ---------------- Responsive Typography System ---------------- */
 h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select, .ant-typography, .ant-title, .ant-text {
   font-family: var(--font-family) !important;
+}
+
+/* Responsive heading sizes */
+h1, .text-h1 {
+  font-size: 1.875rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h2, .text-h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+h3, .text-h3 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+h4, .text-h4 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+p, .text-body {
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+/* Responsive typography for larger screens */
+@media (min-width: 768px) {
+  h1, .text-h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2, .text-h2 {
+    font-size: 1.875rem;
+  }
+  
+  h3, .text-h3 {
+    font-size: 1.5rem;
+  }
+  
+  h4, .text-h4 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1, .text-h1 {
+    font-size: 3rem;
+  }
+  
+  h2, .text-h2 {
+    font-size: 2.25rem;
+  }
+  
+  h3, .text-h3 {
+    font-size: 1.875rem;
+  }
+  
+  h4, .text-h4 {
+    font-size: 1.5rem;
+  }
 }
 
 /* Ant Design Typography Override */
@@ -76,7 +209,68 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select, .ant-t
   font-family: var(--font-family) !important;
 }
 
-/* ---------------- Ant Design Overrides ---------------- */
+/* ---------------- Responsive Card System ---------------- */
+.responsive-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  height: 100%;
+}
+
+.responsive-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.responsive-card-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+@media (min-width: 768px) {
+  .responsive-card-image {
+    height: 200px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-card-image {
+    height: 240px;
+  }
+}
+
+.responsive-card-content {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-card-content {
+    padding: 1.5rem;
+  }
+}
+
+/* ---------------- Responsive Spacing System ---------------- */
+.section-padding {
+  padding: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 3rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 0.5rem 0;
+  }
+}
+
+/* ---------------- Ant Design Responsive Overrides ---------------- */
 .ant-layout-header {
   background: var(--onefocus-white) !important;
   border-bottom: 1px solid #f0f0f0;
@@ -89,7 +283,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select, .ant-t
   text-align: center;
 }
 
-/* Header Menu Specific Overrides - Remove Overflow Behavior */
+/* Header Menu Responsive Overrides */
 .ant-menu-horizontal {
   border-bottom: none !important;
   overflow: visible !important;
@@ -100,6 +294,18 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select, .ant-t
 .ant-menu-horizontal > .ant-menu-submenu {
   flex: 0 0 auto !important;
   white-space: nowrap !important;
+}
+
+/* Mobile menu adjustments */
+@media (max-width: 768px) {
+  .ant-menu-horizontal {
+    flex-direction: column !important;
+  }
+  
+  .ant-menu-horizontal > .ant-menu-item {
+    width: 100% !important;
+    text-align: left !important;
+  }
 }
 
 /* Remove overflow dots completely */
@@ -163,7 +369,29 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select, .ant-t
   color: var(--onefocus-primary) !important;
 }
 
-/* ---------------- Button Styles ---------------- */
+/* Responsive Ant Design Cards */
+.ant-card {
+  border-radius: 1rem !important;
+  overflow: hidden !important;
+}
+
+.ant-card-body {
+  padding: 0rem !important;
+}
+
+@media (min-width: 768px) {
+  .ant-card-body {
+    padding: 0rem !important;
+  }
+}
+
+ @media (min-width: 1024px) {
+  .ant-card-body {
+    padding: 0rem !important
+  }
+} 
+
+/* ---------------- Responsive Button System ---------------- */
 button {
   font-family: var(--font-family) !important;
   cursor: pointer;
@@ -184,9 +412,95 @@ button:active {
   box-shadow: none !important;
 }
 
-/* Remove focus outline from all elements if needed */
-*:focus {
+/* Responsive button sizes */
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: var(--text-sm);
+  
+}
+
+.btn-md {
+  padding: 0.75rem 1.5rem;
+  font-size: var(--text-base);
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 480px) {
+  .btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--text-base);
+  }
+  
+  .btn-md {
+    padding: 0.5rem 1rem;
+    font-size: var(--text-sm);
+  }
+}
+
+/* IMPORTANT: Don't remove focus from Ant Design Select components */
+.ant-select-dropdown,
+.ant-select-dropdown *,
+.ant-select-item,
+.ant-select-item-option {
+  transition: none !important;
+  outline: revert !important;
+}
+
+/* Ensure Select dropdowns work properly */
+.ant-select-dropdown {
+  z-index: 1050 !important;
+}
+
+.ant-select-selector:focus,
+.ant-select-focused .ant-select-selector {
   outline: none !important;
+  border-color: var(--onefocus-primary) !important;
+  box-shadow: 0 0 0 2px rgba(31, 153, 237, 0.2) !important;
+}
+
+/* ---------------- Responsive Grid System ---------------- */
+.responsive-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .responsive-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* ---------------- Responsive Image System ---------------- */
+.responsive-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
 }
 
 /* ---------------- Utility Classes ---------------- */
@@ -203,11 +517,57 @@ button:active {
 
 .fade-in { animation: fadeIn 0.6s ease-in; }
 
-/* ---------------- Responsive ---------------- */
-@media (max-width: 768px) {
-  h1, h2, h3 { word-break: break-word; }
+/* ---------------- Mobile-First Responsive Breakpoints ---------------- */
+
+/* Extra Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  h1, h2, h3 { 
+    word-break: break-word; 
+    hyphens: auto;
+  }
+  
+  body { 
+    font-size: 14px; 
+  }
+  
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .section-padding {
+    padding: 1.5rem 0;
+  }
 }
 
-@media (max-width: 480px) {
-  body { font-size: 14px; }
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }

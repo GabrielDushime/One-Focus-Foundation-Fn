@@ -1,5 +1,3 @@
-'use client'
-
 import { Typography, Button, Row, Col } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import Link from 'next/link'

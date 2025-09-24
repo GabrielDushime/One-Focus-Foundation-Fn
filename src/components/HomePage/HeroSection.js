@@ -1,5 +1,3 @@
-'use client'
-
 import { useState, useEffect } from 'react'
 import { Typography, Button, Row, Col, Statistic } from 'antd'
 import Image from 'next/image'
@@ -48,7 +46,6 @@ const HeroSection = () => {
 
   const ONEFOCUS_YOUTUBE_URL = "https://www.youtube.com/@ONEFOCUSFOU"
 
- 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
@@ -58,6 +55,12 @@ const HeroSection = () => {
   }, [heroSlides.length])
 
   const currentSlideData = heroSlides[currentSlide]
+
+  const handleYouTubeClick = () => {
+    if (typeof window !== 'undefined') {
+      window.open(ONEFOCUS_YOUTUBE_URL, '_blank')
+    }
+  }
 
   return (
     <>
@@ -135,23 +138,22 @@ const HeroSection = () => {
           @media (max-width: 1023px) {
             .hero-title {
               font-size: 24px !important;
-              padding-top: 60px !important; /* Increased from 20px */
+              padding-top: 60px !important;
               padding-left: 15px !important;
               padding-right: 15px !important;
-              margin-top: 20px !important; /* Added extra top margin */
+              margin-top: 20px !important;
             }
             
             .hero-subtitle {
               font-size: 14px !important;
               padding-left: 15px !important;
               padding-right: 15px !important;
-              margin-top: 10px !important; /* Added top margin */
+              margin-top: 10px !important;
             }
             
             .youtube-button {
               margin-left: 0 !important;
               margin-top: 15px !important; 
-              
             }
             
             .youtube-icon {
@@ -160,49 +162,49 @@ const HeroSection = () => {
             }
             
             .slide-container {
-              height: 400px !important; /* Increased height for mobile */
+              height: 400px !important;
             }
           }
           
           @media (max-width: 768px) {
             .hero-title {
-              font-size: 18px !important; /* Increased from 14px */
-              padding-top: 80px !important; /* Increased significantly */
+              font-size: 18px !important;
+              padding-top: 80px !important;
               padding-left: 10px !important;
               padding-right: 10px !important;
-              margin-top: 30px !important; /* Added more top margin */
+              margin-top: 30px !important;
             }
             
             .hero-subtitle {
               font-size: 13px !important;
               padding-left: 10px !important;
               padding-right: 10px !important;
-              margin-top: 15px !important; /* Added top margin */
+              margin-top: 15px !important;
             }
             
             .youtube-button {
-              margin-top: 20px !important; /* Added top margin */
+              margin-top: 20px !important;
             }
             
             .slide-container {
-              height: 450px !important; /* Increased height even more for small screens */
+              height: 450px !important;
             }
           }
           
           @media (max-width: 480px) {
             .hero-title {
-              font-size: 16px !important; /* Increased from 14px */
-              padding-top: 100px !important; /* Increased significantly for very small screens */
+              font-size: 16px !important;
+              padding-top: 100px !important;
               padding-left: 8px !important;
               padding-right: 8px !important;
-              margin-top: 40px !important; /* Added even more top margin */
+              margin-top: 40px !important;
             }
             
             .hero-subtitle {
               font-size: 12px !important;
               padding-left: 8px !important;
               padding-right: 8px !important;
-              margin-top: 20px !important; /* Added top margin */
+              margin-top: 20px !important;
             }
             
             .youtube-icon {
@@ -211,11 +213,11 @@ const HeroSection = () => {
             }
             
             .youtube-button {
-              margin-top: 25px !important; /* Added top margin */
+              margin-top: 25px !important;
             }
             
             .slide-container {
-              height: 500px !important; /* Increased height for very small screens */
+              height: 500px !important;
             }
           }
         `}</style>
@@ -267,11 +269,10 @@ const HeroSection = () => {
                             className="youtube-button"
                             style={{
                               marginTop: '20px',
-                  
                               cursor: 'pointer',
                               display: 'inline-block'
                             }}
-                            onClick={() => window.open(ONEFOCUS_YOUTUBE_URL, '_blank')}
+                            onClick={handleYouTubeClick}
                           >
                             <svg
                               className="youtube-icon"
@@ -285,8 +286,6 @@ const HeroSection = () => {
                                 background:"#FF0000",
                                 padding:"4px"
                               }}
-                              onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
-                              onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                             >
                               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                             </svg>
