@@ -893,8 +893,8 @@ const GetInvolvedSection = () => {
             rules={[{ required: true, message: 'Please select your education level' }]}
           >
             <Select placeholder="Select education level" size="large">
-              <Option value={EducationLevel.BACHELOR}>Bachelor's Degree</Option>
-              <Option value={EducationLevel.MASTERS}>Master's Degree</Option>
+              <Option value={EducationLevel.BACHELOR}>Bachelor&apos;s Degree</Option>
+              <Option value={EducationLevel.MASTERS}>Master&apos;s Degree</Option>
               <Option value={EducationLevel.PHD}>PhD</Option>
               <Option value={EducationLevel.PROFESSIONAL_CERTIFICATION}>Professional Certification</Option>
               <Option value={EducationLevel.OTHER}>Other</Option>
