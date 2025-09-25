@@ -264,7 +264,7 @@ const BottomSections = () => {
       </section>
 
       {/* Fixed Chat Button */}
-      <Button 
+    {/*   <Button 
         type="primary"
         shape="round"
         size="large"
@@ -279,7 +279,7 @@ const BottomSections = () => {
         onClick={() => setChatVisible(!chatVisible)}
       >
         Let&apos;s Chat!
-      </Button>
+      </Button> */}
     </>
   )
 }

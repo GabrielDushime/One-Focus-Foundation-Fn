@@ -6,7 +6,11 @@ export const API_ENDPOINTS = {
   BOOK_US: `${API_BASE_URL}/book-us`,
   GET_INVOLVED: `${API_BASE_URL}/get-involved`,
   REGISTER_NOW: `${API_BASE_URL}/register-now`,     
-  PARTNERSHIPS: `${API_BASE_URL}/partnerships`   
+  PARTNERSHIPS: `${API_BASE_URL}/partnerships`,
+  VOLUNTEERS: `${API_BASE_URL}/volunteers`,
+  MENTORS: `${API_BASE_URL}/mentors` ,
+  DONATIONS: `${API_BASE_URL}/donations`
+    
 }
 
 export default API_BASE_URL
