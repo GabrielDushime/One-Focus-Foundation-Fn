@@ -38,7 +38,7 @@ const ProgramsSection = () => {
   const programs = [
     {
       title: "Workshops",
-      description: "Since February 1st, 2025, we've launched workshops and workplace at National Training center. These sessions include public speaking, art, design, music, and business skills.",
+      description: "We combine experienced coaching with goal-oriented team dynamics, creating a structured pathway from initial ideas to successful outcomes while fostering continuous progress and lasting motivation.",
       buttonText: "Join Us",
       image: "/Workshop Presentation_edited.jpg",
       bgColor: "bg-blue-500",

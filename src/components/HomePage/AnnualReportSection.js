@@ -7,24 +7,33 @@ const AnnualReportSection = () => {
     <section className="py-12">
       <div className="container mx-auto max-w-7xl text-center"
         style={{
-          textAlign:'center'
+          textAlign:'center',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '16px'
         }}
       >
         <style jsx>{`
           .annual-report-button {
             background: #2E3192 !important;
             border-color: #2E3192 !important;
-            margin-top: 20px;
             border-radius: 5px;
             font-weight: bold;
             white-space: normal;
             line-height: 2.2;
             
             /* Desktop styles */
-            height: 20px;
-            width: 25%;
-            font-size: 12px;
+            height: 50px;
+            width: 300px;
+            font-size: 14px;
             padding: 4px 12px;
+          }
+          
+          .sponsorship-button {
+            background: #1F99ED !important;
+            border-color: #1F99ED !important;
+            border-radius: 50px !important;
           }
           
           @media (max-width: 768px) {
@@ -47,22 +56,46 @@ const AnnualReportSection = () => {
             }
           }
         `}</style>
-        <Button 
-          type="primary"
-          size="large"
-          className="annual-report-button !h-12 !px-12 !text-lg font-semibold rounded-lg"
-          style={{ 
-            background: '#2E3192',
-            borderColor: '#2E3192',
-            marginTop:'20px',
-            borderRadius:'5px',
-            fontWeight:'500',
-            fontSize:'14px',
-            width:'300px'
-          }}
+
+        <a 
+          href="/files/sponsorship-packages.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer"
         >
-          Review Our Annual Impact Report
-        </Button>
+          <Button 
+            type="primary"
+            size="large"
+            className="annual-report-button sponsorship-button"
+            style={{
+            background:'#1F99ED',
+            borderRadius:'50px',
+            fontWeight:'bold',
+            marginTop:'20px'
+            }}
+          >
+            SPONSORSHIP PACKAGES
+          </Button>
+        </a>
+
+        <a 
+          href="/files/onefocus-annual-report.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <Button 
+            type="primary"
+            size="large"
+            className="annual-report-button"
+            style={{
+            background:'#2E3192',
+      
+            fontWeight:'500',
+            marginTop:'20px'
+            }}
+          >
+            Review Our Annual Impact Report
+          </Button>
+        </a>
       </div>
     </section>
   )

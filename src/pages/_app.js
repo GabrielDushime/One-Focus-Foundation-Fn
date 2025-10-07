@@ -1,11 +1,10 @@
-import '../styles/globals.css';
-import { ConfigProvider, Layout } from 'antd';
-import { useEffect } from 'react';
-import HeaderComponent from '../components/Header';
-import FooterComponent from '../components/Footer';
-import Home from '../components/Home';
+import '../styles/globals.css'
+import { ConfigProvider, Layout } from 'antd'
+import { useEffect } from 'react'
+import HeaderComponent from '../components/Header'
+import FooterComponent from '../components/Footer'
 
-const { Content } = Layout;
+const { Content } = Layout
 
 const theme = {
   token: {
@@ -38,12 +37,12 @@ const theme = {
       horizontalItemSelectedColor: '#1F99ED',
     },
   },
-};
+}
 
-export default function App() {
+export default function App({ Component, pageProps }) {
   useEffect(() => {
-    console.log('ONEFOCUS Project - Application Started');
-  }, []);
+    console.log('ONEFOCUS Project - Application Started')
+  }, [])
 
   return (
     <ConfigProvider theme={theme}>
@@ -51,11 +50,11 @@ export default function App() {
         <HeaderComponent />
         
         <Content>
-          <Home/>
+          <Component {...pageProps} />
         </Content>
         
         <FooterComponent />
       </Layout>
     </ConfigProvider>
-  );
+  )
 }

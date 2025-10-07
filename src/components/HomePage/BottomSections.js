@@ -1,28 +1,31 @@
-import { Typography, Button, Card, Row, Col, Input } from 'antd'
+import { Typography, Button, Card, Row, Col, Input, message } from 'antd'
 import { CommentOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import Image from 'next/image'
+import { API_ENDPOINTS } from '@/config/api'
 
 const { Title, Text, Paragraph } = Typography
 
 const BottomSections = () => {
   const [chatVisible, setChatVisible] = useState(false)
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const testimonials = [
     { 
       name: "Alphonse", 
-      text: "Share the amazing things customers are saying about your business. Double click, or click Edit Text to make it yours.",
-      image: "/Person.jpg" 
+      text: "A real leader is someone who creates opportunities for others to grow, shine, and eventually lead on their own. If your influence dies with you, then you have not led you have only managed.",
+      image: "/Alphonse.jpeg" 
     },
     { 
       name: "Grace", 
-      text: "Share the amazing things customers are saying about your business. Double click, or click Edit Text to make it yours.",
-      image: "/Person.jpg" 
+      text: "We dare, we do, and we move forward — with purpose, passion, and vision. Every step we take is a step toward progress. The journey continues, and we're just getting started.",
+      image: "/grace.jpeg" 
     },
     { 
-      name: "Steven", 
-      text: "Share the amazing things customers are saying about your business. Double click, or click Edit Text to make it yours.",
-      image: "/Person.jpg" 
+      name: "Nicolas", 
+      text: "When you start feeling those fears, pause and reflect on them. Try to understand where they're coming from and what's triggering them. Awareness is the first step to overcoming what's holding you back.",
+      image: "/Nicolas.jpeg" 
     }
   ]
 
@@ -30,6 +33,57 @@ const BottomSections = () => {
     e.target.style.display = 'none';
     if (e.target.nextSibling) {
       e.target.nextSibling.style.display = 'flex';
+    }
+  }
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      message.warning('Please enter your email address')
+      return
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      message.error('Please enter a valid email address')
+      return
+    }
+
+    setLoading(true)
+
+    try {
+      const response = await fetch(API_ENDPOINTS.SUBSCRIBE, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        message.success(data.message || 'Thank you for subscribing! You will receive our latest updates.')
+        setEmail('') // Clear the input
+      } else {
+        // Handle specific error cases
+        if (response.status === 409) {
+          message.warning(data.message || 'This email is already subscribed')
+        } else {
+          message.error(data.message || 'Something went wrong. Please try again.')
+        }
+      }
+    } catch (error) {
+      console.error('Subscribe error:', error)
+      message.error('Failed to subscribe. Please check your connection and try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSubscribe()
     }
   }
 
@@ -196,6 +250,10 @@ const BottomSections = () => {
             >
               <Input
                 placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyPress={handleKeyPress}
+                disabled={loading}
                 className="flex-1 border-0 bg-transparent text-lg px-4"
                 style={{ 
                   boxShadow: 'none',
@@ -211,6 +269,8 @@ const BottomSections = () => {
               />
               <Button
                 type="primary"
+                loading={loading}
+                onClick={handleSubscribe}
                 className="bg-black border-black hover:bg-gray-800 font-semibold rounded-full px-6 py-2 ml-2"
                 style={{
                   borderRadius: '0 20px 20px 0px',
@@ -227,42 +287,98 @@ const BottomSections = () => {
       </section>
 
       {/* Our Partners Section */}
-      <section className="py-20" style={{ background: 'black' }}>
-        <div className="container mx-auto px-6 max-w-4xl text-center"
-          style={{
-            textAlign:'left',                   
-            marginBottom:'20px',
-            height:'150px'
-          }}
-        >
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginLeft: '60px',
-            paddingTop: '10px'
-          }}>
-            <Title level={2} className="!text-white !mb-6 !text-3xl lg:!text-4xl font-bold"
-              style={{
-                fontWeight:'bold',
-                fontSize:'30px',
-                color:'white',
-                margin: '0',
-                marginRight: '20px'
-              }}
-            >
-              Our Partners
-            </Title>
-            
-            {/* Vertical white line next to text */}
+      <section className="py-12 md:py-16" style={{ background: 'black' }}>
+        <div className="container mx-auto px-6 max-w-7xl"
+        style={{
+      marginBottom:'10px',
+     
+
+        }}>
+          {/* Desktop and Tablet Layout */}
+          <div 
+            className="hidden md:flex"
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'flex-start',
+              gap: '30px',
+              flexWrap: 'wrap'
+            }}>
+            {/* Title with vertical line - Left side */}
             <div style={{
-              width: '1px',
-              height: '125px',
-              backgroundColor: 'white'
-            }}></div>
+              display: 'flex',
+              alignItems: 'center',
+              gap: '20px',
+              minWidth: 'fit-content'
+            }}>
+              <Title level={2} className="!text-white !mb-0 !text-2xl md:!text-3xl font-bold"
+                style={{
+                  fontWeight:'bold',
+                  fontSize: 'clamp(20px, 4vw, 30px)',
+                  color:'white',
+                  margin: '0',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                Our Partners
+              </Title>
+              
+              {/* Vertical white line next to text */}
+              <div style={{
+                width: '1px',
+                height: '80px',
+                backgroundColor: 'white',
+                display: 'block'
+              }}></div>
+            </div>
+
+            {/* Partner Logos - Horizontal row */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: '20px',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              flex: 1,
+              marginTop:'20px'
+            }}>
+              {/* Partner 1-8 */}
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                <div 
+                  key={num}
+                  style={{
+                    width: '50px',
+                    height: '50px',
+                    backgroundColor: 'white',
+                    borderRadius: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '12px',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    cursor: 'pointer',
+                    flexShrink: 0
+                  }}
+                  className="hover:scale-110 hover:shadow-xl"
+                >
+                  <Image
+                    src="/logo.svg"
+                    alt={`Partner ${num}`}
+                    width={80}
+                    height={80}
+                    style={{
+                      objectFit: 'contain',
+                      maxWidth: '100%',
+                      maxHeight: '100%'
+                    }}
+                    onError={handleImageError}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
-
       {/* Fixed Chat Button */}
     {/*   <Button 
         type="primary"

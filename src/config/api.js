@@ -9,7 +9,8 @@ export const API_ENDPOINTS = {
   PARTNERSHIPS: `${API_BASE_URL}/partnerships`,
   VOLUNTEERS: `${API_BASE_URL}/volunteers`,
   MENTORS: `${API_BASE_URL}/mentors` ,
-  DONATIONS: `${API_BASE_URL}/donations`
+  DONATIONS: `${API_BASE_URL}/donations`,
+  SUBSCRIBE: `${API_BASE_URL}/subscribe`
     
 }
 

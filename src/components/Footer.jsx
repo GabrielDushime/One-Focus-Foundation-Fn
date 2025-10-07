@@ -60,22 +60,22 @@ export default function FooterComponent() {
             <Text style={{ color: '#fff', display: 'block', marginBottom: '12px', textAlign: 'left' }}>Follow Us on social Media Platform</Text>
             <div style={{ textAlign: 'left' }}>
               <Space size="middle">
-                <a href="#" className="bg-pink-600 text-white p-2 rounded">
+                <a href="https://www.instagram.com/onefocusfou?igsh=emcyM2F4dHc5emxh" className="bg-pink-600 text-white p-2 rounded">
                   <InstagramOutlined style={{ fontSize: '20px' }} />
                 </a>
-                <a href="#" className="bg-blue-600 text-white p-2 rounded">
+                <a href="https://www.facebook.com/share/171HoeV9wm/" className="bg-blue-600 text-white p-2 rounded">
                   <FacebookOutlined style={{ fontSize: '20px' }} />
                 </a>
-                <a href="#" className="bg-blue-400 text-white p-2 rounded">
+                <a href="https://x.com/alainhlavin?t=SgzfR0z8PLgucHqOaUjmJA&s=09" className="bg-blue-400 text-white p-2 rounded">
                   <TwitterOutlined style={{ fontSize: '20px' }} />
                 </a>
-                <a href="#" className="bg-blue-700 text-white p-2 rounded">
+                <a href="www.linkedin.com/in/onefocus-77ba3536a" className="bg-blue-700 text-white p-2 rounded">
                   <LinkedinOutlined style={{ fontSize: '20px' }} />
                 </a>
-                <a href="#" className="bg-red-600 text-white p-2 rounded">
+                <a href="https://www.youtube.com/@ONEFOCUSFOU" className="bg-red-600 text-white p-2 rounded">
                   <YoutubeOutlined style={{ fontSize: '20px' }} />
                 </a>
-                <a href="#" className="bg-black text-white p-2 rounded">
+                <a href="https://www.tiktok.com/@onefocus_fou?_t=ZM-90KhtczZTMB&_r=1" className="bg-black text-white p-2 rounded">
                   <span style={{ fontSize: '18px', fontWeight: 'bold' }}>♪</span>
                 </a>
               </Space>
@@ -176,7 +176,8 @@ export default function FooterComponent() {
                   style={{ color: '#fff', fontSize: '12px', textAlign: 'left' }} 
                   className="hover:text-blue-400"
                 >
-                  info@onefocusfoundation.org
+                  
+                info@onefocus.org.rw/support@onefocus.org.rw
                 </Link>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}>

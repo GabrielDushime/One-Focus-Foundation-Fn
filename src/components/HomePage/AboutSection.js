@@ -179,13 +179,14 @@ const AboutSection = () => {
                   paddingRight:'0px'
                 }}
               >
-                ONEFOCUS is dedicated to discovering and nurturing young talents across 
-                Rwanda and Africa, offering opportunities in fields such as Artists Talents, 
-                Performing Arts, Academic and Intellectual Talents, Sports and Physical Talents, 
-                Entrepreneurship and Business skills talents, Traditional and Cultural talent, 
-                Technology and Digital talents, Social and community Impact Talents and many 
-                more careers. Through talent discovery events, media exposure, and mentorship, 
-                we provide long-term support for children to develop their skills and gain recognition.
+                ONEFOCUS is a long-term initiative aimed at discovering
+                and nurturing the talents of young Rwandan and African
+                children aged 5 to 30. The program will focus on both 
+                local and urban areas to identify talented children 
+                and help them showcase their abilities through various 
+                media platforms such as TV shows, YouTube, and other 
+                social media accounts.<p/>
+                Children will have opportunities to perform and displaying talents in different field of career such as Artists Talents, Performing Arts, Academic and Intellectual Talents, Sports and Physical Talents, Entrepreneurship and Business skills talents, Traditional and Cultural talent, Technology and Digital talents, Social and community Impact Talents and many more careers. The program will feature public events once a week for exhibitions and FutureKonneck Summit. This initiative aims to provide professional development and job creation opportunities for these young talents and gain recognition.
               </Paragraph>
             </div>
           </Col>
