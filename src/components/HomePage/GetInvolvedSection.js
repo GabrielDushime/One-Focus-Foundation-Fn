@@ -35,7 +35,7 @@ const { Title, Paragraph, Text } = Typography
 const { TextArea } = Input
 const { Option } = Select
 
-// Enums from backend
+
 const Gender = {
   MALE: 'male',
   FEMALE: 'female',

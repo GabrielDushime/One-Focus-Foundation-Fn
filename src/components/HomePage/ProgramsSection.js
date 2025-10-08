@@ -68,7 +68,7 @@ const ProgramsSection = () => {
 
   const handleModalClose = (modalKey) => {
     setModalVisible(prev => ({ ...prev, [modalKey]: false }));
-    // Reset the appropriate form based on modalKey
+    
     switch (modalKey) {
       case 'joinUs':
         joinUsForm.resetFields();
@@ -82,7 +82,7 @@ const ProgramsSection = () => {
     }
   };
 
-  // Custom validation function for mentorship preferences
+  
   const validateMentorshipPreferences = (_, value, callback) => {
     const formValues = getInvolvedForm.getFieldsValue();
     const hasAtLeastOne = formValues.oneOnOneVirtual || formValues.groupSessions || formValues.inPersonRwanda;
@@ -93,7 +93,7 @@ const ProgramsSection = () => {
     return Promise.resolve();
   };
 
-  // Custom validation function for availability
+ 
   const validateAvailability = (_, value, callback) => {
     const formValues = getInvolvedForm.getFieldsValue();
     const hasAtLeastOne = formValues.weekdayEvenings || formValues.weekends || formValues.flexible;
@@ -107,7 +107,7 @@ const ProgramsSection = () => {
   const handleSubmit = async (modalKey, values) => {
     setLoading(true);
     
-    // For getInvolved form, ensure unselected checkboxes are set to false
+   
     if (modalKey === 'getInvolved') {
       values = {
         ...values,

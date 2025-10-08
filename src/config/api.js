@@ -10,7 +10,11 @@ export const API_ENDPOINTS = {
   VOLUNTEERS: `${API_BASE_URL}/volunteers`,
   MENTORS: `${API_BASE_URL}/mentors` ,
   DONATIONS: `${API_BASE_URL}/donations`,
-  SUBSCRIBE: `${API_BASE_URL}/subscribe`
+  SUBSCRIBE: `${API_BASE_URL}/subscribe`,
+  // Membership & Sponsorship endpoints
+  BASIC_MEMBERSHIP: `${API_BASE_URL}/memberships/basic`,
+  PREMIUM_MEMBERSHIP: `${API_BASE_URL}/memberships/premium`,
+  CORPORATE_SPONSOR: `${API_BASE_URL}/sponsors/corporate`
     
 }
 
