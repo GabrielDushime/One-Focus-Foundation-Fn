@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Typography, Card, Modal, Form, Input, Select, InputNumber, Checkbox, message, Spin, Space, Divider, Row, Col } from 'antd';
 import { TagOutlined, EnvironmentOutlined, UserOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import { API_ENDPOINTS } from '../../config/api';
@@ -11,7 +11,24 @@ const WorkshopPage = () => {
   const [hoveredBenefit, setHoveredBenefit] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [form] = Form.useForm();
+
+  // Handle responsive design
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Set initial value
+    handleResize();
+    
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const keyActivities = [
     {
@@ -133,9 +150,6 @@ const WorkshopPage = () => {
     setLoading(true);
     
     try {
-      
-      
-      
       const response = await fetch(API_ENDPOINTS.JOIN_US, {
         method: 'POST',
         headers: {
@@ -526,7 +540,7 @@ const WorkshopPage = () => {
               width: '4px',
               background: '#1F99ED',
               transform: 'translateX(-50%)',
-              display: window.innerWidth < 768 ? 'none' : 'block'
+              display: isMobile ? 'none' : 'block'
             }} />
 
             <div style={{
@@ -539,14 +553,14 @@ const WorkshopPage = () => {
                   key={index}
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: window.innerWidth < 768 ? '1fr' : '1fr 40px 1fr',
+                    gridTemplateColumns: isMobile ? '1fr' : '1fr 40px 1fr',
                     gap: '20px',
                     alignItems: 'center'
                   }}
                 >
                   <div style={{
-                    textAlign: window.innerWidth < 768 ? 'left' : item.position === 'left' ? 'right' : 'left',
-                    order: window.innerWidth < 768 ? 1 : item.position === 'left' ? 0 : 2
+                    textAlign: isMobile ? 'left' : item.position === 'left' ? 'right' : 'left',
+                    order: isMobile ? 1 : item.position === 'left' ? 0 : 2
                   }}>
                     {item.position === 'left' && (
                       <Card
@@ -577,11 +591,10 @@ const WorkshopPage = () => {
                   </div>
 
                   <div style={{
-                    display: 'flex',
+                    display: isMobile ? 'none' : 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    order: 1,
-                    display: window.innerWidth < 768 ? 'none' : 'flex'
+                    order: 1
                   }}>
                     <div style={{
                       width: '20px',
@@ -594,8 +607,8 @@ const WorkshopPage = () => {
                   </div>
 
                   <div style={{
-                    textAlign: window.innerWidth < 768 ? 'left' : item.position === 'right' ? 'left' : 'right',
-                    order: window.innerWidth < 768 ? 1 : item.position === 'right' ? 2 : 0
+                    textAlign: isMobile ? 'left' : item.position === 'right' ? 'left' : 'right',
+                    order: isMobile ? 1 : item.position === 'right' ? 2 : 0
                   }}>
                     {item.position === 'right' && (
                       <Card
