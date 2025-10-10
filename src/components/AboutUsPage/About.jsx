@@ -10,11 +10,15 @@ const AboutPage = () => {
   return (
     <div style={{ background: '#ffffff', width: '100%', overflowX: 'hidden' }}>
       {/* Section 1: Our Story */}
-      <section style={{ 
-        padding: '60px 20px',
+      <section 
+      
+      style={{ 
+        padding: '20px 20px',
         maxWidth: '1400px',
         margin: '0 auto',
-        marginTop: '20px'
+        marginTop: '60px',
+        marginLeft:'150px'
+         
       }}>
         <div style={{
           display: 'grid',
@@ -25,8 +29,8 @@ const AboutPage = () => {
           <div>
             <Title level={1} style={{ 
               color: '#000', 
-              fontSize: 'clamp(2.5rem, 4vw, 4rem)', 
-              marginBottom: '30px', 
+              fontSize: 'clamp(2.5rem, 2vw, 4rem)', 
+              marginBottom: '20px', 
               fontWeight: 700,
               lineHeight: 1.2 
             }}>
@@ -76,13 +80,13 @@ const AboutPage = () => {
           </div>
           
           <div style={{ 
-            width: '100%',
+            width: '70%',
             borderRadius: '12px',
             overflow: 'hidden',
             boxShadow: '0 8px 24px rgba(0,0,0,0.12)'
           }}>
             <img 
-              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=800&fit=crop"
+              src="/About/Alain.png"
               alt="CEO & Founder"
               style={{ width: '100%', height: 'auto', display: 'block' }}
             />
@@ -93,7 +97,7 @@ const AboutPage = () => {
       {/* Section 2: Mission & Vision */}
       <section style={{ 
         background: '#F8F9FA',
-        padding: '60px 20px'
+        padding: '20px 20px'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{
@@ -105,14 +109,14 @@ const AboutPage = () => {
             {/* Mission - Left Side */}
             <div style={{
               background: 'white',
-              padding: '40px',
+              padding: '20px',
               borderRadius: '16px',
               boxShadow: '0 6px 20px rgba(0,0,0,0.08)',
               height: '100%'
             }}>
               <Title level={2} style={{ 
                 color: '#000', 
-                fontSize: 'clamp(2rem, 3vw, 2.5rem)', 
+                fontSize: 'clamp(2rem, 2vw, 2.5rem)', 
                 marginBottom: '25px',
                 fontWeight: 700
               }}>
@@ -120,7 +124,7 @@ const AboutPage = () => {
               </Title>
               <Paragraph style={{ 
                 color: '#000', 
-                fontSize: 'clamp(1rem, 1.1vw, 1.1rem)', 
+                fontSize: 'clamp(1rem, 1vw, 1.1rem)', 
                 lineHeight: '1.8',
                 marginBottom: '20px'
               }}>
@@ -144,7 +148,7 @@ const AboutPage = () => {
             <div style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '30px'
+              gap: '20px'
             }}>
               <div style={{ 
                 width: '100%',
@@ -154,7 +158,7 @@ const AboutPage = () => {
                 position: 'relative'
               }}>
                 <img 
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop"
+                  src="/About/onefocustv.png"
                   alt="Vision workspace"
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
@@ -162,21 +166,21 @@ const AboutPage = () => {
               
               <div style={{
                 background: 'white',
-                padding: '40px',
+                padding: '20px',
                 borderRadius: '16px',
                 boxShadow: '0 6px 20px rgba(0,0,0,0.08)'
               }}>
                 <Title level={2} style={{ 
                   color: '#000', 
-                  fontSize: 'clamp(2rem, 3vw, 2.5rem)', 
-                  marginBottom: '25px',
+                  fontSize: 'clamp(2rem, 2vw, 2.5rem)', 
+                  marginBottom: '20px',
                   fontWeight: 700
                 }}>
                   Vision
                 </Title>
                 <Paragraph style={{ 
                   color: '#000', 
-                  fontSize: 'clamp(1rem, 1.1vw, 1.1rem)', 
+                  fontSize: 'clamp(1rem, 1vw, 1.1rem)', 
                   lineHeight: '1.8',
                   marginBottom: '15px'
                 }}>
@@ -186,7 +190,7 @@ const AboutPage = () => {
                 </Paragraph>
                 <Text style={{
                   color: '#2E3192',
-                  fontSize: 'clamp(1rem, 1.1vw, 1.15rem)',
+                  fontSize: 'clamp(1rem, 1vw, 1.15rem)',
                   fontWeight: 600,
                   display: 'block',
                   fontStyle: 'italic'
@@ -202,15 +206,15 @@ const AboutPage = () => {
 
       {/* Section 3: Grow Your Vision With Us */}
       <section style={{ 
-        padding: '60px 20px',
+        padding: '20px 20px',
         maxWidth: '1400px',
         margin: '0 auto'
       }}>
         <Title level={2} style={{ 
           textAlign: 'center', 
-          marginBottom: '20px', 
+          marginBottom: '10px', 
           color: '#000',
-          fontSize: 'clamp(2rem, 3vw, 3rem)',
+          fontSize: 'clamp(2rem, 1vw, 3rem)',
           fontWeight: 700
         }}>
           Grow Your Vision With us
@@ -218,9 +222,9 @@ const AboutPage = () => {
         
         <Paragraph style={{ 
           textAlign: 'center', 
-          fontSize: 'clamp(1rem, 1.2vw, 1.2rem)', 
+          fontSize: 'clamp(1rem, 1vw, 1.2rem)', 
           color: '#000', 
-          marginBottom: '30px',
+          marginBottom: '20px',
           maxWidth: '1200px',
           margin: '0 auto 40px',
           lineHeight: '1.8'
@@ -236,7 +240,7 @@ const AboutPage = () => {
             size="large"
             onClick={handleJoinCommunity}
             style={{
-              height: '55px',
+              height: '40px',
               padding: '0 50px',
               fontSize: 'clamp(1rem, 1.2vw, 1.2rem)',
               background: '#1F99ED',
@@ -253,19 +257,19 @@ const AboutPage = () => {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '40px',
+          gap: '20px',
           alignItems: 'center',
-          marginTop: '60px'
+          marginTop: '10px'
         }}>
           {/* Left Side - Image */}
           <div style={{ 
-            width: '100%',
+            width: '90%',
             borderRadius: '12px',
             overflow: 'hidden',
             boxShadow: '0 8px 24px rgba(0,0,0,0.12)'
           }}>
             <img 
-              src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&h=800&fit=crop"
+              src="/stock.avif"
               alt="Core Values workspace"
               style={{ width: '100%', height: 'auto', display: 'block' }}
             />
@@ -275,15 +279,15 @@ const AboutPage = () => {
           <div>
             <Title level={2} style={{ 
               color: '#000', 
-              fontSize: 'clamp(2rem, 3vw, 3rem)', 
-              marginBottom: '35px',
+              fontSize: 'clamp(2rem, 2vw, 3rem)', 
+              marginBottom: '20px',
               fontWeight: 700
             }}>
               Core Values
             </Title>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '15px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                 <span style={{ 
                   color: '#1F99ED', 
                   fontSize: '24px',
@@ -293,7 +297,7 @@ const AboutPage = () => {
                 <Text style={{ 
                   color: '#000', 
                   fontSize: 'clamp(1rem, 1.1vw, 1.15rem)',
-                  lineHeight: '1.6'
+                  lineHeight: '1.2'
                 }}>
                   <span style={{ fontWeight: 600, color: '#1F99ED' }}>Integrity – </span>
                   We lead with honesty and transparency.
@@ -375,21 +379,21 @@ const AboutPage = () => {
       {/* Section 4: Our Goals */}
       <section style={{ 
         background: '#F8F9FA',
-        padding: '60px 20px'
+        padding: '20px 20px'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '40px',
+            gap: '10px',
             alignItems: 'center'
           }}>
             {/* Left Side - Goals */}
             <div>
               <Title level={2} style={{ 
                 color: '#1F99ED', 
-                fontSize: 'clamp(2rem, 3vw, 3rem)', 
-                marginBottom: '15px',
+                fontSize: 'clamp(2rem, 2vw, 3rem)', 
+                marginBottom: '0px',
                 fontWeight: 700
               }}>
                 OUR GOALS
@@ -398,7 +402,7 @@ const AboutPage = () => {
               <Title level={3} style={{ 
                 color: '#000', 
                 fontSize: 'clamp(1.3rem, 1.8vw, 1.8rem)', 
-                marginBottom: '35px',
+                marginBottom: '15px',
                 fontWeight: 600
               }}>
                 Empower Growth
@@ -411,7 +415,7 @@ const AboutPage = () => {
                     fontSize: 'clamp(1rem, 1.1vw, 1.1rem)',
                     fontWeight: 600,
                     display: 'block',
-                    marginBottom: '8px'
+                    marginBottom: '5px'
                   }}>
                     1. Empower Young Talent:
                   </Text>
@@ -431,7 +435,7 @@ const AboutPage = () => {
                     fontSize: 'clamp(1rem, 1.1vw, 1.1rem)',
                     fontWeight: 600,
                     display: 'block',
-                    marginBottom: '8px'
+                    marginBottom: '5px'
                   }}>
                     2. Educate and Inspire:
                   </Text>
@@ -451,7 +455,7 @@ const AboutPage = () => {
                     fontSize: 'clamp(1rem, 1.1vw, 1.1rem)',
                     fontWeight: 600,
                     display: 'block',
-                    marginBottom: '8px'
+                    marginBottom: '5px'
                   }}>
                     3. Promote Collaboration:
                   </Text>
@@ -471,7 +475,7 @@ const AboutPage = () => {
                     fontSize: 'clamp(1rem, 1.1vw, 1.1rem)',
                     fontWeight: 600,
                     display: 'block',
-                    marginBottom: '8px'
+                    marginBottom: '5px'
                   }}>
                     4. Encourage Innovation:
                   </Text>
@@ -491,7 +495,7 @@ const AboutPage = () => {
                     fontSize: 'clamp(1rem, 1.1vw, 1.1rem)',
                     fontWeight: 600,
                     display: 'block',
-                    marginBottom: '8px'
+                    marginBottom: '5px'
                   }}>
                     5. Build a Supportive Community:
                   </Text>
@@ -515,7 +519,7 @@ const AboutPage = () => {
               boxShadow: '0 8px 24px rgba(0,0,0,0.12)'
             }}>
               <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop"
+                src="/employee.avif"
                 alt="Our Goals"
                 style={{ width: '100%', height: 'auto', display: 'block' }}
               />
@@ -524,17 +528,17 @@ const AboutPage = () => {
 
           {/* Related Links Section */}
           <div style={{
-            marginTop: '60px',
-            padding: '40px',
+            marginTop: '10px',
+            padding: '20px',
             background: 'white',
             borderRadius: '16px',
             boxShadow: '0 6px 20px rgba(0,0,0,0.08)'
           }}>
             <Title level={3} style={{ 
               textAlign: 'center', 
-              marginBottom: '35px', 
+              marginBottom: '25px', 
               color: '#000',
-              fontSize: 'clamp(1.5rem, 2vw, 2rem)',
+              fontSize: 'clamp(1.3rem, 1vw, 2rem)',
               fontWeight: 700
             }}>
               RELATED LINKS

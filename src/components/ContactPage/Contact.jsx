@@ -61,7 +61,7 @@ const ContactPage = () => {
             zIndex: 1
           }}
         >
-          <source src="https://www.youtube.com/embed/dQw4w9WgXcQ" type="video/mp4" />
+          <source src="media-hub.mp4" type="video/mp4" />
         </video>
         
         {/* Overlay */}
@@ -113,31 +113,35 @@ const ContactPage = () => {
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: 0,
-        width: '100%'
+        width: '100%',
+        marginBottom:'30px'
+        
       }}>
         {/* Contact Us - Black Background */}
         <div style={{
           background: '#000000',
-          padding: '60px 40px',
+          padding: '20px 20px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
           textAlign: 'center',
-          minHeight: '400px'
+          minHeight: '400px',
+          marginTop:'-220px'
         }}>
           <Title level={2} style={{ 
             color: '#1F99ED', 
-            fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+            fontSize: 'clamp(1.5rem, 2vw, 2rem)',
             marginBottom: '10px',
             fontWeight: 600,
-            letterSpacing: '3px'
+            letterSpacing: '3px',
+            
           }}>
             CONTACT
           </Title>
           <Title level={2} style={{ 
             color: 'white', 
-            fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+            fontSize: 'clamp(1.5rem, 2vw, 2rem)',
             marginTop: 0,
             marginBottom: '40px',
             fontWeight: 600,
@@ -179,17 +183,18 @@ const ContactPage = () => {
         {/* Visit Us - Dark Blue Background */}
         <div style={{
           background: '#2E3192',
-          padding: '60px 40px',
+          padding: '20px 20px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
           textAlign: 'center',
-          minHeight: '400px'
+          minHeight: '400px',
+          marginTop:'-220px'
         }}>
           <Title level={2} style={{ 
             color: '#1F99ED', 
-            fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+            fontSize: 'clamp(1.5rem, 2vw, 2rem)',
             marginBottom: '10px',
             fontWeight: 600,
             letterSpacing: '3px'
@@ -198,7 +203,7 @@ const ContactPage = () => {
           </Title>
           <Title level={2} style={{ 
             color: 'white', 
-            fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+            fontSize: 'clamp(1.5rem, 2vw, 2rem)',
             marginTop: 0,
             marginBottom: '40px',
             fontWeight: 600,
@@ -238,11 +243,12 @@ const ContactPage = () => {
           justifyContent: 'center',
           alignItems: 'center',
           textAlign: 'center',
-          minHeight: '400px'
+          minHeight: '400px',
+          marginTop:'-50px'
         }}>
           <Title level={2} style={{ 
             color: 'white', 
-            fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+            fontSize: 'clamp(1.5rem, 2vw, 2rem)',
             marginBottom: '10px',
             fontWeight: 600,
             letterSpacing: '3px'
@@ -251,7 +257,7 @@ const ContactPage = () => {
           </Title>
           <Title level={2} style={{ 
             color: 'white', 
-            fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+            fontSize: 'clamp(1.5rem, 2vw, 2rem)',
             marginTop: 0,
             marginBottom: '30px',
             fontWeight: 600,
@@ -259,12 +265,7 @@ const ContactPage = () => {
           }}>
             US
           </Title>
-          <div style={{
-            width: '2px',
-            height: '30px',
-            background: 'white',
-            marginBottom: '30px'
-          }} />
+          
           
           <Form
             form={form}

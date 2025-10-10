@@ -23,35 +23,35 @@ const WhatWeBuildPage = () => {
 
   const videoRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
-  // Video sections 
+
   const videoSections = [
     {
       title: "A Talent Discovery & Mentorship Ecosystem",
       description: "We provide structured programs that identify talents in public speaking, digital design, entrepreneurship, media, and leadership. Through our initiatives such as the Voice of Tomorrow Podcast, Younger Talent Summit, and Talent Bootcamps, we are building a pipeline of young changemakers.",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "/build/collaborative.mp4",
       bgColor: "#1F99ED"
     },
     {
       title: "A Digital Learning & Certification Hub",
       description: "Through our Premium Certification Programs, we are equipping young people with marketable, future-ready skills in digital content creation, leadership, branding, and career coaching. We are creating a generation of digitally fluent creators and professionals.",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "/build/hub.mp4",
       bgColor: "#2E3192"
     },
     {
       title: "A Collaborative African Youth Network",
       description: "Our monthly Hybrid Meet Conference global outreach sessions connect youth across Rwanda, Africa, and the diaspora. We are building a cross-border community of dreamers, advocates, and peer mentors to collaborate and share ideas.",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "/build/media.mp4",
       bgColor: "#1F99ED"
     },
     {
       title: "AN EMPOWERMENT MEDIA CHANNEL",
       description: "Via our Voice of Tomorrow Podcast and storytelling platforms, we showcase the talents, voices, and solutions of young Africans to global audiences, giving them visibility, connectivity, and sustainable impact.",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "/build/Mentorship.mp4",
       bgColor: "#2E3192"
     }
   ];
 
-  // Problem areas data
+ 
   const problemAreas = [
     {
       number: "01",
@@ -202,7 +202,7 @@ const WhatWeBuildPage = () => {
     message.success('Application downloaded successfully!');
   };
 
-  // View application
+ 
   const viewApplication = () => {
     const pdfContent = generatePDF(submittedData, membershipType);
     const htmlContent = `
@@ -226,7 +226,7 @@ const WhatWeBuildPage = () => {
     newWindow.document.close();
   };
 
-  // Handle video hover
+ 
   const handleVideoHover = (index, isHovering) => {
     const video = videoRefs[index].current;
     if (video) {
@@ -239,7 +239,7 @@ const WhatWeBuildPage = () => {
     }
   };
 
-  // Basic Membership Submit
+  
   const handleBasicSubmit = async (values) => {
     setLoading(true);
     try {
@@ -256,7 +256,7 @@ const WhatWeBuildPage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        // Check for email already exists error
+       
         if (errorData.message && errorData.message.toLowerCase().includes('email')) {
           message.error('This email is already registered. Please use a different email address.');
         } else {
@@ -267,7 +267,7 @@ const WhatWeBuildPage = () => {
       
       const result = await response.json();
       
-      // Store data and show success modal
+     
       setSubmittedData(submissionData);
       setMembershipType('Basic Membership');
       setBasicModalOpen(false);
@@ -282,7 +282,7 @@ const WhatWeBuildPage = () => {
     }
   };
 
-  // Premium Membership Submit
+  
   const handlePremiumSubmit = async (values) => {
     setLoading(true);
     try {
@@ -299,7 +299,7 @@ const WhatWeBuildPage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        // Check for email already exists error
+        
         if (errorData.message && errorData.message.toLowerCase().includes('email')) {
           message.error('This email is already registered. Please use a different email address.');
         } else {
@@ -310,7 +310,7 @@ const WhatWeBuildPage = () => {
       
       const result = await response.json();
       
-      // Store data and show success modal
+     
       setSubmittedData(submissionData);
       setMembershipType('Premium Membership');
       setPremiumModalOpen(false);
@@ -325,7 +325,7 @@ const WhatWeBuildPage = () => {
     }
   };
 
-  // Corporate Sponsor Submit
+
   const handleCorporateSubmit = async (values) => {
     setLoading(true);
     try {
@@ -342,7 +342,7 @@ const WhatWeBuildPage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        // Check for email already exists error
+       
         if (errorData.message && errorData.message.toLowerCase().includes('email')) {
           message.error('This email is already registered. Please use a different email address.');
         } else {
@@ -353,7 +353,7 @@ const WhatWeBuildPage = () => {
       
       const result = await response.json();
       
-      // Store data and show success modal
+      
       setSubmittedData(submissionData);
       setMembershipType('Corporate Sponsorship');
       setCorporateModalOpen(false);
@@ -431,7 +431,7 @@ const WhatWeBuildPage = () => {
             boxShadow: '0 8px 24px rgba(0,0,0,0.12)'
           }}>
             <img 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop"
+              src="/build/first.avif"
               alt="Youth collaboration"
               style={{ width: '100%', height: 'auto', display: 'block' }}
             />
@@ -679,7 +679,7 @@ const WhatWeBuildPage = () => {
             }}>
               <div style={{ marginBottom: '20px' }}>
                 <img 
-                  src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&h=400&fit=crop"
+                  src="/build/Basicmembership.jpg"
                   alt="Basic Membership"
                   style={{ 
                     width: '100%', 
@@ -753,7 +753,7 @@ const WhatWeBuildPage = () => {
               </div>
               <div style={{ marginBottom: '20px', marginTop: '10px' }}>
                 <img 
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+                  src="/build/Premium.png"
                   alt="Premium Membership"
                   style={{ 
                     width: '100%', 
@@ -809,7 +809,7 @@ const WhatWeBuildPage = () => {
             }}>
               <div style={{ marginBottom: '20px' }}>
                 <img 
-                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop"
+                  src="/build/Corparate.png"
                   alt="Corporate Sponsors"
                   style={{ 
                     width: '100%', 

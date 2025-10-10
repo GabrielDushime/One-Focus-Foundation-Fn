@@ -14,19 +14,19 @@ const WorkshopPage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [form] = Form.useForm();
 
-  // Handle responsive design
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
     
-    // Set initial value
+   
     handleResize();
     
-    // Add event listener
+   
     window.addEventListener('resize', handleResize);
     
-    // Cleanup
+  
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -35,53 +35,53 @@ const WorkshopPage = () => {
       id: 1,
       title: "Talent Discovery & Nurturing",
       description: "Identify personal strengths, passion areas, and career goals.",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"
+      image: "/workshop/Talent.jpg"
     },
     {
       id: 2,
       title: "Career Guidance & Skills Training",
       description: "Learn essential century skills like leadership, communication, and digital literacy.",
-      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop"
+      image: "/Leadership.jpg"
     },
     {
       id: 3,
       title: "Hands-On Practice",
       description: "Participate in real-world simulations and team projects.",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&h=300&fit=crop"
+      image: "/workshop/Hands.jpg"
     },
     {
       id: 4,
       title: "Performance & Showcases",
       description: "Build confidence by presenting your work in mini-events and talent showcases.",
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop"
+      image: "/workshop/Performance.jpg"
     },
     {
       id: 5,
       title: "Mentorship Sessions",
       description: "Engage with experienced professionals for guidance and career support.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop"
+      image: "/workshop/Mentorship.jpg"
     },
     {
       id: 6,
       title: "#INZIRA Career Exposure Tours",
       description: "Visit companies, institutions, and creative industries to explore possible career paths.",
-      image: "https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=400&h=300&fit=crop"
+      image: "/workshop/INZIRA.jpg"
     },
     {
       id: 7,
       title: "Voice of Tomorrow Podcast",
       description: "Share your story and insights with a global audience via Spotify & YouTube.",
-      image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400&h=300&fit=crop"
+      image: "/11.png"
     },
     {
       id: 8,
       title: "Competitions & Challenges",
       description: "Participate in skill-based contests that promote innovation and self-esteem.",
-      image: "https://images.unsplash.com/photo-1552581234-26160f608093?w=400&h=300&fit=crop"
+      image: "/workshop/Competitions.jpg"
     }
   ];
 
-  // Timeline Data
+ 
   const timelineData = [
     {
       week: "Week 1",
@@ -105,7 +105,6 @@ const WorkshopPage = () => {
     }
   ];
 
-  // Why Join Benefits
   const benefits = [
     {
       id: 1,
@@ -118,21 +117,21 @@ const WorkshopPage = () => {
       id: 2,
       title: "Real-World Exposure",
       description: "Gain exposure through tours and connections with industry professionals.",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop",
+      image: "/Workshop/Real.jpg",
       color: "#2D3748"
     },
     {
       id: 3,
       title: "Connect with Peers",
       description: "Build relationships with like-minded young dreamers across Rwanda.",
-      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=300&fit=crop",
+      image: "/Workshop/Connect.png",
       color: "#1A202C"
     },
     {
       id: 4,
       title: "Be Featured",
       description: "Share your unique perspective on our Voice of Tomorrow Podcast.",
-      image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400&h=300&fit=crop",
+      image: "/Media/Befeatured.jpg",
       color: "#2C5282"
     }
   ];
@@ -180,23 +179,24 @@ const WorkshopPage = () => {
       {/* Hero Section */}
       <section style={{
         background: 'linear-gradient(135deg, #1F99ED 0%, #2E3192 100%)',
-        padding: '80px 20px',
+        padding: '50px 20px',
         textAlign: 'center'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <Title level={1} style={{
             color: '#ffffff',
-            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            fontSize: 'clamp(2rem, 3vw, 2.5rem)',
             fontWeight: 700,
-            marginBottom: '20px',
-            lineHeight: 1.2
+            marginBottom: '10px',
+            lineHeight: 1.2,
+            marginTop:'50px'
           }}>
             Empowering the Next Generation
           </Title>
 
           <Paragraph style={{
             color: '#ffffff',
-            fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
+            fontSize: 'clamp(1.1rem, 1vw, 1.4rem)',
             marginBottom: '35px',
             fontWeight: 500
           }}>
@@ -208,15 +208,15 @@ const WorkshopPage = () => {
             size="large"
             onClick={handleModalOpen}
             style={{
-              height: '55px',
-              padding: '0 40px',
+              height: '40px',
+              padding: '0 20px',
               fontSize: 'clamp(1rem, 2vw, 1.1rem)',
               background: '#ffffff',
               color: '#1F99ED',
               border: 'none',
               fontWeight: 600,
               borderRadius: '8px',
-              marginBottom: '40px',
+              marginBottom: '10px',
               cursor: 'pointer'
             }}
           >
@@ -229,7 +229,7 @@ const WorkshopPage = () => {
             justifyContent: 'center',
             gap: '20px',
             flexWrap: 'wrap',
-            marginTop: '30px'
+            marginTop: '20px'
           }}>
             <div style={{
               background: 'rgba(255, 255, 255, 0.2)',
@@ -240,8 +240,8 @@ const WorkshopPage = () => {
               alignItems: 'center',
               gap: '10px'
             }}>
-              <TagOutlined style={{ fontSize: '24px', color: '#ffffff' }} />
-              <Text style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600 }}>
+              <TagOutlined style={{ fontSize: '20px', color: '#ffffff' }} />
+              <Text style={{ color: '#ffffff', fontSize: '1rem', fontWeight: 600 }}>
                 Every Week
               </Text>
             </div>
@@ -255,8 +255,8 @@ const WorkshopPage = () => {
               alignItems: 'center',
               gap: '10px'
             }}>
-              <EnvironmentOutlined style={{ fontSize: '24px', color: '#ffffff' }} />
-              <Text style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600 }}>
+              <EnvironmentOutlined style={{ fontSize: '20px', color: '#ffffff' }} />
+              <Text style={{ color: '#ffffff', fontSize: '1rem', fontWeight: 600 }}>
                 Kigali, Rwanda
               </Text>
             </div>
@@ -267,26 +267,26 @@ const WorkshopPage = () => {
       {/* Bigger Vision Section */}
       <section style={{
         background: '#f8f9fa',
-        padding: '60px 20px',
+        padding: '20px 20px',
         textAlign: 'center'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Title level={2} style={{
             color: '#1F99ED',
-            fontSize: 'clamp(2rem, 3vw, 3rem)',
+            fontSize: 'clamp(2rem, 2vw, 2rem)',
             fontWeight: 700,
-            marginBottom: '25px'
+            marginBottom: '15px'
           }}>
             Bigger Vision
           </Title>
 
           <Paragraph style={{
-            fontSize: 'clamp(1rem, 2vw, 1.15rem)',
+            fontSize: 'clamp(0.5rem, 1.2vw, 1.15rem)',
             color: '#000',
             lineHeight: 1.8,
             maxWidth: '1000px',
             margin: '0 auto',
-            fontWeight: 500
+            fontWeight: 405
           }}>
             Our workshops are foundational to our long-term goal: creating a pipeline for youth-led innovation, expression, 
             and employment. As we expand into Africa-wide outreach and launch ONEFOCUS FOU TV, these programs will 
@@ -297,68 +297,25 @@ const WorkshopPage = () => {
 
       {/* ONEFOCUS FOU TV & Voice of Tomorrow Banner */}
       <section style={{
-        background: 'linear-gradient(135deg, #6B46C1 0%, #553C9A 100%)',
-        padding: '80px 20px',
-        position: 'relative',
+        width: '100%',
         overflow: 'hidden'
       }}>
-        <div style={{
-          maxWidth: '1400px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '40px',
-          alignItems: 'center'
-        }}>
-          <div style={{ position: 'relative', zIndex: 2 }}>
-            <Title level={1} style={{
-              color: '#ffffff',
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-              fontWeight: 900,
-              marginBottom: '0',
-              letterSpacing: '2px',
-              textTransform: 'uppercase'
-            }}>
-              ONEFOCUS FOU TV
-            </Title>
-          </div>
-
-          <div style={{ position: 'relative', zIndex: 2, textAlign: 'right' }}>
-            <Title level={2} style={{
-              color: '#ffffff',
-              fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
-              fontWeight: 700,
-              marginBottom: '10px',
-              textTransform: 'uppercase'
-            }}>
-              VOICE OF TOMORROW
-            </Title>
-            <Title level={3} style={{
-              color: '#ffffff',
-              fontSize: 'clamp(1.2rem, 2.5vw, 2rem)',
-              fontWeight: 600,
-              margin: 0,
-              textTransform: 'uppercase'
-            }}>
-              PODCAST
-            </Title>
-          </div>
-        </div>
-
-        <div style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '80px',
-          background: 'linear-gradient(90deg, #A0AEC0 0%, #718096 100%)'
-        }} />
+        <img
+          src="/TV-01.png"
+          alt="ONEFOCUS FOU TV and Voice of Tomorrow Podcast Banner"
+          style={{
+            width: '100%',
+            height: '600px',
+            display: 'block',
+            objectFit: 'cover',
+            padding:'0px 20px'
+          }}
+        />
       </section>
-
       {/* About the Workshops */}
       <section style={{
         background: '#ffffff',
-        padding: '60px 20px'
+        padding: '20px 20px'
       }}>
         <div style={{
           maxWidth: '1400px',
@@ -370,16 +327,17 @@ const WorkshopPage = () => {
         }}>
           <div>
             <Title level={2} style={{
-              fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
-              marginBottom: '25px',
-              lineHeight: 1.3
+              fontSize: 'clamp(1.8rem, 2vw, 2.5rem)',
+              marginBottom: '15px',
+              lineHeight: 1.3,
+              
             }}>
-              <span style={{ color: '#1F99ED' }}>About the </span>
-              <span style={{ color: '#2E3192' }}>Workshops</span>
+              <span style={{ color: '#1F99ED',fontWeight:'bold' }}>About the </span>
+              <span style={{ color: '#2E3192',fontWeight:'bold' }}>Workshops</span>
             </Title>
 
             <Paragraph style={{
-              fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)',
+              fontSize: 'clamp(0.95rem, 1vw, 1.05rem)',
               color: '#000',
               marginBottom: '20px',
               lineHeight: 1.8
@@ -405,7 +363,7 @@ const WorkshopPage = () => {
             boxShadow: '0 8px 24px rgba(0,0,0,0.12)'
           }}>
             <img
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop"
+              src="stock.avif"
               alt="Workshop Space"
               style={{
                 width: '100%',
@@ -420,22 +378,22 @@ const WorkshopPage = () => {
       {/* Key Activities Section */}
       <section style={{
         background: '#f8f9fa',
-        padding: '60px 20px'
+        padding: '10px 20px'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <Title level={2} style={{
             textAlign: 'center',
-            marginBottom: '50px',
-            fontSize: 'clamp(2rem, 3vw, 2.5rem)'
+            marginBottom: '20px',
+            fontSize: 'clamp(1.8rem, 2vw, 2.5rem)'
           }}>
-            <span style={{ color: '#1F99ED' }}>Key </span>
-            <span style={{ color: '#2E3192', textDecoration: 'underline', textDecorationColor: '#1F99ED' }}>Activities</span>
+            <span style={{ color: '#1F99ED',fontWeight:'bold' }}>Key </span>
+            <span style={{ color: '#2E3192',fontWeight:'bold', textDecoration: 'underline', textDecorationColor: '#1F99ED' }}>Activities</span>
           </Title>
 
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '25px'
+            gap: '20px'
           }}>
             {keyActivities.map((activity) => (
               <Card
@@ -444,9 +402,9 @@ const WorkshopPage = () => {
                 onMouseEnter={() => setHoveredActivity(activity.id)}
                 onMouseLeave={() => setHoveredActivity(null)}
                 style={{
-                  borderRadius: '12px',
+                  borderRadius: '0px',
                   overflow: 'hidden',
-                  border: '3px solid #1F99ED',
+                  border: 'px solid #1F99ED',
                   transition: 'all 0.3s ease',
                   transform: hoveredActivity === activity.id ? 'translateY(-5px)' : 'translateY(0)',
                   boxShadow: hoveredActivity === activity.id 
@@ -467,18 +425,21 @@ const WorkshopPage = () => {
               >
                 <Title level={4} style={{
                   color: '#1F99ED',
-                  fontSize: 'clamp(1rem, 2vw, 1.15rem)',
-                  marginBottom: '12px',
-                  fontWeight: 600,
-                  minHeight: '50px'
+                  fontSize: 'clamp(1rem, 1vw, 1.15rem)',
+                  marginBottom: '0px',
+                  fontWeight: 500,
+                  minHeight: '50px',
+                  textAlign:'center',
+                  marginTop:'5px'
                 }}>
                   {activity.title}
                 </Title>
                 <Paragraph style={{
                   color: '#333',
-                  fontSize: 'clamp(0.9rem, 1.5vw, 0.95rem)',
+                  fontSize: 'clamp(0.9rem, 1vw, 0.95rem)',
                   lineHeight: '1.6',
-                  margin: 0
+                  marginTop:'-20px',
+                  textAlign:'center'
                 }}>
                   {activity.description}
                 </Paragraph>
@@ -491,16 +452,16 @@ const WorkshopPage = () => {
       {/* Workshop Structure Timeline */}
       <section style={{
         background: '#ffffff',
-        padding: '60px 20px'
+        padding: '20px 20px'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Title level={2} style={{
             textAlign: 'center',
             marginBottom: '15px',
-            fontSize: 'clamp(2rem, 3vw, 2.5rem)'
+            fontSize: 'clamp(1.8rem, 1vw, 2.5rem)'
           }}>
-            <span style={{ color: '#1F99ED', textDecoration: 'underline', textDecorationColor: '#2E3192' }}>Workshop</span>
-            <span style={{ color: '#2E3192' }}> Structure by Monthly</span>
+            <span style={{ color: '#1F99ED',fontWeight:'bold', textDecoration: 'underline', textDecorationColor: '#2E3192' }}>Workshop</span>
+            <span style={{ color: '#2E3192',fontWeight:'bold' }}> Structure by Monthly</span>
           </Title>
 
           <div style={{
@@ -508,15 +469,15 @@ const WorkshopPage = () => {
             alignItems: 'center',
             justifyContent: 'center',
             gap: '20px',
-            marginBottom: '40px',
+            marginBottom: '20px',
             flexWrap: 'wrap'
           }}>
             <div style={{
               background: '#2E3192',
               color: '#ffffff',
-              padding: '12px 25px',
+              padding: '6px 25px',
               borderRadius: '8px',
-              fontWeight: 600,
+              fontWeight: 500,
               fontSize: '1rem'
             }}>
               Monthly Schedule
@@ -524,7 +485,7 @@ const WorkshopPage = () => {
             <Title level={3} style={{
               color: '#1F99ED',
               margin: 0,
-              fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)',
+              fontSize: 'clamp(1.1rem, 2vw, 1.8rem)',
               fontWeight: 600
             }}>
               Discovering Purpose & Vision
@@ -546,7 +507,7 @@ const WorkshopPage = () => {
             <div style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '40px'
+              gap: '0px'
             }}>
               {timelineData.map((item, index) => (
                 <div
@@ -554,7 +515,7 @@ const WorkshopPage = () => {
                   style={{
                     display: 'grid',
                     gridTemplateColumns: isMobile ? '1fr' : '1fr 40px 1fr',
-                    gap: '20px',
+                    gap: '0px',
                     alignItems: 'center'
                   }}
                 >
@@ -563,26 +524,32 @@ const WorkshopPage = () => {
                     order: isMobile ? 1 : item.position === 'left' ? 0 : 2
                   }}>
                     {item.position === 'left' && (
-                      <Card
+                     <Card
                         style={{
                           background: '#ffffff',
-                          border: '2px solid #1F99ED',
-                          borderRadius: '12px',
-                          padding: '20px',
-                          boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                          border: 'none',
+                          borderRadius: '8px',
+                          padding: '5px 10px',
+                          boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+                          maxWidth: '450px',
+                          margin: isMobile ? '0 auto' : item.position === 'left' ? '0 0 0 auto' : '0 auto 0 0'
                         }}
                       >
                         <Title level={4} style={{
                           color: '#1F99ED',
-                          margin: '0 0 10px 0',
-                          fontSize: 'clamp(1.1rem, 2vw, 1.3rem)'
+                          margin: '0 0 15px 0',
+                          fontSize: 'clamp(1.1rem, 1vw, 1.8rem)',
+                          fontWeight: 'bold',
+                          textAlign: 'center'
                         }}>
                           {item.week}
                         </Title>
                         <Text style={{
                           color: '#000',
-                          fontSize: 'clamp(0.9rem, 1.5vw, 1rem)',
-                          lineHeight: 1.5
+                          fontSize: 'clamp(1rem, 1.5vw, 1.1rem)',
+                          lineHeight: 1.6,
+                          display: 'block',
+                          textAlign: 'center'
                         }}>
                           {item.title}
                         </Text>
@@ -597,11 +564,11 @@ const WorkshopPage = () => {
                     order: 1
                   }}>
                     <div style={{
-                      width: '20px',
-                      height: '20px',
+                      width: '10px',
+                      height: '10px',
                       borderRadius: '50%',
                       background: '#1F99ED',
-                      border: '4px solid #ffffff',
+                      border: '5px solid #ffffff',
                       boxShadow: '0 0 0 4px #1F99ED'
                     }} />
                   </div>
@@ -611,26 +578,32 @@ const WorkshopPage = () => {
                     order: isMobile ? 1 : item.position === 'right' ? 2 : 0
                   }}>
                     {item.position === 'right' && (
-                      <Card
+                     <Card
                         style={{
                           background: '#ffffff',
-                          border: '2px solid #1F99ED',
-                          borderRadius: '12px',
-                          padding: '20px',
-                          boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                          border: 'none',
+                          borderRadius: '8px',
+                          padding: '5px 10px',
+                          boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+                          maxWidth: '400px',
+                          margin: isMobile ? '0 auto' : item.position === 'left' ? '0 0 0 auto' : '0 auto 0 0'
                         }}
                       >
                         <Title level={4} style={{
                           color: '#1F99ED',
-                          margin: '0 0 10px 0',
-                          fontSize: 'clamp(1.1rem, 2vw, 1.3rem)'
+                          margin: '0 0 15px 0',
+                          fontSize: 'clamp(1.1rem, 1vw, 1.8rem)',
+                          fontWeight: 'bold',
+                          textAlign: 'center'
                         }}>
                           {item.week}
                         </Title>
                         <Text style={{
                           color: '#000',
-                          fontSize: 'clamp(0.9rem, 1.5vw, 1rem)',
-                          lineHeight: 1.5
+                          fontSize: 'clamp(1rem, 1vw, 1.1rem)',
+                          lineHeight: 1.6,
+                          display: 'block',
+                          textAlign: 'center'
                         }}>
                           {item.title}
                         </Text>
@@ -647,22 +620,22 @@ const WorkshopPage = () => {
       {/* Why Join Section */}
       <section style={{
         background: '#f8f9fa',
-        padding: '60px 20px'
+        padding: '20px 20px'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{
             background: '#ffffff',
             border: '3px solid #1F99ED',
             borderRadius: '16px',
-            padding: '30px',
+            padding: '20px',
             textAlign: 'center',
             marginBottom: '40px',
-            maxWidth: '600px',
-            margin: '0 auto 40px'
+            maxWidth: '200px',
+            margin: '0 auto 20px'
           }}>
             <Title level={2} style={{
               color: '#1F99ED',
-              fontSize: 'clamp(2rem, 3vw, 2.5rem)',
+              fontSize: 'clamp(1.5rem, 2vw, 2.5rem)',
               margin: 0,
               fontWeight: 700
             }}>
@@ -705,9 +678,12 @@ const WorkshopPage = () => {
               >
                 <Title level={4} style={{
                   color: '#2E3192',
-                  fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
+                  fontSize: 'clamp(1.1rem, 1vw, 1.3rem)',
                   marginBottom: '12px',
-                  fontWeight: 600
+                  fontWeight: 500,
+                  textAlign:'center',
+                  marginTop:'8px'
+    
                 }}>
                   {benefit.title}
                 </Title>
@@ -715,7 +691,7 @@ const WorkshopPage = () => {
                   color: '#1F99ED',
                   fontSize: 'clamp(0.9rem, 1.5vw, 1rem)',
                   lineHeight: '1.6',
-                  margin: 0
+                  textAlign:'center'
                 }}>
                   {benefit.description}
                 </Paragraph>
@@ -728,13 +704,13 @@ const WorkshopPage = () => {
       {/* Call to Action */}
       <section style={{
         background: '#ffffff',
-        padding: '60px 20px',
+        padding: '10px 20px',
         textAlign: 'center'
       }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Title level={2} style={{
             color: '#1F99ED',
-            fontSize: 'clamp(2rem, 3vw, 2.5rem)',
+            fontSize: 'clamp(2rem, 2vw, 2.5rem)',
             fontWeight: 700,
             marginBottom: '20px'
           }}>
@@ -742,10 +718,10 @@ const WorkshopPage = () => {
           </Title>
 
           <Paragraph style={{
-            fontSize: 'clamp(1rem, 2vw, 1.15rem)',
+            fontSize: 'clamp(1rem, 1vw, 1.15rem)',
             color: '#2E3192',
-            marginBottom: '35px',
-            fontWeight: 500
+            marginBottom: '15px',
+            fontWeight: 400
           }}>
             Join our workshops and be part of a vibrant community dedicated to youth empowerment across Rwanda and Africa.
           </Paragraph>
@@ -755,14 +731,15 @@ const WorkshopPage = () => {
             size="large"
             onClick={handleModalOpen}
             style={{
-              height: '55px',
-              padding: '0 50px',
+              height: '40px',
+              padding: '0 30px',
               fontSize: 'clamp(1rem, 2vw, 1.1rem)',
               background: 'linear-gradient(135deg, #1F99ED, #2E3192)',
               border: 'none',
               fontWeight: 600,
               borderRadius: '8px',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              marginBottom: '15px',
             }}
           >
             Register Now

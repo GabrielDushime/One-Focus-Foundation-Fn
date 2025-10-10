@@ -81,61 +81,61 @@ const CareerPage = () => {
     {
       id: 1,
       title: "Artistic Talents",
-      image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&h=300&fit=crop",
+      image: "/Career/Artistic.png",
       items: ["Drawing and Painting", "Graphic Design", "Photography", "Film", "Animation"]
     },
     {
       id: 2,
       title: "Academic & Intellectual Talents",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop",
+      image: "/Career/Academic.jpg",
       items: ["Public Speaking", "Creative Writing", "Problem-Solving", "Science and Innovation", "Coding and Technology"]
     },
     {
       id: 3,
       title: "Performing Arts",
-      image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&h=300&fit=crop",
+      image: "/Career/Performing.jpg",
       items: ["Singing", "Dancing", "Acting", "Comedy", "DJing", "Instrumental Music"]
     },
     {
       id: 4,
       title: "Sports & Physical Skills",
-      image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&h=300&fit=crop",
+      image: "/Career/Sports.jpg",
       items: ["Athletics", "Team Sports", "Martial Arts", "Fitness and Gymnastics"]
     },
     {
       id: 5,
       title: "Entrepreneurship & Business Skills",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop",
+      image: "/Career/Entrepreneurship.jpg",
       items: ["Business Ideas", "Leadership", "Content Creation", "Marketing"]
     },
     {
       id: 6,
       title: "Technology & Digital Skills",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop",
+      image: "/Career/Technology.jpg",
       items: ["Video Production", "Gaming", "Social Media Influence", "UI/UX Design"]
     },
     {
       id: 7,
       title: "Cultural & Traditional Talents",
-      image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&h=300&fit=crop",
+      image: "/Career/Cultural.jpg",
       items: ["Traditional Dancing", "Storytelling", "Craftsmanship", "Languages"]
     },
     {
       id: 8,
       title: "Social & Community Impact",
-      image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=300&fit=crop",
+      image: "/Career/Social.jpg",
       items: ["Advocacy", "Environmental Conservation", "Charity Work"]
     },
     {
       id: 9,
       title: "Culinary Arts",
-      image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=300&fit=crop",
+      image: "/Career/Culinary.jpg",
       items: ["Cooking and Baking", "Food Presentation"]
     },
     {
       id: 10,
       title: "Miscellaneous Skills",
-      image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=300&fit=crop",
+      image: "/Career/Miscellaneous.jpg",
       items: ["Magic Tricks", "Travel Blogging", "Pet Training", "Fashion Design"]
     }
   ];

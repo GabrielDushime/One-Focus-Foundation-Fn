@@ -114,10 +114,11 @@ const MediaPage = () => {
     <div style={{ background: '#ffffff', width: '100%', overflowX: 'hidden' }}>
       {/* Section 1: Image Gallery with Scroll */}
       <section style={{ 
-        padding: '60px 20px',
+        padding: '20px 20px',
         maxWidth: '1400px',
         margin: '0 auto',
-        position: 'relative'
+        position: 'relative',
+        marginTop:'70px'
       }}>
         
 
@@ -126,7 +127,7 @@ const MediaPage = () => {
             onClick={handlePrevImage}
             style={{
               position: 'absolute',
-              left: '-50px',
+              left: '-20px',
               top: '50%',
               transform: 'translateY(-50%)',
               width: '40px',
@@ -168,7 +169,7 @@ const MediaPage = () => {
             onClick={handleNextImage}
             style={{
               position: 'absolute',
-              right: '-50px',
+              right: '-20px',
               top: '50%',
               transform: 'translateY(-50%)',
               width: '40px',
@@ -216,13 +217,13 @@ const MediaPage = () => {
       {/* Section 2: Voice of Tomorrow Podcast */}
       <section style={{
         background: '#f8f9fa',
-        padding: '60px 20px'
+        padding: '10px 20px'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '50px' }}>
             <Title level={2} style={{ 
               color: '#000',
-              fontSize: 'clamp(2rem, 3vw, 2.5rem)',
+              fontSize: 'clamp(2rem, 2vw, 2.5rem)',
               marginBottom: '10px'
             }}>
               Voice of Tomorrow <span style={{ color: '#1F99ED' }}>Podcast</span>
@@ -233,18 +234,20 @@ const MediaPage = () => {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
             gap: '40px',
-            marginBottom: '50px'
+            marginBottom: '30px',
+            marginTop:'-30px'
+            
           }}>
             {/* Left side - Podcast info */}
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <div>
                 <img 
-                  src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=500&fit=crop"
+                  src="/11.png"
                   alt="Podcast Host"
                   style={{
                     width: '100%',
-                    maxWidth: '400px',
-                    borderRadius: '16px',
+                    maxWidth: '800px',
+                    borderRadius: '10px',
                     boxShadow: '0 8px 24px rgba(0,0,0,0.15)'
                   }}
                 />
@@ -253,22 +256,10 @@ const MediaPage = () => {
 
             {/* Right side - Description */}
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <div style={{
-                background: '#1F99ED',
-                color: 'white',
-                padding: '15px 25px',
-                borderRadius: '8px',
-                display: 'inline-block',
-                marginBottom: '20px',
-                fontSize: '14px',
-                fontWeight: 600,
-                alignSelf: 'flex-start'
-              }}>
-                YOUR VOICE • YOUR IMPACT
-              </div>
+            
               
               <Paragraph style={{
-                fontSize: 'clamp(1rem, 1.5vw, 1.1rem)',
+                fontSize: 'clamp(1rem, 1.2vw, 1.1rem)',
                 lineHeight: '1.8',
                 color: '#333',
                 marginBottom: '20px'
@@ -277,28 +268,28 @@ const MediaPage = () => {
               </Paragraph>
 
               <div style={{ marginBottom: '15px' }}>
-                <Text style={{ fontSize: '16px', color: '#1F99ED', fontWeight: 600 }}>
+                <Text style={{ fontSize: '14px', color: '#1F99ED', fontWeight: 600 }}>
                   Young Talents on the Journey to Greatness:{' '}
                 </Text>
-                <Text style={{ fontSize: '16px', color: '#333' }}>
+                <Text style={{ fontSize: '14px', color: '#333' }}>
                   We host young individuals who are using their talents to achieve their dreams, showcasing their determination and self-creativity.
                 </Text>
               </div>
 
               <div style={{ marginBottom: '15px' }}>
-                <Text style={{ fontSize: '16px', color: '#1F99ED', fontWeight: 600 }}>
+                <Text style={{ fontSize: '14px', color: '#1F99ED', fontWeight: 600 }}>
                   Successful Personalities:{' '}
                 </Text>
-                <Text style={{ fontSize: '16px', color: '#333' }}>
+                <Text style={{ fontSize: '14px', color: '#333' }}>
                   Inspirational guests who have achieved greatness share their journeys, struggles, and insights to motivate and guide the next generation.
                 </Text>
               </div>
 
               <div style={{ marginBottom: '25px' }}>
-                <Text style={{ fontSize: '16px', color: '#1F99ED', fontWeight: 600 }}>
+                <Text style={{ fontSize: '14px', color: '#1F99ED', fontWeight: 600 }}>
                   Visionary Minds in Business:{' '}
                 </Text>
-                <Text style={{ fontSize: '16px', color: '#333' }}>
+                <Text style={{ fontSize: '14px', color: '#333' }}>
                   Businessmen, business women, and private institutions share their expertise, ideas, and strategies.
                 </Text>
               </div>
@@ -313,7 +304,7 @@ const MediaPage = () => {
               </Paragraph>
 
               <Text style={{
-                fontSize: '18px',
+                fontSize: '15px',
                 fontStyle: 'italic',
                 color: '#1F99ED',
                 fontWeight: 600,
@@ -396,10 +387,11 @@ const MediaPage = () => {
                 background: '#000',
                 color: 'white',
                 border: 'none',
-                height: '50px',
+                height: '40px',
                 padding: '0 40px',
                 fontSize: '16px',
-                fontWeight: 600
+                fontWeight: 600,
+                marginTop:'-30px'
               }}
             >
               View All Episodes
@@ -408,19 +400,19 @@ const MediaPage = () => {
 
           {/* Listen Now & Be Guest Buttons */}
           <div style={{
-            marginTop: '50px',
+            marginTop: '20px',
             textAlign: 'center'
           }}>
             <Title level={3} style={{
               color: '#2E3192',
-              fontSize: 'clamp(1.5rem, 2vw, 1.8rem)',
+              fontSize: 'clamp(1.5rem, 1.5vw, 1.8rem)',
               marginBottom: '30px'
             }}>
               Step into the minds of dreamers, doers, and changemakers across Africa
             </Title>
             
             <Paragraph style={{
-              fontSize: 'clamp(1rem, 1.5vw, 1.1rem)',
+              fontSize: 'clamp(1rem, 1vw, 1.1rem)',
               color: '#333',
               maxWidth: '800px',
               margin: '0 auto 30px',
@@ -430,7 +422,7 @@ const MediaPage = () => {
             </Paragraph>
 
             <Paragraph style={{
-              fontSize: 'clamp(1rem, 1.5vw, 1.05rem)',
+              fontSize: 'clamp(1rem, 1vw, 1.05rem)',
               color: '#666',
               maxWidth: '800px',
               margin: '0 auto 40px',
@@ -438,18 +430,27 @@ const MediaPage = () => {
             }}>
               By showcasing the journeys of others who have overcome challenges to achieve their dreams, the podcast encourages listeners to believe in themselves and take action towards their own aspirations. Ultimately, it seeks to instill a sense of determination and resilience, motivating young people to pursue their dreams relentlessly until they become reality.
             </Paragraph>
+<div style={{
+  display: 'flex',
+  justifyContent: 'center',
+}}>
+  <div style={{
+    background: 'white',
+    padding: '10px',
+    borderRadius: '12px',
+    boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
+    marginBottom: '40px',
+    maxWidth: '700px',
+    textAlign: 'center',
+    marginTop:'-20px',
+    maxHeight:'50px'
+  }}>
+    <Title level={4} style={{ color: '#2E3192', marginBottom: '20px' }}>
+      Available on YouTube
+    </Title>
+  </div>
+</div>
 
-            <div style={{
-              background: 'white',
-              padding: '30px',
-              borderRadius: '12px',
-              boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
-              marginBottom: '40px'
-            }}>
-              <Title level={4} style={{ color: '#2E3192', marginBottom: '20px' }}>
-                Available on YouTube
-              </Title>
-            </div>
 
             <div style={{
               display: 'flex',
@@ -463,7 +464,7 @@ const MediaPage = () => {
                   background: 'linear-gradient(135deg, #1F99ED, #2E3192)',
                   color: 'white',
                   border: 'none',
-                  height: '55px',
+                  height: '45px',
                   padding: '0 40px',
                   fontSize: '16px',
                   fontWeight: 600
@@ -478,7 +479,7 @@ const MediaPage = () => {
                   background: 'linear-gradient(135deg, #2E3192, #1F99ED)',
                   color: 'white',
                   border: 'none',
-                  height: '55px',
+                  height: '45px',
                   padding: '0 40px',
                   fontSize: '16px',
                   fontWeight: 600
@@ -493,14 +494,14 @@ const MediaPage = () => {
 
       {/* Section 3: Hybrid Events & Conferences */}
       <section style={{
-        padding: '60px 20px',
+        padding: '20px 20px',
         background: 'white'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <Title level={2} style={{
             textAlign: 'center',
             color: '#1F99ED',
-            fontSize: 'clamp(1.8rem, 2.5vw, 2.5rem)',
+            fontSize: 'clamp(1.8rem, 2vw, 2.5rem)',
             marginBottom: '20px'
           }}>
             Hybrid Events & Conferences
@@ -508,7 +509,7 @@ const MediaPage = () => {
 
           <Paragraph style={{
             textAlign: 'center',
-            fontSize: 'clamp(1rem, 1.5vw, 1.15rem)',
+            fontSize: 'clamp(1rem, 1.1vw, 1.15rem)',
             color: '#000',
             maxWidth: '900px',
             margin: '0 auto 60px',
@@ -521,7 +522,8 @@ const MediaPage = () => {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '30px',
-            marginBottom: '50px'
+            marginBottom: '20px',
+            marginTop:'-20px'
           }}>
             {events.map((event, index) => (
               <div
@@ -575,7 +577,7 @@ const MediaPage = () => {
                 background: '#000',
                 color: 'white',
                 border: 'none',
-                height: '50px',
+                height: '45px',
                 padding: '0 50px',
                 fontSize: '16px',
                 fontWeight: 600
@@ -590,16 +592,16 @@ const MediaPage = () => {
       {/* Section 4: Blog & Stories */}
       <section style={{
         background: '#f8f9fa',
-        padding: '60px 20px'
+        padding: '20px 20px'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '20px' }}>
             <Button 
               style={{
                 background: '#2E3192',
                 color: 'white',
                 border: 'none',
-                height: '45px',
+                height: '40px',
                 padding: '0 30px',
                 fontSize: '16px',
                 fontWeight: 600,
@@ -610,7 +612,7 @@ const MediaPage = () => {
             </Button>
             <Title level={2} style={{
               color: '#1F99ED',
-              fontSize: 'clamp(1.8rem, 2.5vw, 2.5rem)'
+              fontSize: 'clamp(1.8rem, 2vw, 2.5rem)'
             }}>
               Blog & Stories
             </Title>
@@ -618,7 +620,7 @@ const MediaPage = () => {
 
           <Paragraph style={{
             textAlign: 'center',
-            fontSize: 'clamp(1rem, 1.5vw, 1.15rem)',
+            fontSize: 'clamp(1rem, 1vw, 1.15rem)',
             color: '#000',
             maxWidth: '800px',
             margin: '0 auto 60px',
@@ -630,7 +632,8 @@ const MediaPage = () => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '30px'
+            gap: '30px',
+            marginTop:'-40px'
           }}>
             {blogPosts.map((post, index) => (
               <div
@@ -702,14 +705,14 @@ const MediaPage = () => {
       {/* Section 4.5: Gallery Archives (After Blog) */}
       <section style={{
         background: 'white',
-        padding: '60px 20px'
+        padding: '20px 20px'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <Title level={2} style={{
             textAlign: 'center',
             color: '#1F99ED',
-            fontSize: 'clamp(1.8rem, 2.5vw, 2.5rem)',
-            marginBottom: '20px',
+            fontSize: 'clamp(1.8rem, 2vw, 2.5rem)',
+            marginBottom: '10px',
             textDecoration: 'underline',
             textDecorationColor: '#1F99ED',
             textUnderlineOffset: '10px'
@@ -719,7 +722,7 @@ const MediaPage = () => {
 
           <Paragraph style={{
             textAlign: 'center',
-            fontSize: 'clamp(1rem, 1.5vw, 1.15rem)',
+            fontSize: 'clamp(1rem, 1vw, 1.15rem)',
             color: '#2E3192',
             maxWidth: '900px',
             margin: '0 auto 60px',
@@ -731,7 +734,8 @@ const MediaPage = () => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-            gap: '40px'
+            gap: '40px',
+            marginTop:'-30px'
           }}>
             {/* Gallery Events Card */}
             <div style={{
@@ -740,7 +744,8 @@ const MediaPage = () => {
               overflow: 'hidden',
               boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
               transition: 'transform 0.3s ease',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              
             }}
             onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
             onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
@@ -830,16 +835,16 @@ const MediaPage = () => {
       {/* Section 5: Be Part of the Action */}
       <section style={{
         background: 'white',
-        padding: '60px 20px'
+        padding: '20px 20px'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{
             textAlign: 'center',
-            marginBottom: '50px'
+            marginBottom: '30px'
           }}>
             <Title level={2} style={{
               color: '#1F99ED',
-              fontSize: 'clamp(2rem, 3vw, 2.5rem)',
+              fontSize: 'clamp(2rem, 1.6vw, 2.5rem)',
               marginBottom: '0',
               textDecoration: 'underline',
               textDecorationColor: '#1F99ED',
@@ -852,21 +857,21 @@ const MediaPage = () => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-            gap: '50px',
+            gap: '20px',
             alignItems: 'start'
           }}>
             {/* Left Side - Text Content */}
             <div>
               <Title level={3} style={{
                 color: '#1F99ED',
-                fontSize: 'clamp(1.5rem, 2vw, 1.8rem)',
-                marginBottom: '30px'
+                fontSize: 'clamp(1.5rem, 1.5vw, 1.8rem)',
+                marginBottom: '10px'
               }}>
                 Join Our Media & Events Network
               </Title>
 
               <Paragraph style={{
-                fontSize: 'clamp(1rem, 1.5vw, 1.1rem)',
+                fontSize: 'clamp(1rem, 1.2vw, 1.1rem)',
                 color: '#2E3192',
                 lineHeight: '1.8',
                 marginBottom: '25px',
@@ -876,7 +881,7 @@ const MediaPage = () => {
               </Paragraph>
 
               <Paragraph style={{
-                fontSize: 'clamp(1rem, 1.5vw, 1.05rem)',
+                fontSize: 'clamp(1rem, 1.2vw, 1.05rem)',
                 color: '#333',
                 lineHeight: '1.8',
                 marginBottom: '30px'
