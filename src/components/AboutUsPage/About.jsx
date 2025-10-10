@@ -17,7 +17,7 @@ const AboutPage = () => {
         maxWidth: '1400px',
         margin: '0 auto',
         marginTop: '60px',
-        marginLeft:'150px'
+        marginLeft:'0px'
          
       }}>
         <div style={{
@@ -80,7 +80,7 @@ const AboutPage = () => {
           </div>
           
           <div style={{ 
-            width: '70%',
+            width: '65%',
             borderRadius: '12px',
             overflow: 'hidden',
             boxShadow: '0 8px 24px rgba(0,0,0,0.12)'
