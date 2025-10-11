@@ -1,21 +1,27 @@
-
 export const API_BASE_URL = 'https://onefocus-fou.onrender.com'
 
 export const API_ENDPOINTS = {
+  
   JOIN_US: `${API_BASE_URL}/join-us`,
   BOOK_US: `${API_BASE_URL}/book-us`,
   GET_INVOLVED: `${API_BASE_URL}/get-involved`,
-  REGISTER_NOW: `${API_BASE_URL}/register-now`,     
+  REGISTER_NOW: `${API_BASE_URL}/register-now`,
   PARTNERSHIPS: `${API_BASE_URL}/partnerships`,
   VOLUNTEERS: `${API_BASE_URL}/volunteers`,
-  MENTORS: `${API_BASE_URL}/mentors` ,
+  MENTORS: `${API_BASE_URL}/mentors`,
   DONATIONS: `${API_BASE_URL}/donations`,
   SUBSCRIBE: `${API_BASE_URL}/subscribe`,
+  
   // Membership & Sponsorship endpoints
   BASIC_MEMBERSHIP: `${API_BASE_URL}/memberships/basic`,
   PREMIUM_MEMBERSHIP: `${API_BASE_URL}/memberships/premium`,
-  CORPORATE_SPONSOR: `${API_BASE_URL}/sponsors/corporate`
-    
+  CORPORATE_SPONSOR: `${API_BASE_URL}/sponsors/corporate`,
+  
+  // Auth endpoints
+  AUTH_LOGIN: `${API_BASE_URL}/auth/login`,
+  AUTH_REGISTER: `${API_BASE_URL}/auth/register`,
+  AUTH_PROFILE: `${API_BASE_URL}/auth/profile`,
+  AUTH_USERS: `${API_BASE_URL}/auth/users`,
 }
 
 export default API_BASE_URL

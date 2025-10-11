@@ -1,10 +1,6 @@
 import '../styles/globals.css'
-import { ConfigProvider, Layout } from 'antd'
+import { ConfigProvider } from 'antd'
 import { useEffect } from 'react'
-import HeaderComponent from '../components/Header'
-import FooterComponent from '../components/Footer'
-
-const { Content } = Layout
 
 const theme = {
   token: {
@@ -46,15 +42,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <ConfigProvider theme={theme}>
-      <Layout className="min-h-screen">
-        <HeaderComponent />
-        
-        <Content>
-          <Component {...pageProps} />
-        </Content>
-        
-        <FooterComponent />
-      </Layout>
+      <Component {...pageProps} />
     </ConfigProvider>
   )
 }

@@ -1,9 +1,10 @@
 'use client'
 
-import { Layout, Button, Drawer } from 'antd'
-import { MenuOutlined, CloseOutlined } from '@ant-design/icons'
+import { Layout, Button, Drawer, Modal, Form, Input, message } from 'antd'
+import { MenuOutlined, CloseOutlined, LockOutlined, MailOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
+import { API_BASE_URL } from '@/config/api' 
 
 const { Header } = Layout
 
@@ -12,6 +13,9 @@ export default function HeaderComponent() {
   const [drawerVisible, setDrawerVisible] = useState(false)
   const [hoveredItem, setHoveredItem] = useState(null)
   const [isLargeScreen, setIsLargeScreen] = useState(true)
+  const [loginModalVisible, setLoginModalVisible] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [form] = Form.useForm()
   const router = useRouter()
   const pathname = usePathname()
 
@@ -34,6 +38,7 @@ export default function HeaderComponent() {
     { key: 'media', label: 'MEDIA & EVENTS', route: '/media' },
     { key: 'about', label: 'ABOUT US', route: '/about' },
     { key: 'contact', label: 'CONTACT US', route: '/contact' },
+    { key: 'login', label: 'ADMIN LOGIN', route: null },
   ]
 
   useEffect(() => {
@@ -47,12 +52,70 @@ export default function HeaderComponent() {
   const closeDrawer = () => setDrawerVisible(false)
 
   const handleMenuClick = (key) => {
+    if (key === 'login') {
+      setLoginModalVisible(true)
+      setDrawerVisible(false)
+      return
+    }
+
     const selectedMenuItem = menuItems.find(item => item.key === key)
-    if (selectedMenuItem) {
+    if (selectedMenuItem && selectedMenuItem.route) {
       setSelectedItem(key)
       router.push(selectedMenuItem.route)
       setDrawerVisible(false)
     }
+  }
+
+  const handleLogin = async (values) => {
+    setIsLoading(true)
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: values.email,
+          password: values.password,
+        }),
+      })
+
+      const contentType = response.headers.get('content-type')
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server did not return JSON response')
+      }
+
+      const data = await response.json()
+
+      if (response.ok && data.access_token) {
+        localStorage.setItem('access_token', data.access_token)
+        
+        message.success('Login successful!')
+        setLoginModalVisible(false)
+        form.resetFields()
+        
+        router.push('/admin/dashboard')
+      } else {
+        message.error(data.message || 'Invalid credentials. Please try again.')
+      }
+    } catch (error) {
+      console.error('Login error:', error)
+      
+      if (error.message === 'Failed to fetch') {
+        message.error('Cannot connect to server. Please check your internet connection.')
+      } else if (error.message === 'Server did not return JSON response') {
+        message.error('Server error. Please try again later.')
+      } else {
+        message.error('An error occurred during login. Please try again.')
+      }
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleModalCancel = () => {
+    setLoginModalVisible(false)
+    form.resetFields()
   }
 
   return (
@@ -79,7 +142,6 @@ export default function HeaderComponent() {
           flexWrap: 'nowrap',          
         }}
       >
-        {/* Logo + Text  */}
         <div
           style={{
             paddingLeft: 24,
@@ -114,7 +176,6 @@ export default function HeaderComponent() {
           </p>
         </div>
 
-        {/* Right: Navigation */}
         <div className="flex-1 flex h-full min-w-0">
           {isLargeScreen ? (
             <div
@@ -127,7 +188,7 @@ export default function HeaderComponent() {
                 flex: 1,
                 justifyContent: 'flex-start',
                 minWidth: 0,
-                marginLeft: '200px'
+                marginLeft: '150px'
               }}
             >
               {menuItems.map((item) => (
@@ -170,11 +231,8 @@ export default function HeaderComponent() {
               ))}
             </div>
           ) : (
-          
             <div 
               style={{
-                
-              
                 flex: 1,
                 position: 'relative'
               }}
@@ -186,11 +244,9 @@ export default function HeaderComponent() {
                 style={{
                   color: 'black',
                   border: 'none',
-                 
                   boxShadow: 'none',
                   background: 'transparent',
                   float: 'right',
-                 
                   height: '64px',
                   marginRight: '16px',
                   display: 'flex',
@@ -203,7 +259,6 @@ export default function HeaderComponent() {
         </div>
       </Header>
 
-      {/* Mobile Drawer */}
       <Drawer
         title={
           <div className="flex items-center justify-between">
@@ -246,6 +301,97 @@ export default function HeaderComponent() {
           ))}
         </div>
       </Drawer>
+
+      <Modal
+        title={
+          <div style={{ textAlign: 'center', marginBottom: '8px' }}>
+            <div style={{
+              width: '60px',
+              height: '60px',
+              borderRadius: '50%',
+              backgroundColor: '#1F99ED',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 16px',
+            }}>
+              <LockOutlined style={{ fontSize: '28px', color: 'white' }} />
+            </div>
+            <h2 style={{ margin: 0, fontSize: '24px', fontWeight: 'bold', color: '#2E3192' }}>
+              Admin Login
+            </h2>
+            <p style={{ margin: '8px 0 0', color: '#666', fontSize: '14px' }}>
+              Enter your credentials to access the dashboard
+            </p>
+          </div>
+        }
+        open={loginModalVisible}
+        onCancel={handleModalCancel}
+        footer={null}
+        width={450}
+        centered
+        closable={true}
+      >
+        <Form
+          form={form}
+          name="admin_login"
+          onFinish={handleLogin}
+          layout="vertical"
+          style={{ marginTop: '24px' }}
+        >
+          <Form.Item
+            name="email"
+            label="Email Address"
+            rules={[
+              { required: true, message: 'Please enter your email!' },
+              { type: 'email', message: 'Please enter a valid email!' }
+            ]}
+          >
+            <Input
+              prefix={<MailOutlined style={{ color: '#1F99ED' }} />}
+              placeholder="admin@example.com"
+              size="large"
+              style={{ borderRadius: '8px' }}
+            />
+          </Form.Item>
+
+          <Form.Item
+            name="password"
+            label="Password"
+            rules={[
+              { required: true, message: 'Please enter your password!' },
+              { min: 6, message: 'Password must be at least 6 characters!' }
+            ]}
+          >
+            <Input.Password
+              prefix={<LockOutlined style={{ color: '#1F99ED' }} />}
+              placeholder="Enter your password"
+              size="large"
+              style={{ borderRadius: '8px' }}
+            />
+          </Form.Item>
+
+          <Form.Item style={{ marginBottom: 0, marginTop: '24px' }}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              loading={isLoading}
+              block
+              size="large"
+              style={{
+                backgroundColor: '#1F99ED',
+                borderColor: '#1F99ED',
+                borderRadius: '8px',
+                height: '48px',
+                fontSize: '16px',
+                fontWeight: 'bold',
+              }}
+            >
+              {isLoading ? 'Logging in...' : 'Login'}
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   )
 }

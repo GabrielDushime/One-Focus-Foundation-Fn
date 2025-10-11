@@ -528,18 +528,7 @@ const SupportSection = () => {
           ))}
         </Row>
         
-        <div className="text-center"
-          style={{
-            fontWeight: '600',
-            marginTop:'20px'
-          }}
-        >
-          <Text 
-            className="text-gray-600 !text-lg"
-          >
-            For other donation options or to discuss sponsorship packages, please contact us
-          </Text>
-        </div>
+        
       </div>
 
       {/* Donation Modal */}
@@ -605,7 +594,258 @@ const SupportSection = () => {
           </Form>
         </Spin>
       </Modal>
+      {/* Direct Donation Options */}
+        <div className="mt-12 mb-16">
+          <div className="text-center mb-10"
+          style={{
+            padding:'20px'
+          }}
+          >
+            <Title 
+              level={3} 
+              className="!mb-2 !text-lg md:!text-xl lg:!text-2xl font-bold"
+              style={{ color: '#1F99ED', }}
+            >
+              Quick & Direct Donation
+            </Title>
+            <Text className="text-gray-600 text-sm" >
+              Choose your preferred method to make an instant impact
+            </Text>
+          </div>
+          
+          <Row 
+            gutter={[
+              { xs: 8, sm: 16, md: 20, lg: 24, xl: 20 }, 
+              { xs: 20, sm: 24, md: 28, lg: 20 }
+            ]} 
+            justify="center" 
+            align="stretch"
+          >
+            {/* Bank Account Card */}
+            <Col xs={24} sm={12} md={12} lg={6} xl={6}>
+              <Card 
+                className="w-full rounded-2xl border-0 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                styles={{
+                  body: { 
+                    padding: 0,
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }
+                }}
+                bodyStyle={{
+                  padding: 0,
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+                style={{
+                  height: 'auto',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  backgroundColor: 'white',
+                  border: '1px solid #e5e7eb',
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px 2px rgba(0, 0, 0, 0.05)'
+                }}
+              >
+                <div className="flex-1 flex flex-col p-4 sm:p-5 text-center" style={{ flexGrow: 1 }}>
+                  {/* Icon */}
+                  <div className="flex justify-center mb-3">
+                    <div 
+                      className="flex items-center justify-center rounded-full"
+                      style={{ 
+                        width: '48px', 
+                        height: '48px',
+                        background: 'linear-gradient(135deg, #1F99ED, #2E3192)'
+                      }}
+                    >
+                      <CreditCardOutlined className="text-2xl text-white" />
+                    </div>
+                  </div>
+                  
+                  {/* Title */}
+                  <Title 
+                    level={4} 
+                    className="mb-3 text-base sm:text-lg font-semibold"
+                    style={{
+                      color: '#1F99ED',
+                      fontWeight: 'bold',
+                      textAlign: 'center',
+                      marginBottom: '12px'
+                    }}
+                  >
+                    Bank Transfer
+                  </Title>
+                  
+                  {/* Content */}
+                  <div className="flex-1" style={{ flexGrow: 1 }}>
+                    <div className="mb-3">
+                      <Text className="text-gray-400 text-xs block mb-1" style={{ fontSize: '10px' }}>
+                        ACCOUNT NUMBER
+                      </Text>
+                      <Text 
+                        strong 
+                        className="text-base block font-bold"
+                        style={{ 
+                          color: '#2E3192',
+                          fontFamily: 'monospace',
+                          fontSize: '14px'
+                        }}
+                      >
+                        10017-8799988
+                      </Text>
+                    </div>
+                    
+                    <div className="mb-3">
+                      <Text className="text-gray-400 text-xs block mb-1" style={{ fontSize: '10px' }}>
+                        ACCOUNT NAME
+                      </Text>
+                      <Text 
+                        strong 
+                        className="text-xs block font-bold"
+                        style={{ color: '#333333', fontSize: '11px' }}
+                      >
+                        ONEFOCUS FOU 
+                      </Text>
+                    </div>
+                    
+                    <div className="mb-3">
+                      <Text className="text-gray-400 text-xs block mb-1" style={{ fontSize: '10px' }}>
+                        BANK
+                      </Text>
+                      <Text 
+                        strong 
+                        className="text-xs block font-bold"
+                        style={{ color: '#333333', fontSize: '11px' }}
+                      >
+                        Bank of Kigali
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </Col>
+            
+            {/* Mobile Money Card */}
+            <Col xs={24} sm={12} md={12} lg={6} xl={6}>
+              <Card 
+                className="w-full rounded-2xl border-0 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                styles={{
+                  body: { 
+                    padding: 0,
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }
+                }}
+                bodyStyle={{
+                  padding: 0,
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+                style={{
+                  height: 'auto',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  backgroundColor: 'white',
+                  border: '1px solid #e5e7eb',
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px 2px rgba(0, 0, 0, 0.05)'
+                }}
+              >
+                <div className="flex-1 flex flex-col p-4 sm:p-5 text-center" style={{ flexGrow: 1 }}>
+                  {/* Icon */}
+                  <div className="flex justify-center mb-3">
+                    <div 
+                      className="flex items-center justify-center rounded-full"
+                      style={{ 
+                        width: '48px', 
+                        height: '48px',
+                        background: 'linear-gradient(135deg, #2E3192, #1F99ED)'
+                      }}
+                    >
+                      <PhoneOutlined className="text-2xl text-white" />
+                    </div>
+                  </div>
+                  
+                  {/* Title */}
+                  <Title 
+                    level={4} 
+                    className="mb-3 text-base sm:text-lg font-semibold"
+                    style={{
+                      color: '#2E3192',
+                      fontWeight: 'bold',
+                      textAlign: 'center',
+                      marginBottom: '12px'
+                    }}
+                  >
+                    Mobile Money
+                  </Title>
+                  
+                  {/* Content */}
+                  <div className="flex-1" style={{ flexGrow: 1 }}>
+                    <div className="mb-3">
+                      <Text className="text-gray-400 text-xs block mb-1" style={{ fontSize: '10px' }}>
+                        PHONE NUMBER
+                      </Text>
+                      <Text 
+                        strong 
+                        className="text-base block font-bold"
+                        style={{ 
+                          color: '#2E3192',
+                          fontFamily: 'monospace',
+                          fontSize: '14px'
+                        }}
+                      >
+                        +250 787 542 277
+                      </Text>
+                       <Text className="text-gray-400 text-xs block mb-1" style={{ fontSize: '10px' }}>
+                        Names
+                      </Text>
+                      <Text 
+                        strong 
+                        className="text-xs block font-bold"
+                        style={{ color: '#333333', fontSize: '11px',marginBottom:'5px' }}
+                      >
+                        Alain IBYIZA
+                      </Text>
+                    </div>
+                    
+                    <div 
+                      className="p-2 rounded-lg"
+                      style={{ 
+                        background: 'rgba(46, 49, 146, 0.05)',
+                        border: '1px dashed rgba(46, 49, 146, 0.2)'
+                      }}
+                    >
+                      <Text className="text-gray-600 block" style={{ fontSize: '10px', lineHeight: '1.4' }}>
+                        <span className="font-semibold block mb-1" style={{ color: '#2E3192', fontSize: '10px' }}>
+                          📱 Networks:
+                        </span>
+                        MTN Money
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </Col>
+          </Row>
+        </div>
+        
+        <div className="text-center mt-8"
+          style={{
+            fontWeight: '600',
+            marginTop:'20px'
+          }}
+        >
+          <Text 
+            className="text-gray-600 !text-lg"
+          >
+            For other donation options or to discuss sponsorship packages, please contact us
+          </Text>
+        </div>
     </section>
+    
   )
 }
 
