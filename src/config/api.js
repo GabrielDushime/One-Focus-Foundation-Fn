@@ -1,7 +1,8 @@
-export const API_BASE_URL = 'https://onefocus-fou.onrender.com'
+// API Configuration
+export const API_BASE_URL = 'https://onefocus-fou.onrender.com';
 
 export const API_ENDPOINTS = {
-  
+  // Existing endpoints
   JOIN_US: `${API_BASE_URL}/join-us`,
   BOOK_US: `${API_BASE_URL}/book-us`,
   GET_INVOLVED: `${API_BASE_URL}/get-involved`,
@@ -22,6 +23,23 @@ export const API_ENDPOINTS = {
   AUTH_REGISTER: `${API_BASE_URL}/auth/register`,
   AUTH_PROFILE: `${API_BASE_URL}/auth/profile`,
   AUTH_USERS: `${API_BASE_URL}/auth/users`,
-}
+  
+  // Media Page endpoints
+  BE_GUEST: `${API_BASE_URL}/be-guest`,
+  EVENT_REGISTRATIONS: `${API_BASE_URL}/event-registrations`,
+  GET_INVOLVED_ACTIONS: `${API_BASE_URL}/get-involved-actions`,
+  BLOGS_PUBLISHED: `${API_BASE_URL}/blogs/published`,
+  BLOGS_BY_ID: (id) => `${API_BASE_URL}/blogs/${id}`,
 
-export default API_BASE_URL
+  // Events Endpoints
+  EVENTS: `${API_BASE_URL}/events`,
+  EVENTS_PUBLISHED: `${API_BASE_URL}/events/published`,
+  EVENTS_UPCOMING: `${API_BASE_URL}/events/upcoming`,
+  EVENTS_SEARCH: (query) => `${API_BASE_URL}/events/search?q=${query}`,
+  EVENTS_BY_ID: (id) => `${API_BASE_URL}/events/${id}`,
+  EVENTS_PUBLISH: (id) => `${API_BASE_URL}/events/${id}/publish`,
+
+
+};
+
+export default API_BASE_URL;

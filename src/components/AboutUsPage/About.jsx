@@ -1,25 +1,249 @@
-import { Typography, Button } from 'antd';
+import { useState } from 'react';
+import { Typography, Button, Form, Modal, Input, Select, InputNumber, Checkbox, message, Spin, Divider, Space, Row, Col } from 'antd';
+import { UserOutlined, MailOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
+import { API_ENDPOINTS } from '../../config/api';
 
 const { Title, Paragraph, Text } = Typography;
+const { TextArea } = Input;
+const { Option } = Select;
+
 
 const AboutPage = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [joinUsForm] = Form.useForm();
+
   const handleJoinCommunity = () => {
-    window.location.href = '/what-we-build';
+    setModalVisible(true);
   };
+
+  const handleModalClose = () => {
+    setModalVisible(false);
+    joinUsForm.resetFields();
+  };
+
+  const handleSubmit = async (values) => {
+    setLoading(true);
+    
+    try {
+      const response = await fetch(API_ENDPOINTS.JOIN_US, {
+        method: 'POST',
+        
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        message.success({
+          content: "Thank you for registering! Our team will contact you shortly with session details. See you at the workshop!",
+          duration: 5,
+          style: {
+            marginTop: '20px',
+          },
+        });
+        handleModalClose();
+      } else {
+        const errorData = await response.json();
+        message.error(errorData.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      message.error('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const JoinUsForm = () => (
+    <Form
+      form={joinUsForm}
+      layout="vertical"
+      onFinish={handleSubmit}
+      className="space-y-4"
+    >
+      <Form.Item
+        name="fullName"
+        label="Full Name"
+        rules={[{ required: true, message: 'Please enter your full name' }]}
+      >
+        <Input 
+          prefix={<UserOutlined />} 
+          placeholder="Enter your full name"
+          size="large"
+        />
+      </Form.Item>
+
+      <Form.Item
+        name="email"
+        label="Email Address"
+        rules={[
+          { required: true, message: 'Please enter your email' },
+          { type: 'email', message: 'Please enter a valid email' }
+        ]}
+      >
+        <Input 
+          prefix={<MailOutlined />} 
+          placeholder="Enter your email address"
+          size="large"
+        />
+      </Form.Item>
+
+      <Form.Item
+        name="phoneNumber"
+        label="Phone Number (WhatsApp preferred)"
+        rules={[{ required: true, message: 'Please enter your phone number' }]}
+      >
+        <Input 
+          prefix={<PhoneOutlined />} 
+          placeholder="+250788123456"
+          size="large"
+        />
+      </Form.Item>
+
+      <Row gutter={16}>
+        <Col span={12}>
+          <Form.Item
+            name="age"
+            label="Age"
+            rules={[{ required: false }]}
+          >
+            <InputNumber 
+              min={15} 
+              max={35} 
+              placeholder="Your age"
+              size="large"
+              style={{ width: '100%' }}
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item
+            name="gender"
+            label="Gender"
+          >
+            <Select placeholder="Select gender" size="large">
+              <Option value="male">Male</Option>
+              <Option value="female">Female</Option>
+              <Option value="prefer_not_to_say">Prefer not to say</Option>
+            </Select>
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Form.Item
+        name="educationLevel"
+        label="Education Level"
+        rules={[{ required: true, message: 'Please select your education level' }]}
+      >
+        <Select placeholder="Select education level" size="large">
+          <Option value="primary">Primary</Option>
+          <Option value="secondary">Secondary</Option>
+          <Option value="university">University</Option>
+          <Option value="employee">Employee</Option>
+          <Option value="self_employed">Self Employed</Option>
+          <Option value="masters">Masters</Option>
+          <Option value="phd">PhD</Option>
+        </Select>
+      </Form.Item>
+
+      <Row gutter={16}>
+        <Col span={12}>
+          <Form.Item
+            name="country"
+            label="Country"
+            rules={[{ required: true, message: 'Please enter your country' }]}
+          >
+            <Input 
+              prefix={<EnvironmentOutlined />} 
+              placeholder="Rwanda"
+              size="large"
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item
+            name="cityDistrict"
+            label="City/District"
+            rules={[{ required: true, message: 'Please enter your city/district' }]}
+          >
+            <Input 
+              placeholder="Kigali"
+              size="large"
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Form.Item
+        name="sessionAvailability"
+        label="Session Preference"
+        rules={[{ required: true, message: 'Please select your session preference' }]}
+      >
+        <Select placeholder="Select session type" size="large">
+          <Option value="online">Online Sessions</Option>
+          <Option value="physical">Physical Sessions</Option>
+          <Option value="both">Both Online & Physical</Option>
+        </Select>
+      </Form.Item>
+
+      <Form.Item
+        name="motivation"
+        label="Why do you want to join? (Max 500 characters)"
+        rules={[
+          { required: true, message: 'Please share your motivation' },
+          { max: 500, message: 'Please keep it under 500 characters' }
+        ]}
+      >
+        <TextArea 
+          rows={4} 
+          placeholder="Share your motivation for joining our workshop..."
+          showCount
+          maxLength={500}
+        />
+      </Form.Item>
+
+      <Divider />
+
+      <Space direction="vertical" size="small">
+        <Form.Item
+          name="infoAccuracyConsent"
+          valuePropName="checked"
+          rules={[{ required: true, message: 'Please confirm information accuracy' }]}
+        >
+          <Checkbox>I confirm that the information provided is accurate</Checkbox>
+        </Form.Item>
+
+        <Form.Item
+          name="communicationConsent"
+          valuePropName="checked"
+          rules={[{ required: true, message: 'Please agree to receive updates' }]}
+        >
+          <Checkbox>I agree to receive communication updates from ONEFOCUS</Checkbox>
+        </Form.Item>
+
+        <Form.Item
+          name="workshopUnderstandingConsent"
+          valuePropName="checked"
+          rules={[{ required: true, message: 'Please confirm workshop understanding' }]}
+        >
+          <Checkbox>I understand that workshop is open to all youth</Checkbox>
+        </Form.Item>
+      </Space>
+    </Form>
+  );
 
   return (
     <div style={{ background: '#ffffff', width: '100%', overflowX: 'hidden' }}>
       {/* Section 1: Our Story */}
       <section 
-      
-      style={{ 
-        padding: '20px 20px',
-        maxWidth: '1400px',
-        margin: '0 auto',
-        marginTop: '60px',
-        marginLeft:'0px'
-         
-      }}>
+        style={{ 
+          padding: '20px 20px',
+          maxWidth: '1400px',
+          margin: '0 auto',
+          marginTop: '60px',
+          marginLeft:'0px'
+        }}>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -525,175 +749,61 @@ const AboutPage = () => {
               />
             </div>
           </div>
-
-          {/* Related Links Section */}
-          <div style={{
-            marginTop: '10px',
-            padding: '20px',
-            background: 'white',
-            borderRadius: '16px',
-            boxShadow: '0 6px 20px rgba(0,0,0,0.08)'
-          }}>
-            <Title level={3} style={{ 
-              textAlign: 'center', 
-              marginBottom: '25px', 
-              color: '#000',
-              fontSize: 'clamp(1.3rem, 1vw, 2rem)',
-              fontWeight: 700
-            }}>
-              RELATED LINKS
-            </Title>
-            
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '20px',
-              maxWidth: '1000px',
-              margin: '0 auto'
-            }}>
-              <a href="/join-us" style={{ textDecoration: 'none' }}>
-                <div style={{
-                  textAlign: 'center',
-                  padding: '20px',
-                  background: '#F8F9FA',
-                  borderRadius: '12px',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#1F99ED';
-                  e.currentTarget.querySelector('span').style.color = 'white';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#F8F9FA';
-                  e.currentTarget.querySelector('span').style.color = '#2E3192';
-                }}>
-                  <Text style={{ 
-                    color: '#2E3192', 
-                    fontSize: 'clamp(1rem, 1.1vw, 1.1rem)',
-                    fontWeight: 600,
-                    transition: 'color 0.3s ease'
-                  }}>
-                    Join Community
-                  </Text>
-                </div>
-              </a>
-
-              <a href="/get-involved" style={{ textDecoration: 'none' }}>
-                <div style={{
-                  textAlign: 'center',
-                  padding: '20px',
-                  background: '#F8F9FA',
-                  borderRadius: '12px',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#1F99ED';
-                  e.currentTarget.querySelector('span').style.color = 'white';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#F8F9FA';
-                  e.currentTarget.querySelector('span').style.color = '#2E3192';
-                }}>
-                  <Text style={{ 
-                    color: '#2E3192', 
-                    fontSize: 'clamp(1rem, 1.1vw, 1.1rem)',
-                    fontWeight: 600,
-                    transition: 'color 0.3s ease'
-                  }}>
-                    Partnership
-                  </Text>
-                </div>
-              </a>
-
-              <a href="/what-we-build" style={{ textDecoration: 'none' }}>
-                <div style={{
-                  textAlign: 'center',
-                  padding: '20px',
-                  background: '#F8F9FA',
-                  borderRadius: '12px',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#1F99ED';
-                  e.currentTarget.querySelector('span').style.color = 'white';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#F8F9FA';
-                  e.currentTarget.querySelector('span').style.color = '#2E3192';
-                }}>
-                  <Text style={{ 
-                    color: '#2E3192', 
-                    fontSize: 'clamp(1rem, 1.1vw, 1.1rem)',
-                    fontWeight: 600,
-                    transition: 'color 0.3s ease'
-                  }}>
-                    Apply Membership
-                  </Text>
-                </div>
-              </a>
-
-              <a href="/events" style={{ textDecoration: 'none' }}>
-                <div style={{
-                  textAlign: 'center',
-                  padding: '20px',
-                  background: '#F8F9FA',
-                  borderRadius: '12px',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#1F99ED';
-                  e.currentTarget.querySelector('span').style.color = 'white';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#F8F9FA';
-                  e.currentTarget.querySelector('span').style.color = '#2E3192';
-                }}>
-                  <Text style={{ 
-                    color: '#2E3192', 
-                    fontSize: 'clamp(1rem, 1.1vw, 1.1rem)',
-                    fontWeight: 600,
-                    transition: 'color 0.3s ease'
-                  }}>
-                    Upcoming Events
-                  </Text>
-                </div>
-              </a>
-
-              <a href="/impact" style={{ textDecoration: 'none' }}>
-                <div style={{
-                  textAlign: 'center',
-                  padding: '20px',
-                  background: '#F8F9FA',
-                  borderRadius: '12px',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#1F99ED';
-                  e.currentTarget.querySelector('span').style.color = 'white';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#F8F9FA';
-                  e.currentTarget.querySelector('span').style.color = '#2E3192';
-                }}>
-                  <Text style={{ 
-                    color: '#2E3192', 
-                    fontSize: 'clamp(1rem, 1.1vw, 1.1rem)',
-                    fontWeight: 600,
-                    transition: 'color 0.3s ease'
-                  }}>
-                    Review Our Impact
-                  </Text>
-                </div>
-              </a>
-            </div>
-          </div>
         </div>
       </section>
+
+      {/* Join Community Modal */}
+      <Modal
+        title={
+          <div style={{ textAlign: 'center', paddingBottom: '16px' }}>
+            <Title level={3} style={{ marginBottom: '8px', color: '#1F99ED' }}>
+              Join Our Community
+            </Title>
+            <Text type="secondary" style={{ fontSize: '14px' }}>
+              Sign up for our skills development
+            </Text>
+          </div>
+        }
+        open={modalVisible}
+        onCancel={handleModalClose}
+        width={600}
+        footer={[
+          <Button 
+            key="cancel" 
+            onClick={handleModalClose}
+            size="large"
+            disabled={loading}
+          >
+            Cancel
+          </Button>,
+          <Button
+            key="submit"
+            type="primary"
+            size="large"
+            loading={loading}
+            onClick={() => joinUsForm.submit()}
+            style={{ background: '#1F99ED' }}
+            disabled={loading}
+          >
+            {loading ? 'Submitting...' : 'Submit Application'}
+          </Button>
+        ]}
+        styles={{
+          content: {
+            padding: '24px',
+          },
+          body: {
+            maxHeight: '70vh',
+            overflowY: 'auto',
+          }
+        }}
+        destroyOnClose={true}
+        centered
+      >
+        <Spin spinning={loading}>
+          <JoinUsForm />
+        </Spin>
+      </Modal>
     </div>
   );
 };

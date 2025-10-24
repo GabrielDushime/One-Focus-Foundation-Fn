@@ -786,7 +786,7 @@ const SupportSection = () => {
                   <div className="flex-1" style={{ flexGrow: 1 }}>
                     <div className="mb-3">
                       <Text className="text-gray-400 text-xs block mb-1" style={{ fontSize: '10px' }}>
-                        PHONE NUMBER
+                        Momo Pay Code(2500100)
                       </Text>
                       <Text 
                         strong 
@@ -797,7 +797,7 @@ const SupportSection = () => {
                           fontSize: '14px'
                         }}
                       >
-                        +250 787 542 277
+                        *182*8*1*2500100*Amount*PIN#
                       </Text>
                        <Text className="text-gray-400 text-xs block mb-1" style={{ fontSize: '10px' }}>
                         Names
@@ -807,7 +807,7 @@ const SupportSection = () => {
                         className="text-xs block font-bold"
                         style={{ color: '#333333', fontSize: '11px',marginBottom:'5px' }}
                       >
-                        Alain IBYIZA
+                        ONEFOCUS FOU Ltd
                       </Text>
                     </div>
                     
@@ -822,7 +822,7 @@ const SupportSection = () => {
                         <span className="font-semibold block mb-1" style={{ color: '#2E3192', fontSize: '10px' }}>
                           📱 Networks:
                         </span>
-                        MTN Money
+                        MTN Momo Pay
                       </Text>
                     </div>
                   </div>
