@@ -73,7 +73,7 @@ const MediaPage = () => {
       guest: "Featuring Alain & Sugira",
       duration: "21 mins",
       date: "July 2025",
-      image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc678?w=400&h=300&fit=crop"
+      image: "/Workshop Presentation_edited.jpg"
     }
   ];
 
@@ -1406,7 +1406,7 @@ const fetchPublishedEvents = async () => {
                     const eventTitle = event.eventTitle || event.title || 'Untitled Event';
                     const eventDate = event.eventDate || event.date;
                     
-                    // Build the display text with title and date in brackets
+                
                     const displayText = eventDate 
                       ? `${eventTitle} (${formatEventDate(eventDate)})`
                       : eventTitle;
