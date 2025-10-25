@@ -35,6 +35,7 @@ export default function HeaderComponent() {
     { key: 'what-we-build', label: 'WHAT WE ARE BUILD', route: '/what-we-build' },
     { key: 'career', label: 'CAREER', route: '/career' },
     { key: 'workshop', label: 'OUR WORKSHOP', route: '/workshop' },
+    { key: 'service', label: 'SERVICE', route: '/service' },
     { key: 'media', label: 'MEDIA & EVENTS', route: '/media' },
     { key: 'about', label: 'ABOUT US', route: '/about' },
     { key: 'contact', label: 'CONTACT US', route: '/contact' },
@@ -144,7 +145,7 @@ export default function HeaderComponent() {
       >
         <div
           style={{
-            paddingLeft: 24,
+            paddingLeft: 25,
             display: 'flex',
             alignItems: 'center',
             gap: 16,
@@ -188,7 +189,7 @@ export default function HeaderComponent() {
                 flex: 1,
                 justifyContent: 'flex-start',
                 minWidth: 0,
-                marginLeft: '150px'
+                marginLeft: '70px'
               }}
             >
               {menuItems.map((item) => (
@@ -389,6 +390,17 @@ export default function HeaderComponent() {
             >
               {isLoading ? 'Logging in...' : 'Login'}
             </Button>
+              <p
+    style={{
+      marginTop: '10px',
+      fontSize: '14px',
+      fontWeight: 500,
+      color: '#555',
+      textAlign:'center'
+    }}
+  >
+    Access Restricted: Authorized Admins Only
+  </p>
           </Form.Item>
         </Form>
       </Modal>

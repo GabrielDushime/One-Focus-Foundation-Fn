@@ -42,7 +42,7 @@ const MediaPage = () => {
   const [blogs, setBlogs] = useState([]);
   const [events, setEvents] = useState([]);
 
-  // Gallery images
+ 
   const galleryImages = [
     "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop",
     "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&h=600&fit=crop",
@@ -122,9 +122,9 @@ const fetchPublishedEvents = async () => {
     const response = await fetch(`${API_ENDPOINTS.EVENTS_PUBLISHED}?limit=50`);
     if (response.ok) {
       const data = await response.json();
-      // Handle different possible response structures
+      
       const eventsArray = data.data?.events || data.data || data.events || data || [];
-      console.log('Fetched events:', eventsArray); // Debug log
+      console.log('Fetched events:', eventsArray); 
       setEvents(eventsArray);
       
       if (eventsArray.length === 0) {
@@ -392,7 +392,7 @@ const fetchPublishedEvents = async () => {
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <div>
                 <img 
-                  src="/11.png"
+                  src="/voiceof.jpeg"
                   alt="Podcast Host"
                   style={{
                     width: '100%',

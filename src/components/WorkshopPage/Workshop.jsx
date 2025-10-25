@@ -71,7 +71,7 @@ const WorkshopPage = () => {
       id: 7,
       title: "Voice of Tomorrow Podcast",
       description: "Share your story and insights with a global audience via Spotify & YouTube.",
-      image: "/11.png"
+      image: "/voiceof.jpeg"
     },
     {
       id: 8,

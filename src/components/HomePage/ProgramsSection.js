@@ -48,7 +48,7 @@ const ProgramsSection = () => {
       title: "Voice of Tomorrow Podcast", 
       description: "A storytelling platform hosted on Spotify and YouTube, where youth share dreams, challenges, and success stories.",
       buttonText: "Book now",
-      image: "/11.png", 
+      image: "/voiceof.jpeg", 
       bgColor: "bg-blue-600",
       modalKey: "bookUs"
     },

@@ -39,6 +39,13 @@ export const API_ENDPOINTS = {
   EVENTS_BY_ID: (id) => `${API_BASE_URL}/events/${id}`,
   EVENTS_PUBLISH: (id) => `${API_BASE_URL}/events/${id}/publish`,
 
+  // Services Page endpoints
+  INTERNSHIP_APPLICATIONS: `${API_BASE_URL}/internship-applications`,
+  SOCIAL_MEDIA_SUPPORT: `${API_BASE_URL}/social-media-support`,
+  BOOK_SHOOT: `${API_BASE_URL}/book-shoot`,
+  TRAINING_ENROLLMENTS: `${API_BASE_URL}/training-enrollments`,
+  START_CODING: `${API_BASE_URL}/start-coding`,
+  CERTIFICATE_REQUESTS: `${API_BASE_URL}/certificate-requests`,
 
 };
 
