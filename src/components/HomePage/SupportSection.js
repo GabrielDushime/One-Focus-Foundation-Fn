@@ -807,7 +807,7 @@ const SupportSection = () => {
                         className="text-xs block font-bold"
                         style={{ color: '#333333', fontSize: '11px',marginBottom:'5px' }}
                       >
-                        ONEFOCUS FOU Ltd
+                        ONEFOCUS FOU 
                       </Text>
                     </div>
                     
