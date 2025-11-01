@@ -67,52 +67,65 @@ export default function HeaderComponent() {
     }
   }
 
-  const handleLogin = async (values) => {
-    setIsLoading(true)
-    try {
-      const response = await fetch(`${API_BASE_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: values.email,
-          password: values.password,
-        }),
-      })
+ const handleLogin = async (values) => {
+  setIsLoading(true)
+  try {
+    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: values.email,
+        password: values.password,
+      }),
+    })
 
-      const contentType = response.headers.get('content-type')
-      if (!contentType || !contentType.includes('application/json')) {
-        throw new Error('Server did not return JSON response')
-      }
-
-      const data = await response.json()
-
-      if (response.ok && data.access_token) {
-        localStorage.setItem('access_token', data.access_token)
-        
-        message.success('Login successful!')
-        setLoginModalVisible(false)
-        form.resetFields()
-        
-        router.push('/admin/dashboard')
-      } else {
-        message.error(data.message || 'Invalid credentials. Please try again.')
-      }
-    } catch (error) {
-      console.error('Login error:', error)
-      
-      if (error.message === 'Failed to fetch') {
-        message.error('Cannot connect to server. Please check your internet connection.')
-      } else if (error.message === 'Server did not return JSON response') {
-        message.error('Server error. Please try again later.')
-      } else {
-        message.error('An error occurred during login. Please try again.')
-      }
-    } finally {
-      setIsLoading(false)
+    const contentType = response.headers.get('content-type')
+    if (!contentType || !contentType.includes('application/json')) {
+      throw new Error('Server did not return JSON response')
     }
+
+    const data = await response.json()
+
+    if (response.ok && data.access_token) {
+      // Store access token
+      localStorage.setItem('access_token', data.access_token)
+      
+      // Store admin user information based on your backend structure
+      if (data.user) {
+        localStorage.setItem('username', data.user.fullName || 'Admin')
+        localStorage.setItem('email', data.user.email || values.email)
+        localStorage.setItem('user_role', data.user.role || 'admin')
+      } else {
+        // Fallback if user object is not provided
+        localStorage.setItem('email', values.email)
+        localStorage.setItem('username', values.email.split('@')[0])
+        localStorage.setItem('user_role', 'admin')
+      }
+      
+      message.success(`Welcome back, ${data.user?.fullName || 'Admin'}!`)
+      setLoginModalVisible(false)
+      form.resetFields()
+      
+      router.push('/admin/dashboard')
+    } else {
+      message.error(data.message || 'Invalid credentials. Please try again.')
+    }
+  } catch (error) {
+    console.error('Login error:', error)
+    
+    if (error.message === 'Failed to fetch') {
+      message.error('Cannot connect to server. Please check your internet connection.')
+    } else if (error.message === 'Server did not return JSON response') {
+      message.error('Server error. Please try again later.')
+    } else {
+      message.error('An error occurred during login. Please try again.')
+    }
+  } finally {
+    setIsLoading(false)
   }
+}
 
   const handleModalCancel = () => {
     setLoginModalVisible(false)
