@@ -1,11 +1,8 @@
 import HeroSection from './HomePage/HeroSection'
 import AboutSection from './HomePage/AboutSection'
 import ProgramsSection from './HomePage/ProgramsSection'
-import EventsSection from './HomePage/EventsSection' 
-import GetInvolvedSection from './HomePage/GetInvolvedSection' 
-import SupportSection from './HomePage/SupportSection'
-import AnnualReportSection from './HomePage/AnnualReportSection'
-import BottomSections from './HomePage/BottomSections'
+import HyperdriveSection from './HomePage/HyperdriveSection'
+import Partnerwithus from './HomePage/Partnerwithus'
 
 export default function Home() {
   return (
@@ -13,11 +10,8 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ProgramsSection />
-      <EventsSection />  
-      <GetInvolvedSection /> 
-      <SupportSection />
-      <AnnualReportSection />
-      <BottomSections/>
+      <HyperdriveSection />
+      <Partnerwithus />
     </>
   )
 }

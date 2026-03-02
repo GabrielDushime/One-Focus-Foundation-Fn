@@ -10,7 +10,7 @@ export default function Index() {
     <Layout className="min-h-screen">
       <HeaderComponent />
       <Content>
-        <Home />
+        <Home/>
       </Content>
       <FooterComponent />
     </Layout>

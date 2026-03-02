@@ -178,15 +178,19 @@ const AboutSection = () => {
                   fontSize:'13px',
                   paddingRight:'0px'
                 }}
-              >
-                ONEFOCUS is a long-term initiative aimed at discovering
-                and nurturing the talents of young Rwandan and African
-                children aged 5 to 30. The program will focus on both 
-                local and urban areas to identify talented children 
-                and help them showcase their abilities through various 
-                media platforms such as TV shows, YouTube, and other 
-                social media accounts.<p/>
-                Children will have opportunities to perform and displaying talents in different field of career such as Artists Talents, Performing Arts, Academic and Intellectual Talents, Sports and Physical Talents, Entrepreneurship and Business skills talents, Traditional and Cultural talent, Technology and Digital talents, Social and community Impact Talents and many more careers. The program will feature public events once a week for exhibitions and FutureKonneck Summit. This initiative aims to provide professional development and job creation opportunities for these young talents and gain recognition.
+              > 
+                <strong style={{fontSize:'16px'}}>ONEFOCUS AFRICA</strong> Empowering Africa's young talent across diverse career fields through
+                <ul className="list-disc pl-6 space-y-3">
+                  <li>
+                    <strong style={{fontSize:'16px'}}>Workshops</strong> – Equipping youth with professional skills needed to succeed.
+                  </li>
+                  <li>
+                    <strong style={{fontSize:'16px'}}>Mentorship</strong> – Connecting them with the right mentors aligned with their dream careers.
+                  </li>
+                  <li>
+                    <strong style={{fontSize:'16px'}}>Voice of Tomorrow Podcast</strong> – A platform to share inspiration, life lessons, and challenges to keep others motivated and learning.
+                  </li>
+                </ul>
               </Paragraph>
             </div>
           </Col>
