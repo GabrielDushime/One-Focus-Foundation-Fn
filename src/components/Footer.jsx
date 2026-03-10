@@ -20,86 +20,71 @@ export default function FooterComponent() {
 
   const quickLinks = [
     { label: 'Home', href: '/' },
-    { label: 'What we build', href: '/what-we-build' },
-    { label: 'Career', href: '/career' },
-    { label: 'Our workshop', href: '/workshop' },
-    { label: 'Media & Event', href: '/media' },
+    { label: 'Service', href: '/service' },
+    { label: 'Podcast', href: '/podcast' },
+    { label: 'Our Workshop', href: '/workshop' },
     { label: 'About Us', href: '/about' },
-    { label: 'Contact Us', href: '/contact' }
   ]
 
   const getInvolvedLinks = [
-    { label: 'Register for Workshops', href: '#' },
-    { label: 'Become a Mentor', href: '#' },
-    { label: 'Volunteer Opportunities', href: '#' },
-    { label: 'Donate', href: '#' },
-    { label: 'Partner with Us', href: '#' }
+    { label: 'Get Involved (All Actions)', href: 'https://linktr.ee/onefocusafrica' },
+    { label: 'Become a Mentor', href: 'https://linktr.ee/onefocusafrica' },
+    { label: 'Volunteer Opportunities', href: 'https://linktr.ee/onefocusafrica' },
+    { label: 'Donate', href: 'https://linktr.ee/onefocusafrica' },
+    { label: 'Partner with Us', href: 'https://linktr.ee/onefocusafrica' }
   ]
 
   const programLinks = [
-    { label: 'Mentorship', href: '#' },
-    { label: 'School Outreach', href: '#' },
-    { label: 'Our Workshops', href: '#' },
-    { label: 'Contact Us', href: '#' }
+    { label: 'Mentorship', href: 'https://linktr.ee/onefocusafrica' },
+    { label: 'School Outreach', href: 'https://linktr.ee/onefocusafrica' },
+    { label: 'Our Workshops', href: 'https://linktr.ee/onefocusafrica' },
+    { label: 'Contact Us', href: 'https://linktr.ee/onefocusafrica' }
   ]
 
   return (
-    <Footer style={{ backgroundColor: '#000', color: '#fff' }}>
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <Row gutter={[32, 32]}>
+    <Footer style={{ backgroundColor: '#000', color: '#fff', padding: '48px 24px 24px' }}>
+      <div className="max-w-7xl mx-auto">
+        <Row gutter={[24, 32]}>
           {/* Brand Section */}
-          <Col xs={24} sm={24} md={12} lg={6}>
-            <Title level={3} style={{ color: '#1F99ED', textAlign: 'left' }}>
-              ONEFOCUS
+          <Col xs={24} sm={12} md={6} lg={6}>
+            <Title level={4} style={{ color: '#ffffff', textAlign: 'left', marginBottom: '16px', fontSize: '18px' }}>
+              ONEFOCUS AFRICA
             </Title>
-            <Text style={{ color: '#fff', display: 'block', marginBottom: '24px', fontWeight: '600', fontSize: '12px', textAlign: 'left' }}>
-              Empowering the Next Generation Through Skills, <br />
-              Mentorship, and Expression of African Changemakers
+            <Text style={{ color: '#fff', display: 'block', marginBottom: '16px', fontWeight: '500', fontSize: '12px', textAlign: 'left', lineHeight: '1.6' }}>
+              Empowering the Next Generation Through Skills, Mentorship, and Expression of African Changemakers
             </Text>
 
-            <Text style={{ color: '#fff', display: 'block', marginBottom: '12px', textAlign: 'left' }}>Follow Us on social Media Platform</Text>
+            <Text style={{ color: '#fff', display: 'block', marginBottom: '12px', textAlign: 'left', fontSize: '12px' }}>Follow Us on Social Media</Text>
             <div style={{ textAlign: 'left' }}>
               <Space size="middle">
-                <a href="https://www.instagram.com/onefocusfou?igsh=emcyM2F4dHc5emxh" className="bg-pink-600 text-white p-2 rounded">
-                  <InstagramOutlined style={{ fontSize: '20px' }} />
+                <a href="https://www.instagram.com/onefocusafrica?igsh=emcyM2F4dHc5emxh" style={{ color: '#fff', background: '#E1306C', padding: '8px', borderRadius: '4px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <InstagramOutlined style={{ fontSize: '18px' }} />
                 </a>
-                <a href="https://www.facebook.com/share/171HoeV9wm/" className="bg-blue-600 text-white p-2 rounded">
-                  <FacebookOutlined style={{ fontSize: '20px' }} />
+                <a href="https://www.facebook.com/share/171HoeV9wm/" style={{ color: '#fff', background: '#1877F2', padding: '8px', borderRadius: '4px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FacebookOutlined style={{ fontSize: '18px' }} />
                 </a>
-                <a href="https://x.com/alainhlavin?t=SgzfR0z8PLgucHqOaUjmJA&s=09" className="bg-blue-400 text-white p-2 rounded">
-                  <TwitterOutlined style={{ fontSize: '20px' }} />
+                <a href="https://x.com/alainhlavin?t=SgzfR0z8PLgucHqOaUjmJA&s=09" style={{ color: '#fff', background: '#1DA1F2', padding: '8px', borderRadius: '4px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <TwitterOutlined style={{ fontSize: '18px' }} />
                 </a>
-                <a href="www.linkedin.com/in/onefocus-77ba3536a" className="bg-blue-700 text-white p-2 rounded">
-                  <LinkedinOutlined style={{ fontSize: '20px' }} />
+                <a href="www.linkedin.com/in/onefocus-77ba3536a" style={{ color: '#fff', background: '#0A66C2', padding: '8px', borderRadius: '4px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <LinkedinOutlined style={{ fontSize: '18px' }} />
                 </a>
-                <a href="https://www.youtube.com/@ONEFOCUSFOU" className="bg-red-600 text-white p-2 rounded">
-                  <YoutubeOutlined style={{ fontSize: '20px' }} />
-                </a>
-                <a href="https://www.tiktok.com/@onefocus_fou?_t=ZM-90KhtczZTMB&_r=1" className="bg-black text-white p-2 rounded">
-                  <span style={{ fontSize: '18px', fontWeight: 'bold' }}>♪</span>
+                <a href="https://www.youtube.com/@ONEFOCUSAFRICA" style={{ color: '#fff', background: '#FF0000', padding: '8px', borderRadius: '4px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <YoutubeOutlined style={{ fontSize: '18px' }} />
                 </a>
               </Space>
             </div>
           </Col>
 
           {/* Quick Links */}
-          <Col xs={24} sm={12} md={6} lg={4}>
-            <Title style={{ color: '#1F99ED', fontSize: '15px', textAlign: 'left', marginBottom: '16px' }}>
+          <Col xs={12} sm={12} md={6} lg={4}>
+            <Title level={5} style={{ color: '#1F99ED', fontSize: '14px', textAlign: 'left', marginBottom: '16px' }}>
               Quick Links
             </Title>
             <div style={{ textAlign: 'left' }}>
               {quickLinks.map((link, i) => (
                 <div key={i} style={{ marginBottom: '8px' }}>
-                  <Link 
-                    href={link.href} 
-                    style={{ 
-                      color: '#fff', 
-                      fontSize: '12px', 
-                      display: 'inline-block',
-                      textAlign: 'left'
-                    }} 
-                    className="hover:text-blue-400"
-                  >
+                  <Link href={link.href} style={{ color: '#fff', fontSize: '12px', display: 'inline-block', textAlign: 'left' }}>
                     {link.label}
                   </Link>
                 </div>
@@ -108,23 +93,14 @@ export default function FooterComponent() {
           </Col>
 
           {/* Programs */}
-          <Col xs={24} sm={12} md={6} lg={4}>
-            <Title level={4} style={{ color: '#1F99ED', fontSize: '15px', textAlign: 'left', marginBottom: '16px' }}>
+          <Col xs={12} sm={12} md={6} lg={4}>
+            <Title level={5} style={{ color: '#1F99ED', fontSize: '14px', textAlign: 'left', marginBottom: '16px' }}>
               Programs
             </Title>
             <div style={{ textAlign: 'left' }}>
               {programLinks.map((link, i) => (
-                <div key={i}>
-                  <Link 
-                    href={link.href} 
-                    style={{ 
-                      color: '#fff', 
-                      fontSize: '12px', 
-                      display: 'inline-block',
-                      textAlign: 'left'
-                    }} 
-                    className="hover:text-blue-400"
-                  >
+                <div key={i} style={{ marginBottom: '8px' }}>
+                  <Link href={link.href} style={{ color: '#fff', fontSize: '12px', display: 'inline-block', textAlign: 'left' }}>
                     {link.label}
                   </Link>
                 </div>
@@ -133,23 +109,14 @@ export default function FooterComponent() {
           </Col>
 
           {/* Get Involved */}
-          <Col xs={24} sm={12} md={6} lg={5}>
-            <Title level={4} style={{ color: '#1F99ED', fontSize: '15px', textAlign: 'left', marginBottom: '16px' }}>
+          <Col xs={12} sm={12} md={6} lg={5}>
+            <Title level={5} style={{ color: '#1F99ED', fontSize: '14px', textAlign: 'left', marginBottom: '16px' }}>
               Get Involved
             </Title>
             <div style={{ textAlign: 'left' }}>
               {getInvolvedLinks.map((link, i) => (
-                <div key={i}>
-                  <Link 
-                    href={link.href} 
-                    style={{ 
-                      color: '#fff', 
-                      fontSize: '12px', 
-                      display: 'inline-block',
-                      textAlign: 'left'
-                    }} 
-                    className="hover:text-blue-400"
-                  >
+                <div key={i} style={{ marginBottom: '8px' }}>
+                  <Link href={link.href} style={{ color: '#fff', fontSize: '12px', display: 'inline-block', textAlign: 'left' }}>
                     {link.label}
                   </Link>
                 </div>
@@ -159,34 +126,25 @@ export default function FooterComponent() {
 
           {/* Contact Info */}
           <Col xs={24} sm={12} md={12} lg={5}>
-            <Title level={4} style={{ color: '#1F99ED', fontSize: '15px', textAlign: 'left', marginBottom: '16px' }}>
+            <Title level={5} style={{ color: '#1F99ED', fontSize: '14px', textAlign: 'left', marginBottom: '16px' }}>
               Contact Us
             </Title>
             <div style={{ textAlign: 'left' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
-                <EnvironmentOutlined style={{ color: '#1F99ED', marginRight: '8px', marginTop: '2px' }} />
-                <Text style={{ color: '#fff', fontSize: '12px', textAlign: 'left' }}>
-                  Address: Kigali, Rwanda | Regional Offices Across Africa
+                <EnvironmentOutlined style={{ color: '#1F99ED', marginRight: '8px', marginTop: '2px', flexShrink: 0 }} />
+                <Text style={{ color: '#fff', fontSize: '12px', textAlign: 'left', lineHeight: '1.5' }}>
+                Norseken Kigali, Rwanda | Regional Offices Across Africa
                 </Text>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}>
-                <MailOutlined style={{ color: '#1F99ED', marginRight: '8px' }} />
-                <Link 
-                  href="mailto:info@onefocusfoundation.org" 
-                  style={{ color: '#fff', fontSize: '12px', textAlign: 'left' }} 
-                  className="hover:text-blue-400"
-                >
-                  
-                info@onefocus.org.rw/support@onefocus.org.rw
+                <MailOutlined style={{ color: '#1F99ED', marginRight: '8px', flexShrink: 0 }} />
+                <Link href="mailto:info@onefocusfoundation.org" style={{ color: '#fff', fontSize: '12px', textAlign: 'left' }}>
+                  info@onefocus.org.rw
                 </Link>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}>
-                <PhoneOutlined style={{ color: '#1F99ED', marginRight: '8px' }} />
-                <Link 
-                  href="tel:+250781102667" 
-                  style={{ color: '#fff', fontSize: '12px', textAlign: 'left' }} 
-                  className="hover:text-blue-400"
-                >
+                <PhoneOutlined style={{ color: '#1F99ED', marginRight: '8px', flexShrink: 0 }} />
+                <Link href="tel:+250781102667" style={{ color: '#fff', fontSize: '12px', textAlign: 'left' }}>
                   +250 781 102 667
                 </Link>
               </div>
@@ -195,17 +153,11 @@ export default function FooterComponent() {
         </Row>
 
         {/* Bottom Section */}
-        <div className="mt-8">
-          <div style={{ 
-            height: '0.5px', 
-            backgroundColor: '#1F99ED', 
-            marginTop: '10px',
-            marginBottom: '10px',
-            maxWidth: '100%'
-          }}></div>
+        <div style={{ marginTop: '32px' }}>
+          <div style={{ height: '1px', backgroundColor: '#1F99ED', marginBottom: '16px', width: '100%' }}></div>
           <div style={{ textAlign: 'center' }}>
             <Text style={{ color: '#fff', fontSize: '12px' }}>
-              © {currentYear} ONEFOCUS. All rights reserved. | Built for Africa's Youth
+              © {currentYear} ONEFOCUS AFRICA. All rights reserved. | Built for Africa's Youth
             </Text>
           </div>
         </div>

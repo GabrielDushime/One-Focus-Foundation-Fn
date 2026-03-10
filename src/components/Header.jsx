@@ -1,10 +1,9 @@
 'use client'
 
-import { Layout, Button, Drawer, Modal, Form, Input, message } from 'antd'
-import { MenuOutlined, CloseOutlined, LockOutlined, MailOutlined } from '@ant-design/icons'
+import { Layout, Button, Drawer } from 'antd'
+import { MenuOutlined, CloseOutlined, HomeOutlined, ToolOutlined, CustomerServiceOutlined, PlayCircleOutlined, InfoCircleOutlined, FileTextOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { API_BASE_URL } from '@/config/api' 
 
 const { Header } = Layout
 
@@ -13,9 +12,6 @@ export default function HeaderComponent() {
   const [drawerVisible, setDrawerVisible] = useState(false)
   const [hoveredItem, setHoveredItem] = useState(null)
   const [isLargeScreen, setIsLargeScreen] = useState(true)
-  const [loginModalVisible, setLoginModalVisible] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [form] = Form.useForm()
   const router = useRouter()
   const pathname = usePathname()
 
@@ -31,15 +27,12 @@ export default function HeaderComponent() {
   }, [])
 
   const menuItems = [
-    { key: 'home', label: 'HOME', route: '/' },
-    { key: 'what-we-build', label: 'WHAT WE ARE BUILD', route: '/what-we-build' },
-    { key: 'career', label: 'CAREER', route: '/career' },
-    { key: 'workshop', label: 'OUR WORKSHOP', route: '/workshop' },
-    { key: 'service', label: 'SERVICE', route: '/service' },
-    { key: 'media', label: 'MEDIA & EVENTS', route: '/media' },
-    { key: 'about', label: 'ABOUT US', route: '/about' },
-    { key: 'contact', label: 'CONTACT US', route: '/contact' },
-    { key: 'login', label: 'ADMIN LOGIN', route: null },
+    { key: 'home', label: 'HOME', route: '/', icon: <HomeOutlined /> },
+    { key: 'workshop', label: 'PROGRAMS & WORKSHOP', route: '/workshop', icon: <ToolOutlined /> },
+    { key: 'service', label: 'SERVICES', route: '/service', icon: <CustomerServiceOutlined /> },
+    { key: 'podcast', label: 'PODCAST', route: '/podcast', icon: <PlayCircleOutlined /> },
+    { key: 'blogs', label: 'BLOGS', route: '/blog', icon: <FileTextOutlined /> },
+    { key: 'about', label: 'ABOUT US', route: '/about', icon: <InfoCircleOutlined /> },
   ]
 
   useEffect(() => {
@@ -53,83 +46,12 @@ export default function HeaderComponent() {
   const closeDrawer = () => setDrawerVisible(false)
 
   const handleMenuClick = (key) => {
-    if (key === 'login') {
-      setLoginModalVisible(true)
-      setDrawerVisible(false)
-      return
-    }
-
     const selectedMenuItem = menuItems.find(item => item.key === key)
     if (selectedMenuItem && selectedMenuItem.route) {
       setSelectedItem(key)
       router.push(selectedMenuItem.route)
       setDrawerVisible(false)
     }
-  }
-
- const handleLogin = async (values) => {
-  setIsLoading(true)
-  try {
-    const response = await fetch(`${API_BASE_URL}/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: values.email,
-        password: values.password,
-      }),
-    })
-
-    const contentType = response.headers.get('content-type')
-    if (!contentType || !contentType.includes('application/json')) {
-      throw new Error('Server did not return JSON response')
-    }
-
-    const data = await response.json()
-
-    if (response.ok && data.access_token) {
-      // Store access token
-      localStorage.setItem('access_token', data.access_token)
-      
-      // Store admin user information based on your backend structure
-      if (data.user) {
-        localStorage.setItem('username', data.user.fullName || 'Admin')
-        localStorage.setItem('email', data.user.email || values.email)
-        localStorage.setItem('user_role', data.user.role || 'admin')
-      } else {
-        // Fallback if user object is not provided
-        localStorage.setItem('email', values.email)
-        localStorage.setItem('username', values.email.split('@')[0])
-        localStorage.setItem('user_role', 'admin')
-      }
-      
-      message.success(`Welcome back, ${data.user?.fullName || 'Admin'}!`)
-      setLoginModalVisible(false)
-      form.resetFields()
-      
-      router.push('/admin/dashboard')
-    } else {
-      message.error(data.message || 'Invalid credentials. Please try again.')
-    }
-  } catch (error) {
-    console.error('Login error:', error)
-    
-    if (error.message === 'Failed to fetch') {
-      message.error('Cannot connect to server. Please check your internet connection.')
-    } else if (error.message === 'Server did not return JSON response') {
-      message.error('Server error. Please try again later.')
-    } else {
-      message.error('An error occurred during login. Please try again.')
-    }
-  } finally {
-    setIsLoading(false)
-  }
-}
-
-  const handleModalCancel = () => {
-    setLoginModalVisible(false)
-    form.resetFields()
   }
 
   return (
@@ -153,7 +75,7 @@ export default function HeaderComponent() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          flexWrap: 'nowrap',          
+          flexWrap: 'nowrap',
         }}
       >
         <div
@@ -168,7 +90,7 @@ export default function HeaderComponent() {
           }}
         >
           <img
-            src="/logo.svg"
+            src="/official-01.png"
             alt="OneFocus Logo"
             style={{
               width: 50,
@@ -183,10 +105,10 @@ export default function HeaderComponent() {
               lineHeight: 1,           
               fontWeight: 700,
               fontSize: 15,
-              color: '#2E3192',
+              color: '#1f99ed',
             }}
           >
-            ONEFOCUS
+            ONEFOCUS AFRICA
           </p>
         </div>
 
@@ -194,15 +116,13 @@ export default function HeaderComponent() {
           {isLargeScreen ? (
             <div
               style={{
-                backgroundColor: '#1F99ED',
                 display: 'flex',
                 alignItems: 'center',
                 height: '64px',
                 marginBottom: '6px',
                 flex: 1,
-                justifyContent: 'flex-start',
-                minWidth: 0,
-                marginLeft: '70px'
+                justifyContent: 'center',
+                minWidth: 0
               }}
             >
               {menuItems.map((item) => (
@@ -212,12 +132,10 @@ export default function HeaderComponent() {
                   onMouseEnter={() => setHoveredItem(item.key)}
                   onMouseLeave={() => setHoveredItem(null)}
                   style={{
-                    backgroundColor: selectedItem === item.key 
-                      ? '#ffffff' 
-                      : hoveredItem === item.key 
-                        ? 'rgba(255, 255, 255, 0.1)' 
-                        : 'transparent',
-                    color: selectedItem === item.key ? '#1F99ED' : '#ffffff',
+                    backgroundColor: hoveredItem === item.key 
+                      ? '#1f99ed' 
+                      : 'transparent',
+                    color: hoveredItem === item.key ? '#ffffff' : '#2e3192',
                     fontWeight: 'bold',
                     height: '64px',
                     display: 'flex',
@@ -237,12 +155,45 @@ export default function HeaderComponent() {
                     outline: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease-in-out',
-                    fontFamily: 'inherit'
+                    fontFamily: 'inherit',
+                    gap: '8px'
                   }}
                 >
+                  <span style={{ fontSize: selectedItem === item.key ? '16px' : '14px' }}>{item.icon}</span>
                   {item.label}
                 </button>
               ))}
+              <a
+                href="https://linktr.ee/onefocusafrica"
+                target="_blank"
+                rel="noreferrer"
+                onMouseEnter={() => setHoveredItem('linktree')}
+                onMouseLeave={() => setHoveredItem(null)}
+                style={{
+                  backgroundColor: hoveredItem === 'linktree' ? '#1f99ed' : '#2e3192',
+                  color: '#ffffff',
+                  fontWeight: 'bold',
+                  height: '40px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0 20px',
+                  fontSize: '12px',
+                  whiteSpace: 'nowrap',
+                  border: 'none',
+                  borderRadius: '20px',
+                  boxShadow: 'none',
+                  outline: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease-in-out',
+                  fontFamily: 'inherit',
+                  gap: '6px',
+                  marginLeft: '12px',
+                  textDecoration: 'none'
+                }}
+              >
+                📩 Get Involved
+              </a>
             </div>
           ) : (
             <div 
@@ -308,115 +259,17 @@ export default function HeaderComponent() {
                 textAlign: 'left',
                 transition: 'all 0.2s ease-in-out',
                 fontFamily: 'inherit',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px'
               }}
             >
+              <span style={{ fontSize: '18px' }}>{item.icon}</span>
               {item.label}
             </button>
           ))}
         </div>
       </Drawer>
-
-      <Modal
-        title={
-          <div style={{ textAlign: 'center', marginBottom: '8px' }}>
-            <div style={{
-              width: '60px',
-              height: '60px',
-              borderRadius: '50%',
-              backgroundColor: '#1F99ED',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 16px',
-            }}>
-              <LockOutlined style={{ fontSize: '28px', color: 'white' }} />
-            </div>
-            <h2 style={{ margin: 0, fontSize: '24px', fontWeight: 'bold', color: '#2E3192' }}>
-              Admin Login
-            </h2>
-            <p style={{ margin: '8px 0 0', color: '#666', fontSize: '14px' }}>
-              Enter your credentials to access the dashboard
-            </p>
-          </div>
-        }
-        open={loginModalVisible}
-        onCancel={handleModalCancel}
-        footer={null}
-        width={450}
-        centered
-        closable={true}
-      >
-        <Form
-          form={form}
-          name="admin_login"
-          onFinish={handleLogin}
-          layout="vertical"
-          style={{ marginTop: '24px' }}
-        >
-          <Form.Item
-            name="email"
-            label="Email Address"
-            rules={[
-              { required: true, message: 'Please enter your email!' },
-              { type: 'email', message: 'Please enter a valid email!' }
-            ]}
-          >
-            <Input
-              prefix={<MailOutlined style={{ color: '#1F99ED' }} />}
-              placeholder="admin@example.com"
-              size="large"
-              style={{ borderRadius: '8px' }}
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="password"
-            label="Password"
-            rules={[
-              { required: true, message: 'Please enter your password!' },
-              { min: 6, message: 'Password must be at least 6 characters!' }
-            ]}
-          >
-            <Input.Password
-              prefix={<LockOutlined style={{ color: '#1F99ED' }} />}
-              placeholder="Enter your password"
-              size="large"
-              style={{ borderRadius: '8px' }}
-            />
-          </Form.Item>
-
-          <Form.Item style={{ marginBottom: 0, marginTop: '24px' }}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              loading={isLoading}
-              block
-              size="large"
-              style={{
-                backgroundColor: '#1F99ED',
-                borderColor: '#1F99ED',
-                borderRadius: '8px',
-                height: '48px',
-                fontSize: '16px',
-                fontWeight: 'bold',
-              }}
-            >
-              {isLoading ? 'Logging in...' : 'Login'}
-            </Button>
-              <p
-    style={{
-      marginTop: '10px',
-      fontSize: '14px',
-      fontWeight: 500,
-      color: '#555',
-      textAlign:'center'
-    }}
-  >
-    Access Restricted: Authorized Admins Only
-  </p>
-          </Form.Item>
-        </Form>
-      </Modal>
     </div>
   )
 }
