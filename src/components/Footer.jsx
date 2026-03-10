@@ -133,7 +133,7 @@ export default function FooterComponent() {
               <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
                 <EnvironmentOutlined style={{ color: '#1F99ED', marginRight: '8px', marginTop: '2px', flexShrink: 0 }} />
                 <Text style={{ color: '#fff', fontSize: '12px', textAlign: 'left', lineHeight: '1.5' }}>
-                  Masaka - Dubai Port, Kigali, Rwanda | Regional Offices Across Africa
+                Norseken Kigali, Rwanda | Regional Offices Across Africa
                 </Text>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}>
