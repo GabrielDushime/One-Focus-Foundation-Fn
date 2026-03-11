@@ -179,7 +179,7 @@ const AboutSection = () => {
                   paddingRight:'0px'
                 }}
               > 
-                <strong style={{fontSize:'16px'}}>ONEFOCUS AFRICA</strong> Empowering Africa's young talent across diverse career fields through
+<strong style={{fontSize:'16px'}}>ONEFOCUS AFRICA</strong> Empowering Africa&apos;s young talent across diverse career fields through
                 <ul className="list-disc pl-6 space-y-3">
                   <li>
                     <strong style={{fontSize:'16px'}}>Workshops</strong> – Equipping youth with professional skills needed to succeed.

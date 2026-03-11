@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Layout } from "antd";
+import Image from "next/image";
 import HeaderComponent from "../components/Header";
 import FooterComponent from "../components/Footer";
 
@@ -28,7 +29,7 @@ const useInView = (threshold = 0.12) => {
     );
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
-  }, []);
+  }, [threshold]);
   return [ref, visible];
 };
 
@@ -955,8 +956,7 @@ const FeaturedSection = ({ onOpenArticle }) => (
                   position: "relative", overflow: "hidden",
                 }}>
                   <div style={{ position: "absolute", inset: 0, background: h ? `linear-gradient(135deg,${P.blue}18,${P.navy}10)` : "transparent", transition: "background .35s ease" }} />
-                  <img src={image} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", position: "relative", zIndex: 1 }} />
-                </div>
+                  <Image src={image} alt={title} fill style={{ objectFit: "cover", objectPosition: "center", position: "relative", zIndex: 1 }} />
                 <div style={{ padding: "1.4rem", display: "flex", flexDirection: "column", flex: 1 }}>
                   <span style={{ display: "inline-block", background: cs.bg, color: cs.text, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 50, padding: "3px 10px", marginBottom: 10, width: "fit-content" }}>{cat}</span>
                   <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: "0.93rem", fontWeight: 800, color: P.black, lineHeight: 1.45, marginBottom: 8, flex: 1 }}>{title}</h3>

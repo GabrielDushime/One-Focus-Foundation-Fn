@@ -110,9 +110,9 @@ const HyperdriveSection = () => {
               >
                 <Title level={3} className="!text-2xl font-bold !text-white !mb-3">Purpose</Title>
                 <Paragraph className="!text-white !mb-0">
-                  HYPERDRIVE aligns with ONEFOCUS AFRICA's mission to discover,
+                  HYPERDRIVE aligns with ONEFOCUS AFRICA&apos;s mission to discover,
                   nurture, and empower African youth. It is not just an event,
-                  it is a launchpad for Africa's next generation of leaders,
+                it is a launchpad for Africa&apos;s next generation of leaders,
                   creators, and innovators.
                 </Paragraph>
               </div>

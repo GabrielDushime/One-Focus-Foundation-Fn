@@ -100,7 +100,7 @@ export default function EditorDashboard() {
                 Welcome back, {userName}! 👋
               </Title>
               <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>
-                Here's what's happening with your content today.
+                Here&apos;s what&apos;s happening with your content today.
               </Text>
             </div>
             <Avatar 

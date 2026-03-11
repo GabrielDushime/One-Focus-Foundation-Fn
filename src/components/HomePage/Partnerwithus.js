@@ -117,7 +117,7 @@ const Partnerwithus = () => {
                   lineHeight: 1.2
                 }}
               >
-                is Investing in Africa's Future
+                is Investing in Africa&apos;s Future
               </Title>
 
               <Paragraph style={{ fontSize: '15px', color: '#475569', lineHeight: 1.8, marginBottom: '20px' }}>
