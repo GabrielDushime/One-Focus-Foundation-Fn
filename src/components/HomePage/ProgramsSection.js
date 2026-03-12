@@ -117,7 +117,7 @@ const ProgramsSection = () => {
             className="!text-white !text-base md:!text-lg font-bold !mb-0"
             style={{ maxWidth: '700px', margin: '0 auto', lineHeight: 1.5, color: '#FFFFFF' , fontWeight:Bold }}
           >
-            We are building the future pathway of Africa's next creators, leaders, and innovators.
+            We are building the future pathway of Africa&apos;s next creators, leaders, and innovators.
           </p>
         </div>
       </div>
