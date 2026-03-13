@@ -1,3 +1,6 @@
+'use client'
+
+export const dynamic = 'force-dynamic'
 import { Layout, Card, Row, Col, Statistic, Table, Tag, Button, Typography, Avatar, List, Drawer } from 'antd'
 import { EditOutlined, EyeOutlined, FileTextOutlined, UserOutlined, TeamOutlined, CalendarOutlined, PlusOutlined, MenuOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
