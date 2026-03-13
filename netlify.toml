@@ -4,9 +4,11 @@ command = "npm run build"
 [[plugins]]
 package = "@netlify/plugin-nextjs"
 
+# Security Headers
+
 [[headers]]
 for = "/*"
-  [headers.values]
-  X-Frame-Options = "DENY"
-  X-XSS-Protection = "1; mode=block"
-  X-Content-Type-Options = "nosniff"
+[headers.values]
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+X-Content-Type-Options = "nosniff"
