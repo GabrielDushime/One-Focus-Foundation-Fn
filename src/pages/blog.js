@@ -948,7 +948,7 @@ const FeaturedSection = ({ onOpenArticle }) => (
       borderRadius: 20,
       overflow: "hidden",
       transform: h ? "translateY(-7px)" : "none",
-      boxShadow: h ? `0 22px 50px ${P.blue}18` : "0 3px 16px rgba(0,0,0,0.055)`,
+      boxShadow: h ? `0 22px 50px ${P.blue}18` : "0 3px 16px rgba(0,0,0,0.055)",
       transition: "all .35s ease",
       display: "flex",
       flexDirection: "column",
