@@ -1,19 +1,12 @@
+[build]
+command = "npm run build"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
 [[headers]]
-  for = "/*"
+for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-
-[[redirects]]
-  from = "/*"
-  to = "/.next/index.html"
-  status = 200
-
-# Next.js static assets
-[[redirects]]
-  from = "/_next/static/*"
-  to = "/.next/static/:splat"
-  status = 200
-
-# Disable page rules by providing explicit config
+  X-Frame-Options = "DENY"
+  X-XSS-Protection = "1; mode=block"
+  X-Content-Type-Options = "nosniff"
