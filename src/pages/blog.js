@@ -939,32 +939,117 @@ const FeaturedSection = ({ onOpenArticle }) => (
           const cs = catCs(cat);
           return (
             <FadeUp key={title} delay={i * 0.09}>
-              <div
-                onMouseEnter={() => setH(true)}
-                onMouseLeave={() => setH(false)}
-                style={{
-                  background: P.white, border: `1.5px solid ${h ? P.blue : P.border}`,
-                  borderRadius: 20, overflow: "hidden",
-                  transform: h ? "translateY(-7px)" : "none",
-                  boxShadow: h ? `0 22px 50px ${P.blue}18` : "0 3px 16px rgba(0,0,0,0.055)",
-                  transition: "all .35s ease", display: "flex", flexDirection: "column",
-                }}>
-              <div style={{
-                  height: 140, background: bg,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  borderBottom: `1px solid ${P.border}`,
-                  position: "relative", overflow: "hidden",
-                }}>
-                  <div style={{ position: "absolute", inset: 0, background: h ? `linear-gradient(135deg,${P.blue}18,${P.navy}10)` : "transparent", transition: "background .35s ease" }} />
-                  <Image src={image} alt={title} fill style={{ objectFit: "cover", objectPosition: "center", position: "relative", zIndex: 1 }} />
-                <div style={{ padding: "1.4rem", display: "flex", flexDirection: "column", flex: 1 }}>
-                  <span style={{ display: "inline-block", background: cs.bg, color: cs.text, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 50, padding: "3px 10px", marginBottom: 10, width: "fit-content" }}>{cat}</span>
-                  <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: "0.93rem", fontWeight: 800, color: P.black, lineHeight: 1.45, marginBottom: 8, flex: 1 }}>{title}</h3>
-                  <p style={{ fontSize: "0.8rem", color: P.muted, lineHeight: 1.65, marginBottom: 14 }}>{summary}</p>
-                  <ReadMoreBtn onClick={() => article && onOpenArticle(article)} hover={h} />
-                </div>
-              </div>
-            </FadeUp>
+  <div
+    onMouseEnter={() => setH(true)}
+    onMouseLeave={() => setH(false)}
+    style={{
+      background: P.white,
+      border: `1.5px solid ${h ? P.blue : P.border}`,
+      borderRadius: 20,
+      overflow: "hidden",
+      transform: h ? "translateY(-7px)" : "none",
+      boxShadow: h ? `0 22px 50px ${P.blue}18` : "0 3px 16px rgba(0,0,0,0.055)`,
+      transition: "all .35s ease",
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
+    {/* Image section */}
+    <div
+      style={{
+        height: 140,
+        background: bg,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderBottom: `1px solid ${P.border}`,
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: h
+            ? `linear-gradient(135deg,${P.blue}18,${P.navy}10)`
+            : "transparent",
+          transition: "background .35s ease",
+        }}
+      />
+
+      <Image
+        src={image}
+        alt={title}
+        fill
+        style={{
+          objectFit: "cover",
+          objectPosition: "center",
+          position: "relative",
+          zIndex: 1,
+        }}
+      />
+    </div>
+
+    {/* Content */}
+    <div
+      style={{
+        padding: "1.4rem",
+        display: "flex",
+        flexDirection: "column",
+        flex: 1,
+      }}
+    >
+      <span
+        style={{
+          display: "inline-block",
+          background: cs.bg,
+          color: cs.text,
+          fontSize: "0.68rem",
+          fontWeight: 700,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          borderRadius: 50,
+          padding: "3px 10px",
+          marginBottom: 10,
+          width: "fit-content",
+        }}
+      >
+        {cat}
+      </span>
+
+      <h3
+        style={{
+          fontFamily: "'Syne',sans-serif",
+          fontSize: "0.93rem",
+          fontWeight: 800,
+          color: P.black,
+          lineHeight: 1.45,
+          marginBottom: 8,
+          flex: 1,
+        }}
+      >
+        {title}
+      </h3>
+
+      <p
+        style={{
+          fontSize: "0.8rem",
+          color: P.muted,
+          lineHeight: 1.65,
+          marginBottom: 14,
+        }}
+      >
+        {summary}
+      </p>
+
+      <ReadMoreBtn
+        onClick={() => article && onOpenArticle(article)}
+        hover={h}
+      />
+    </div>
+  </div>
+</FadeUp>
           );
         })}
       </div>
