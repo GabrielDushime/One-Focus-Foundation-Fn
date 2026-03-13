@@ -1,10 +1,12 @@
+'use client'
+
 import { useState } from 'react'
 import { Layout, Card, Row, Col, Form, Input, Button, Typography, message, Divider } from 'antd'
-import { LockOutlined, MailOutlined, UserOutlined, SafetyCertificateOutlined } from '@ant-design/icons'
+import { LockOutlined, MailOutlined, SafetyCertificateOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/navigation'
 import { API_BASE_URL } from '@/config/api'
 
-const { Title, Text, Paragraph } = Layout
+const { Title, Text, Paragraph } = Typography
 
 const DEMO_CREDENTIALS = [
   { email: 'admin@demo.com', password: 'Admin@123', role: 'admin', label: 'Admin', color: '#2E3192' },
