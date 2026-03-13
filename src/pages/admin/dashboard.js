@@ -8,7 +8,6 @@ import HeaderComponent from '../../components/Header'
 const { Content, Sider } = Layout
 const { Title, Text, Paragraph } = Typography
 const { TabPane } = Tabs
-const { responsive, breakpoints } = Col
 
 // Sample admin data
 const recentActivities = [
@@ -138,15 +137,23 @@ export default function AdminDashboard() {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [form] = Form.useForm()
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false)
-  
+  const [isMobile, setIsMobile] = useState(false)
+
   // Get user info from localStorage
   const [userInfo, setUserInfo] = useState({ username: 'Admin', role: 'admin', email: 'admin@demo.com' })
   
   useEffect(() => {
+    // Load user info from localStorage
     const username = localStorage.getItem('username') || 'Admin'
     const role = localStorage.getItem('user_role') || 'admin'
     const email = localStorage.getItem('email') || 'admin@demo.com'
     setUserInfo({ username, role, email })
+
+    // Handle responsive sidebar — window is only available client-side, never during SSR
+    const checkMobile = () => setIsMobile(window.innerWidth < 992)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
   // Responsive sidebar menu items
@@ -196,15 +203,14 @@ export default function AdminDashboard() {
           />
         </Drawer>
 
-        {/* Desktop Sidebar */}
+        {/* Desktop Sidebar — uses isMobile state instead of window directly (safe for SSR) */}
         <Sider 
           collapsible 
           collapsed={collapsed} 
           onCollapse={setCollapsed}
           width={220}
-          style={{ background: '#fff', marginTop: '0px' }}
+          style={{ background: '#fff', marginTop: '0px', display: isMobile ? 'none' : 'block' }}
           breakpoint="lg"
-          hidden={window?.innerWidth < 992}
           className="desktop-sider"
         >
           <div style={{ padding: '16px', borderBottom: '1px solid #f0f0f0' }}>
@@ -244,14 +250,15 @@ export default function AdminDashboard() {
           </div>
 
           <Content style={{ padding: '16px', backgroundColor: '#f5f5f5' }}>
-            {/* Welcome Banner - Responsive */}
+            {/* Welcome Banner */}
             <Card 
               style={{ marginBottom: '16px', background: 'linear-gradient(135deg, #2E3192, #1F99ED)', border: 'none' }}
               bodyStyle={{ padding: '16px' }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
                 <div>
-                  <Title level={4} style={{ color: 'white', margin: 0, fontSize: window?.innerWidth < 576 ? '18px' : '20px' }}>
+                  {/* fontSize moved to CSS media query below — avoids window access at render time */}
+                  <Title level={4} className="welcome-title" style={{ color: 'white', margin: 0, fontSize: '20px' }}>
                     Welcome back, {userInfo.username}! 👋
                   </Title>
                   <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>
@@ -278,7 +285,6 @@ export default function AdminDashboard() {
             <Tabs activeKey={activeTab} onChange={setActiveTab} size="small">
               {/* Overview Tab */}
               <TabPane tab="Overview" key="overview">
-                {/* Stats Row - Fully Responsive */}
                 <Row gutter={[12, 12]} style={{ marginBottom: '16px' }}>
                   <Col xs={12} sm={12} lg={6}>
                     <Card bodyStyle={{ padding: '12px' }}>
@@ -327,7 +333,6 @@ export default function AdminDashboard() {
                   </Col>
                 </Row>
 
-                {/* Content Stats - Responsive */}
                 <Card 
                   title={<span style={{ fontSize: '14px' }}>Content Statistics</span>} 
                   bodyStyle={{ padding: '12px' }}
@@ -335,7 +340,7 @@ export default function AdminDashboard() {
                 >
                   <Table 
                     columns={[
-                      { title: 'Category', dataIndex: 'category', key: 'category', fontSize: '12px' },
+                      { title: 'Category', dataIndex: 'category', key: 'category' },
                       { title: 'Total', dataIndex: 'total', key: 'total' },
                       { title: 'Published', dataIndex: 'published', key: 'published', render: (v) => <Tag color="green">{v}</Tag> },
                       { title: 'Draft', dataIndex: 'draft', key: 'draft', render: (v) => <Tag>{v}</Tag> },
@@ -358,7 +363,6 @@ export default function AdminDashboard() {
                   />
                 </Card>
 
-                {/* Recent Activity & Upcoming Events - Responsive */}
                 <Row gutter={[12, 12]}>
                   <Col xs={24} lg={12}>
                     <Card 
@@ -573,6 +577,9 @@ export default function AdminDashboard() {
           }
           .mobile-menu-btn {
             display: inline-block !important;
+          }
+          .welcome-title {
+            font-size: 18px !important;
           }
         }
         @media (min-width: 992px) {
