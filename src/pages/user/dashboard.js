@@ -1,10 +1,10 @@
 import { Layout, Card, Row, Col, Statistic, Tag, Button, Typography, Avatar, List, Progress } from 'antd'
-import { UserOutlined, BookOutlined, StarOutlined, ClockCircleOutlined, CheckCircleOutlined, PlayCircleOutlined, CalendarOutlined, TeamOutlined } from '@ant-design/icons'
+import { UserOutlined, BookOutlined, StarOutlined, ClockCircleOutlined, CheckCircleOutlined, PlayCircleOutlined, CalendarOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 import HeaderComponent from '../../components/Header'
 
 const { Content } = Layout
-const { Title, Text, Paragraph } = Typography
+const { Title, Text } = Typography
 
 // Sample data for user dashboard
 const enrolledPrograms = [
@@ -51,14 +51,15 @@ export default function UserDashboard() {
           <Tag color="#52c41a">USER</Tag>
         </div>
 
-        {/* Welcome Banner - Responsive */}
+        {/* Welcome Banner */}
         <Card 
           style={{ marginBottom: '16px', background: 'linear-gradient(135deg, #52c41a, #1890ff)', border: 'none' }}
           bodyStyle={{ padding: '16px' }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
             <div>
-              <Title level={4} style={{ color: 'white', margin: 0, fontSize: window?.innerWidth < 576 ? '16px' : '18px' }}>
+              {/* fontSize handled via CSS media query below — avoids window access during SSR */}
+              <Title level={4} className="welcome-title" style={{ color: 'white', margin: 0, fontSize: '18px' }}>
                 Welcome back, {userName}! 👋
               </Title>
               <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>
@@ -73,7 +74,7 @@ export default function UserDashboard() {
           </div>
         </Card>
 
-        {/* Stats Row - Fully Responsive */}
+        {/* Stats Row */}
         <Row gutter={[12, 12]} style={{ marginBottom: '16px' }}>
           <Col xs={12} sm={12} lg={6}>
             <Card bodyStyle={{ padding: '12px' }}>
@@ -117,7 +118,7 @@ export default function UserDashboard() {
           </Col>
         </Row>
 
-        {/* Main Content - Responsive */}
+        {/* Main Content */}
         <Row gutter={[12, 12]}>
           {/* Enrolled Programs */}
           <Col xs={24} lg={16}>
@@ -239,7 +240,7 @@ export default function UserDashboard() {
           </Col>
         </Row>
 
-        {/* Quick Actions - Responsive */}
+        {/* Quick Actions */}
         <Card 
           title={<span style={{ fontSize: '14px' }}>Quick Actions</span>}
           bodyStyle={{ padding: '12px' }}
@@ -259,6 +260,9 @@ export default function UserDashboard() {
         @media (max-width: 575px) {
           .user-mobile-header {
             display: flex !important;
+          }
+          .welcome-title {
+            font-size: 16px !important;
           }
         }
       `}</style>
