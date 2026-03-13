@@ -1,15 +1,16 @@
 'use client'
 
 export const dynamic = 'force-dynamic'
-import { Layout, Card, Row, Col, Statistic, Table, Tag, Button, Typography, Avatar, List, Drawer } from 'antd'
-import { EditOutlined, EyeOutlined, FileTextOutlined, UserOutlined, TeamOutlined, CalendarOutlined, PlusOutlined, MenuOutlined } from '@ant-design/icons'
+
+import { Layout, Card, Row, Col, Statistic, Table, Tag, Button, Typography, Avatar } from 'antd'
+import { EyeOutlined, EditOutlined, FileTextOutlined, CalendarOutlined, TeamOutlined, PlusOutlined, UserOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 import HeaderComponent from '../../components/Header'
 
 const { Content } = Layout
 const { Title, Text } = Typography
 
-// Sample data for editor dashboard
+// Sample Data
 const recentArticles = [
   { key: '1', title: 'Annual Report 2024 Released', status: 'published', date: '2024-01-15', views: 1250 },
   { key: '2', title: 'New Workshop Series Announced', status: 'draft', date: '2024-01-14', views: 0 },
@@ -23,7 +24,8 @@ const pendingTasks = [
   { key: '3', task: 'Approve community posts', priority: 'low', dueDate: '2024-01-25' },
 ]
 
-const columns = [
+// Table Columns
+const articleColumns = [
   { title: 'Title', dataIndex: 'title', key: 'title', render: (text) => <strong>{text}</strong> },
   { 
     title: 'Status', 
@@ -68,148 +70,94 @@ const taskColumns = [
 ]
 
 export default function EditorDashboard() {
-  const [mobileMenuVisible, setMobileMenuVisible] = useState(false)
   const [userName, setUserName] = useState('Editor')
-  
+  const [isMobile, setIsMobile] = useState(false)
+
   useEffect(() => {
     const storedName = localStorage.getItem('username')
     if (storedName) setUserName(storedName)
+
+    // Detect screen width safely on client
+    const handleResize = () => setIsMobile(window.innerWidth < 576)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
     <Layout style={{ minHeight: '100vh', marginTop: '70px' }}>
       <HeaderComponent />
       <Content style={{ padding: '16px', backgroundColor: '#f5f5f5' }}>
-        
+
         {/* Mobile Header */}
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between',
-          marginBottom: '16px'
-        }} className="editor-mobile-header">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }} className="editor-mobile-header">
           <Title level={4} style={{ margin: 0, color: '#2E3192' }}>Editor Dashboard</Title>
           <Tag color="#1F99ED">EDITOR</Tag>
         </div>
 
-        {/* Welcome Banner - Responsive */}
-        <Card 
-          style={{ marginBottom: '16px', background: 'linear-gradient(135deg, #1F99ED, #2E3192)', border: 'none' }}
-          bodyStyle={{ padding: '16px' }}
-        >
+        {/* Welcome Banner */}
+        <Card style={{ marginBottom: '16px', background: 'linear-gradient(135deg, #1F99ED, #2E3192)', border: 'none' }} bodyStyle={{ padding: '16px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
             <div>
-              <Title level={4} style={{ color: 'white', margin: 0, fontSize: window?.innerWidth < 576 ? '16px' : '18px' }}>
+              <Title level={4} style={{ color: 'white', margin: 0, fontSize: isMobile ? '16px' : '18px' }}>
                 Welcome back, {userName}! 👋
               </Title>
               <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>
                 Here&apos;s what&apos;s happening with your content today.
               </Text>
             </div>
-            <Avatar 
-              size={48} 
-              icon={<UserOutlined />} 
-              style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}
-            />
+            <Avatar size={48} icon={<UserOutlined />} style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
           </div>
         </Card>
 
-        {/* Stats Row - Fully Responsive */}
+        {/* Stats Row */}
         <Row gutter={[12, 12]} style={{ marginBottom: '16px' }}>
           <Col xs={12} sm={12} lg={6}>
             <Card bodyStyle={{ padding: '12px' }}>
-              <Statistic 
-                title={<span style={{ fontSize: '12px' }}>Published</span>} 
-                value={12} 
-                prefix={<FileTextOutlined />} 
-                valueStyle={{ color: '#52c41a', fontSize: '20px' }}
-              />
+              <Statistic title={<span style={{ fontSize: '12px' }}>Published</span>} value={12} prefix={<FileTextOutlined />} valueStyle={{ color: '#52c41a', fontSize: '20px' }} />
             </Card>
           </Col>
           <Col xs={12} sm={12} lg={6}>
             <Card bodyStyle={{ padding: '12px' }}>
-              <Statistic 
-                title={<span style={{ fontSize: '12px' }}>Total Views</span>} 
-                value={45320} 
-                prefix={<EyeOutlined />} 
-                valueStyle={{ color: '#1F99ED', fontSize: '20px' }}
-              />
+              <Statistic title={<span style={{ fontSize: '12px' }}>Total Views</span>} value={45320} prefix={<EyeOutlined />} valueStyle={{ color: '#1F99ED', fontSize: '20px' }} />
             </Card>
           </Col>
           <Col xs={12} sm={12} lg={6}>
             <Card bodyStyle={{ padding: '12px' }}>
-              <Statistic 
-                title={<span style={{ fontSize: '12px' }}>Drafts</span>} 
-                value={5} 
-                prefix={<EditOutlined />} 
-                valueStyle={{ color: '#faad14', fontSize: '20px' }}
-              />
+              <Statistic title={<span style={{ fontSize: '12px' }}>Drafts</span>} value={5} prefix={<EditOutlined />} valueStyle={{ color: '#faad14', fontSize: '20px' }} />
             </Card>
           </Col>
           <Col xs={12} sm={12} lg={6}>
             <Card bodyStyle={{ padding: '12px' }}>
-              <Statistic 
-                title={<span style={{ fontSize: '12px' }}>Pending</span>} 
-                value={3} 
-                prefix={<TeamOutlined />} 
-                valueStyle={{ color: '#ff4d4f', fontSize: '20px' }}
-              />
+              <Statistic title={<span style={{ fontSize: '12px' }}>Pending</span>} value={3} prefix={<TeamOutlined />} valueStyle={{ color: '#ff4d4f', fontSize: '20px' }} />
             </Card>
           </Col>
         </Row>
 
-        {/* Main Content - Responsive */}
+        {/* Main Content */}
         <Row gutter={[12, 12]}>
-          {/* Recent Articles */}
           <Col xs={24} lg={16}>
             <Card 
-              title={
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <FileTextOutlined style={{ color: '#1F99ED' }} />
-                  <span style={{ fontSize: '14px' }}>Recent Articles</span>
-                </div>
-              }
-              extra={<Button type="link" size="small">View All</Button>}
+              title={<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><FileTextOutlined style={{ color: '#1F99ED' }} /><span style={{ fontSize: '14px' }}>Recent Articles</span></div>} 
+              extra={<Button type="link" size="small">View All</Button>} 
               bodyStyle={{ padding: '12px' }}
             >
-              <Table 
-                columns={columns} 
-                dataSource={recentArticles} 
-                pagination={false}
-                size="small"
-                scroll={{ x: 500 }}
-              />
+              <Table columns={articleColumns} dataSource={recentArticles} pagination={false} size="small" scroll={{ x: 500 }} />
             </Card>
           </Col>
 
-          {/* Pending Tasks */}
           <Col xs={24} lg={8}>
             <Card 
-              title={
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <CalendarOutlined style={{ color: '#1F99ED' }} />
-                  <span style={{ fontSize: '14px' }}>Pending Tasks</span>
-                </div>
-              }
+              title={<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CalendarOutlined style={{ color: '#1F99ED' }} /><span style={{ fontSize: '14px' }}>Pending Tasks</span></div>} 
               bodyStyle={{ padding: '12px' }}
             >
-              <Table 
-                columns={taskColumns} 
-                dataSource={pendingTasks} 
-                pagination={false}
-                size="small"
-                scroll={{ x: 250 }}
-              />
+              <Table columns={taskColumns} dataSource={pendingTasks} pagination={false} size="small" scroll={{ x: 250 }} />
             </Card>
           </Col>
         </Row>
 
-        {/* Quick Actions - Responsive */}
-        <Card 
-          title={<span style={{ fontSize: '14px' }}>Quick Actions</span>}
-          bodyStyle={{ padding: '12px' }}
-          style={{ marginTop: '16px' }}
-        >
+        {/* Quick Actions */}
+        <Card title={<span style={{ fontSize: '14px' }}>Quick Actions</span>} bodyStyle={{ padding: '12px' }} style={{ marginTop: '16px' }}>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             <Button type="primary" icon={<PlusOutlined />} size="small">New Article</Button>
             <Button icon={<FileTextOutlined />} size="small">Manage Blogs</Button>
@@ -220,6 +168,7 @@ export default function EditorDashboard() {
 
       </Content>
 
+      {/* Global Styles */}
       <style jsx global>{`
         @media (max-width: 575px) {
           .editor-mobile-header {
