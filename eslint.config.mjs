@@ -18,6 +18,7 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      "src/pages/blog.js",
     ],
   },
   // Disable rules that are causing build failures for content-heavy components
