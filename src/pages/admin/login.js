@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from 'react'
 import { Layout, Card, Row, Col, Form, Input, Button, Typography, message, Divider } from 'antd'
 import { LockOutlined, MailOutlined, SafetyCertificateOutlined } from '@ant-design/icons'
